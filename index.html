@@ -1,5 +1,12 @@
+---
+published: true
+layout: page
+weight: 1
+category: help
+title: Home
+---
+
 <?php
-$page = 1;
 if (isset($_GET['id'])) { $id = $_GET['id']; } else { $id = 294; }
 if (isset($_GET['size'])) { $size = $_GET['size']; } else { $size = 200; }
 if (isset($_GET['line'])) { $line = $_GET['line']; } else { $line = 50; }
@@ -11,7 +18,6 @@ $text_3 = "Aut viam inveniam aut faciam ";
 $text_4 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in elit velit. Vivamus sit amet risus dictum, consequat tellus consequat, fringilla augue. Pellentesque placerat vel dui non venenatis. Integer interdum nisl hendrerit felis lobortis consequat. Vivamus a tempor velit. Morbi tellus purus, ullamcorper eget sodales a, tincidunt luctus dui. Curabitur at elit ligula.";
 $text_5 = "FontApp";
 $text_6 = "Say \"Hi!\" to info@fontapp.org";
-include ('includes/header.php');
 ?>
 
 		<link rel="stylesheet" type="text/css" media="all" href="includes/fontface_v2.css">
@@ -984,8 +990,3 @@ include ('includes/header.php');
 		
 		<div id="test" style="position:absolute; left:300px; top:10px; color:#000; display: block;">
 		</div>
-		
-
-<?php
-include ('includes/footer.php');
-?>
