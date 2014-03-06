@@ -24,7 +24,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 		<script type="text/JavaScript" src="js/font_v2.js"></script>
 		<script type="text/JavaScript" src="js/drag.js"></script>
 		
-		<script language='javascript'>
+		<script type="text/JavaScript">
 			var found_font = { category: "01. Sans Serif", style: "Regular", id: 0, height: 0, file_name: "", correct_height: 0 };
 			
 			var this_field = 1;
@@ -66,7 +66,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 				deactivate(5);
 				fill_initial_fields ();
 				field_focus (1);
-				set_found_font (<?php echo $id; ?>)
+				set_found_font (<?php echo $id; ?>);
 			}
 			
 			function fill_initial_fields () {
@@ -76,7 +76,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 					if (i == 1) { a *= 2; }
 					var height = correct_height (a, font[id][2]);
 					var line = (textfield[i].line + 50) * height / 100;
-					update_image (id, i)
+					update_image (id, i);
 					document.getElementById("textfield_" + i).style.fontSize = height + "px";
 					document.getElementById("textfield_" + i).style.lineHeight =  line + "px";
 					document.getElementById("textfield_" + i).style.textAlign =  textfield[i].align;
@@ -306,7 +306,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			    textfield[this_field].size = a;
 			    var height = correct_height (a, found_font.height);
 			    document.getElementById("textfield_" + this_field).style.fontSize = height + "px";
-			    change_line_height ()
+			    change_line_height ();
 			}
 			
 			
@@ -316,7 +316,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			    var b = correct_height (a, found_font.height);
 			    var c = ExtractNumber (document.getElementById("line_height_slider").style.left);
 			    textfield[this_field].line = c;
-			    var d = (c + 50) * b / 100
+			    var d = (c + 50) * b / 100;
 			    document.getElementById("textfield_" + this_field).style.lineHeight = d + "px";
 			}
 			
@@ -828,20 +828,46 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 		    
 		    <div id="block_2" style="width:260px;" class="block_a">
 			<div class="action">&#8594; 02. Set the properties for the font</div>
-			<?php
-			$parameter = array ("", "Boldness", "Serif size", "Width", "Roundness", "Ascender");
-			for ($i = 1; $i < 6; $i++) {
-				echo "
-				<div id='parameter_".$i."' class='box'>
-					".$parameter[$i]."
+				<div id='parameter_1' class='box'>
+					Boldness
 					<div class='property_container'>
 						<div class='property_line'></div>
-						<div id='slider_".$i."' class='drag' style='left:52px;' on></div>
-						<div id='hide_show_".$i."' class='close' onclick='deactivate(".$i."); find_best_match(0);'></div>
+						<div id='slider_1' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_1' class='close' onclick='deactivate(1); find_best_match(0);'></div>
 					</div>
-				</div>";
-			}
-			?>
+				</div>
+				<div id='parameter_2' class='box'>
+					Serif size
+					<div class='property_container'>
+						<div class='property_line'></div>
+						<div id='slider_2' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_2' class='close' onclick='deactivate(2); find_best_match(0);'></div>
+					</div>
+				</div>
+				<div id='parameter_3' class='box'>
+					Width
+					<div class='property_container'>
+						<div class='property_line'></div>
+						<div id='slider_3' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_3' class='close' onclick='deactivate(3); find_best_match(0);'></div>
+					</div>
+				</div>
+				<div id='parameter_4' class='box'>
+					Roundness
+					<div class='property_container'>
+						<div class='property_line'></div>
+						<div id='slider_4' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_4' class='close' onclick='deactivate(4); find_best_match(0);'></div>
+					</div>
+				</div>
+				<div id='parameter_5' class='box'>
+					Ascender
+					<div class='property_container'>
+						<div class='property_line'></div>
+						<div id='slider_5' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_5' class='close' onclick='deactivate(5); find_best_match(0);'></div>
+					</div>
+				</div>
 		    </div>
 		    
 		    <div id="block_3" class="block_a" style="width:260px;">
