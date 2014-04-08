@@ -637,6 +637,7 @@
 	#content {
 	    color: #000;
 	    max-width: 800px;
+	    padding-bottom: 3em;
 	}
 	
 	#content a {
