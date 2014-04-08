@@ -405,11 +405,12 @@
 	}
 	
 	.label {
-		font-size: 12px;
+		font-size: 14px;
 	    background: #6D6F71;
 	    color: #fff;
 	    padding: 8px;
-	    width: 76px;
+	    width: 90px;
+	    height: 36px;
 	    text-align: center;
 	    border: solid 1px #6D6F71;
 	    cursor: pointer;
@@ -417,7 +418,7 @@
 	
 	.close_top {
 	    position: absolute;
-	    left: 76px;
+	    left: 90px;
 	    top: 0px;
 	    background: #F2F0E6;
 	    padding: 8px;
@@ -445,9 +446,7 @@
 	    left: 0px;
 	    top: 36px;
 	    background: #F2F0E6;
-	    padding: 3px;
 	    width: 156px;
-	    text-align: center;
 	    border-top: solid 1px #6D6F71;
 	    border-left: solid 1px #6D6F71;
 	}
