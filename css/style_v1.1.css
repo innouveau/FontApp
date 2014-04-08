@@ -74,6 +74,7 @@
 
 
 	#paper {
+		position: absolute;
 	    overflow: hidden;
 	    height: 360px;
 	    width: 100%;
@@ -86,7 +87,7 @@
 	}
 	
 	.handle {
-	    position:absolute;
+	    position: absolute;
 	    left: 0px;
 	    top: 0px;
 	    z-index:10;
@@ -96,7 +97,6 @@
 	    height: 30px;
 	    opacity: 0.3;
 	}
-	
 	
 	.handle:hover {
 	    opacity: 1;

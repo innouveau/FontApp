@@ -44,9 +44,9 @@ text_6: Say "Hi!" to info@fontapp.org
 			
 			var this_mode = 0;
 			var mode = new Array();
-			mode[0] = { x: 0, y: 165, height: 300, width: 0, field: [1] };
-			mode[1] = { x: 400, y: 8, height: 0, width: 0, field: [2,3,4] };
-			mode[2] = { x: 400, y: 140, height: 240, width: 370, field: [5,6] };
+			mode[0] = { x: "0px", y: "165px", height: "300px", width: "100%", field: [1] };
+			mode[1] = { x: "400px", y: "8px", height: "calc(100% - 16px)", width: "300px", field: [2,3,4] };
+			mode[2] = { x: "400px", y: "140px", height: "240px", width: "370px", field: [5,6] };
 			
 			var old_font = new Array("Arial", "400", "Normal");
 			
@@ -525,7 +525,7 @@ text_6: Say "Hi!" to info@fontapp.org
 				    document.getElementById("url").style.display = "none";
 				    document.getElementById("url_img").style.display = "none";
 			    }
-			    document.getElementById("block_container").style.top = y;
+			    document.getElementById("toolbar").style.top = y;
 			    document.getElementById("paper").style.overflow = overflow;
 			    for (i = 1; i < 4; i++) {
 				    document.getElementById("block_" + i).className = "block_" + a;
@@ -721,14 +721,14 @@ text_6: Say "Hi!" to info@fontapp.org
 			}
 			
 			function resize_paper () {
-			    document.getElementById("paper").style.height = mode[this_mode].height + "px";
-			    document.getElementById("paper").style.width = mode[this_mode].width + "px";
+			    document.getElementById("paper").style.height = mode[this_mode].height;
+			    document.getElementById("paper").style.width = mode[this_mode].width;
 			    
 			}
 			
 			function reposition_paper () {
-			    document.getElementById("paper").style.left = mode[this_mode].x + "px";
-			    document.getElementById("paper").style.top = mode[this_mode].y + "px";
+			    document.getElementById("paper").style.left = mode[this_mode].x;
+			    document.getElementById("paper").style.top = mode[this_mode].y;
 			}		
 
 			$(document).ready (function() {
