@@ -59,7 +59,7 @@ a {
     left: 0px;
     top: 165px;
     height: 300px;
-    width: 500px;
+    width: calc(100% - 60px);
     padding: 30px;
     background: #fff;
     -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
@@ -95,8 +95,6 @@ a {
 .textfield {
     outline: none;
 }
-
-
 
 #textfield_1 {
     outline: none;
@@ -370,6 +368,11 @@ a.heart:hover {
 #topmenu {
     font-size: 14px;
     color: #6D6F71;
+    position: absolute; 
+    z-index: 10; 
+    right: 0px; 
+    top: 40px;
+    width: 400px
 }
 
 .label_container {
