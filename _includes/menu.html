@@ -15,9 +15,7 @@
 					
 			<div id="menubar">
 				{% for page in site.data.pages %}
-				    <a class='menu_link' href="{{ page.link }}"> &#183; 
-				      {{ page.name }}
-				    </a>
+				    <a class='menu_link' href="{{ page.link }}">{{ page.name }}</a> &#183; 
 				{% endfor %}
 			</div>
 			
