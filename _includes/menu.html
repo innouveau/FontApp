@@ -14,12 +14,11 @@
 			
 					
 			<div id="menubar">
-				<a class='menu_link' href='index.html'>Home</a> &#183; 
-				<a class='menu_link' href='why.html'>Why</a> &#183; 
-				<a class='menu_link' href='explain.html'>Explain!</a> &#183; 
-				<a class='menu_link' href='classification.html'>Classification</a> &#183; 
-				<a class='menu_link' href='version.html'>Version 1.1</a> &#183; 
-				<a class='menu_link' href='feedback.html'>Feedback</a>		
+				{% for page in site.data.pages %}
+				    <a class='menu_link' href="{{ page.link }}"> &#183; 
+				      {{ page.name }}
+				    </a>
+				{% endfor %}
 			</div>
 			
 			<div id="fb">
