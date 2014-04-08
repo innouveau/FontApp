@@ -15,6 +15,7 @@
 					
 			<div id="menubar">
 				{% for menu in site.data.pages %}
+					{{ menu.name }} {{ page.title }} <br>
 					{% if page.title == menu.name %}
 					<font class='current'>{{ menu.name }}</font> &#183; 
 				    {% else %}
