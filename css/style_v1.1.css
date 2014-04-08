@@ -31,7 +31,10 @@
 		height: 1px;
 	}
 	
-	a { text-decoration: none; }
+	a { 
+		text-decoration: none; 
+		cursor: pointer;
+	}
 	
 	
 	
