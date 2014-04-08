@@ -729,28 +729,25 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			    document.getElementById("paper").style.top = mode[this_mode].y + "px";
 			}		
 		</script>
-	</HEAD>
-
-	<BODY>
 	    
-	<script type="text/javascript">
-	$(document).ready (function() {
-		var $window = jQuery(window);
-		function checkWidth() {
-		    var width = jQuery(window).width() - 60;
-		    var height = jQuery(window).height() - 140;
-		    mode[0].width = width;
-		    mode[1].height = height;
-		    mode[1].width = height * 0.7;
-		    resize_paper();
-		}
-		init();
-		checkWidth();
-		jQuery(window).resize(checkWidth);
-	});
-	
-	$(function() { $('.resizable').draggable( {handle: ".handle" }).resizable();});
-	</script>
+		<script type="text/javascript">
+		$(document).ready (function() {
+			var $window = jQuery(window);
+			function checkWidth() {
+			    var width = jQuery(window).width() - 60;
+			    var height = jQuery(window).height() - 140;
+			    mode[0].width = width;
+			    mode[1].height = height;
+			    mode[1].width = height * 0.7;
+			    resize_paper();
+			}
+			init();
+			checkWidth();
+			jQuery(window).resize(checkWidth);
+		});
+		
+		$(function() { $('.resizable').draggable( {handle: ".handle" }).resizable();});
+		</script>
 		
 
 	<div id="main_container" style="width:100%; height:100%;">		
