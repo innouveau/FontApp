@@ -228,8 +228,7 @@
 	.box:hover .property_line, .colorbox:hover .property_line  {
 	    background: #000;
 	}
-	
-	
+		
 	.drag {
 	    transition: background 0.2s ease;
 	    cursor: pointer;
@@ -258,7 +257,6 @@
 	    border: 2px solid #6D6F71;
 	    background: #fff;
 	}
-	
 	
 	.box {
 	    background: #fff;
@@ -336,7 +334,6 @@
 	#favorite_font {
 	    width: 30px;
 	    height: 36px;
-	    margin-left: 2px;
 	    margin-bottom: 4px;
 	    background: #E6BE00;
 	    padding: 8px 10px;
