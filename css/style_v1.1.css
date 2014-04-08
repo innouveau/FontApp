@@ -130,6 +130,7 @@
 
 
 	#toolbar {
+		position: absolute;
 		padding: 8px;
 		margin-top: 2em;
 	}
