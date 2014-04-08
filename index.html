@@ -5,7 +5,17 @@ weight: 1
 category: help
 title: Home
 
-hallo: 1000
+id: 294
+size: 200
+line: 50
+align: left
+color: 0,0,0,100
+text_1: The quick brown fox jumps over the lazy dog
+text_2: LOREM IPSUM DOLOR SIT
+text_3: Aut viam inveniam aut faciam
+text_4: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in elit velit. Vivamus sit amet risus dictum, consequat tellus consequat, fringilla augue. Pellentesque placerat vel dui non venenatis. Integer interdum nisl hendrerit felis lobortis consequat. Vivamus a tempor velit. Morbi tellus purus, ullamcorper eget sodales a, tincidunt luctus dui. Curabitur at elit ligula.
+text_5: FontApp
+text_6: Say "Hi!" to info@fontapp.org
 
 ---
 
@@ -18,7 +28,7 @@ hallo: 1000
 			
 			var this_field = 1;
 			var textfield = new Array ();
-			textfield[1] = { id: {% if request.id %} {{ request.id }} {% else %} 294{% endif %}, size: <?php echo $size; ?>, line: <?php echo $line; ?>, align: "<?php echo $align; ?>", color: [<?php echo $color; ?>], focus: 0 }
+			textfield[1] = { id: {{ page.id }}, size: {{ page.size }}, line: {{ page.line }}, align: "{{ page.align }}", color: [{{ page.color }}], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100], focus: 0 }
 			textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100], focus: 0 }
 			textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100], focus: 0 }
@@ -729,8 +739,6 @@ hallo: 1000
 		</script>
 		
 
-		HE!!!! {{ page.hallo }}
-		
 		<div id="paper">
 			<div id="textcontainer_1">
 				<div id="textfield_1" contenteditable="true"  onfocus="field_focus(1);"><?php echo $text_1 ?></div>
