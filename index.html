@@ -728,14 +728,12 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			    document.getElementById("paper").style.left = mode[this_mode].x + "px";
 			    document.getElementById("paper").style.top = mode[this_mode].y + "px";
 			}		
-		</script>
-	    
-		<script type="text/javascript">
-		$(document).ready (function() {
-			init();
-		});
-		
-		$(function() { $('.resizable').draggable( {handle: ".handle" }).resizable();});
+
+			$(document).ready (function() {
+				init();
+			});
+			
+			$(function() { $('.resizable').draggable( {handle: ".handle" }).resizable();});
 		</script>
 		
 
@@ -774,7 +772,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 		
 		
 		
-		<div id="block_container" style="position:absolute; left:8px; top:560px;">
+		<div id="toolbar">
 		    
 		    <div id="block_1" class="block_a" style="width:260px;">
 				<div class="action">&#8594; 01. Choose category and style</div>
