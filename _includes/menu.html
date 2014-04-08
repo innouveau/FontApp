@@ -15,7 +15,11 @@
 					
 			<div id="menubar">
 				{% for page in site.data.pages %}
+					{% if page.title == page.name %}
+					<font class='current'>{{ page.name }}</font> &#183; 
+				    {% else %}
 				    <a class='menu_link' href="{{ page.link }}">{{ page.name }}</a> &#183; 
+				    {% endif %}
 				{% endfor %}
 			</div>
 			
