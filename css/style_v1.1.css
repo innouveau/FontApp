@@ -399,6 +399,8 @@
 	}
 	
 	.label_container {
+		position: relative; 
+		width: 122px;
 	    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 	    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 	    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
@@ -536,9 +538,9 @@
 	
 	
 	
-	
-	
+		
 /********* Others **********/
+	
 	
 	#message {
 	    font-weight: 400;
@@ -576,7 +578,9 @@
 	
 	
 	
+	
 /********* footer **********/
+	
 	
 	#footer {
 	    position: fixed;
@@ -612,7 +616,6 @@
 	    color: #000;
 	}
 	
-	
 	#loading {
 	    display: none;
 	    position: absolute;
@@ -629,8 +632,10 @@
 	
 	
 	
+
 	
 /********* Other pages **********/
+	
 	
 	#content {
 	    color: #000;
