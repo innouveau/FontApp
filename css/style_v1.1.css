@@ -390,7 +390,6 @@
 /********* Topmenu **********/
 	
 	#topmenu {
-	    font-size: 14px;
 	    color: #6D6F71;
 	    position: absolute; 
 	    z-index: 10; 
@@ -421,7 +420,7 @@
 	    top: 0px;
 	    background: #F2F0E6;
 	    padding: 8px;
-	    width: 16px;
+	    width: 32px;
 	    text-align: center;
 	    border: solid 1px #6D6F71;
 	    cursor: pointer;    
@@ -446,7 +445,7 @@
 	    top: 36px;
 	    background: #F2F0E6;
 	    padding: 3px;
-	    width: 150px;
+	    width: 156px;
 	    text-align: center;
 	    border-top: solid 1px #6D6F71;
 	    border-left: solid 1px #6D6F71;
@@ -461,8 +460,8 @@
 	    width: 168px;
 	    border: 0px;
 	    outline: 0;
-	    width: 234px;
-	    height: 20px;
+	    width: 266px;
+	    height: 36px;
 	    background: #fff;
 	    color: #6D6F71;
 	    padding: 8px 16px;
@@ -488,7 +487,7 @@
 	    text-decoration: none;
 	    background: #E7E8E9;
 	    color: #6D6F71;
-	    width: 234px;
+	    width: 266px;
 	    padding: 2px 16px;
 	}
 	
@@ -503,11 +502,8 @@
 	    text-decoration: none;
 	    color: #6D6F71;
 	    background: #F2F0E6;
-	    width: 230px;
-	    padding-left: 8px;
-	    padding-right: 8px;
-	    padding-top: 2px;
-	    padding-bottom: 2px;
+	    width: 246px;
+	    padding: 2px 8px;
 	}
 	
 	a.fav_and_rel:hover {
@@ -533,11 +529,8 @@
 	    text-decoration: none;
 	    color: #6D6F71;
 	    background: #E6BE00;
-	    width: 230px;
-	    padding-left: 8px;
-	    padding-right: 8px;
-	    padding-top: 2px;
-	    padding-bottom: 2px;
+	    width: 246px;
+	    padding: 2px 8px;
 	    cursor: default;
 	}
 	
