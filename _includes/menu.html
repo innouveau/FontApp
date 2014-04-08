@@ -1,12 +1,3 @@
-<?php
-$a[1] = array ("index", "Home");
-$a[2] = array ("why", "Why");
-$a[3] = array ("explain", "Explain!");
-$a[4] = array ("classification", "Classification");
-$a[5] = array ("version", "Version 1.1");
-$a[6] = array ("feedback", "Feedback");
-?>
-
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
@@ -22,20 +13,12 @@ $a[6] = array ("feedback", "Feedback");
 		
 				
 		<div id="menubar">
-		<?php
-		
-		for ($i = 1; $i < 7; $i++) {
-			if ($i == $page) {
-				echo "<font class='current'>".$a[$i][1]."</font>";
-			}
-			else {
-				echo "<a class='menu_link' href='".$a[$i][0].".php'>".$a[$i][1]."</a>";
-			}
-			if ($i < 6) {
-				echo " &#183; ";
-			}
-		}
-		?>
+			<a class='menu_link' href='index.php'>Home</a> &#183; 
+			<a class='menu_link' href='why.php'>Why</a> &#183; 
+			<a class='menu_link' href='explain.php'>Explain!</a> &#183; 
+			<a class='menu_link' href='classification.php'>Classification</a> &#183; 
+			<a class='menu_link' href='version.php'>Version 1.1</a> &#183; 
+			<a class='menu_link' href='feedback.php'>Feedback</a>		
 		</div>
 		
 		<div id="fb">
