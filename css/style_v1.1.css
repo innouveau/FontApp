@@ -433,8 +433,7 @@
 	    color: #6D6F71;
 	    padding: 32px 16px;
 	    margin-bottom: 16px;
-	    margin-top: -1px;
-	    border: solid 1px #9d8200;
+	    border: solid 1px #6D6F71;
 	    border-right: 0px;
 	    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 	    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
@@ -444,11 +443,11 @@
 	.cover {
 	    position: absolute;
 	    left: 0px;
-	    top: 35px;
+	    top: 36px;
 	    background: #F2F0E6;
 	    width: 156px;
-	    border-top: solid 1px #9d8200;
-	    border-left: solid 1px #9d8200;
+	    border-top: solid 1px #6D6F71;
+	    border-left: solid 1px #6D6F71;
 	}
 	
 	
