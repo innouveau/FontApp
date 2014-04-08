@@ -5,7 +5,7 @@
 	}
 	
 	body {
-		padding: 0;
+		padding: 8px;
 		margin: 0;
 		height: 100%;
 		background: #F2F0E6;
@@ -42,9 +42,13 @@
 		
 	}
 	
+		#header {
+			margin-bottom: 4px;
+		}
+	
 		#menubar {
-		    font-size: 14px;
 		    z-index: 101;
+		    margin-bottom: 4px;
 		}
 
 			.menu_link {
