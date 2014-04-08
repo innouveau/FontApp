@@ -68,7 +68,7 @@ text_6: Say "Hi!" to info@fontapp.org
 				deactivate(5);
 				fill_initial_fields ();
 				field_focus (1);
-				set_found_font (<?php echo $id; ?>);
+				set_found_font ({{ page.id }});
 			}
 			
 			function fill_initial_fields () {
