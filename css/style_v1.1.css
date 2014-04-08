@@ -444,11 +444,11 @@
 	.cover {
 	    position: absolute;
 	    left: 0px;
-	    top: 36px;
+	    top: 35px;
 	    background: #F2F0E6;
 	    width: 156px;
-	    border-top: solid 1px #6D6F71;
-	    border-left: solid 1px #6D6F71;
+	    border-top: solid 1px #9d8200;
+	    border-left: solid 1px #9d8200;
 	}
 	
 	
