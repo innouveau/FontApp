@@ -171,10 +171,7 @@
 	
 	#selected_1 a:hover, #selected_2 a:hover {
 	    color: #fff;
-	    background: #E6BE00;
-	    background-image: url('../img/arrow.png');
-	    background-repeat: no-repeat;
-	    background-position: 232px 14px;
+	    background-color: #E6BE00;
 	}
 	
 	#selected_2 {
