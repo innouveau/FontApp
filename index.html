@@ -30,7 +30,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			
 			var this_field = 1;
 			var textfield = new Array ();
-			textfield[1] = { id: {% if id %} {Login here}{ id }} {% else %} 294 {% endif %}, size: <?php echo $size; ?>, line: <?php echo $line; ?>, align: "<?php echo $align; ?>", color: [<?php echo $color; ?>], focus: 0 }
+			textfield[1] = { id: {% if request.id %} {{ request.id }} {% else %} 294 {% endif %}, size: <?php echo $size; ?>, line: <?php echo $line; ?>, align: "<?php echo $align; ?>", color: [<?php echo $color; ?>], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100], focus: 0 }
 			textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100], focus: 0 }
 			textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100], focus: 0 }
