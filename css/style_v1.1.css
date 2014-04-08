@@ -35,52 +35,31 @@
 	a { text-decoration: none; }
 	
 	
-	/********* FRAMEWORK **********/
+/********* FRAMEWORK **********/
+
+
+	#menu {
+		
+	}
+	
+		#menubar {
+		    font-size: 14px;
+		    z-index: 101;
+		}
+
+			.menu_link {
+			    font-size: 14px;
+			    color: #000;
+			}
+			
+			.menu_link:hover, .current {
+			    color: #000;
+			    text-decoration: underline;
+			}
 
 
 
-
-
-
-
-/* MENU */
-#menubar {
-    font-size: 14px;
-    z-index: 101;
-    position: absolute;
-    width: 350px;
-    left: 8px;
-    top: 96px;
-}
-
-.menu_link {
-    font-size: 14px;
-    color: #000;
-
-}
-
-.menu_link:hover {
-    color: #000;
-    text-decoration: underline;
-}
-
-.current {
-    font-size: 14px;
-    color: #000;
-    text-decoration: underline;
-}
-
-#fb {
-    width: 50px;
-    z-index: 101;
-    position: absolute;
-    width: 350px;
-    left: 8px;
-    top: 124px;  
-}
-
-
-/* PAPER */
+/********* PAPER **********/
 
 #paper {
     overflow: hidden;
