@@ -160,7 +160,7 @@
 	    display: block;
 	    text-decoration: none;
 	    background: #fff;
-	    background-image: url('img/arrow.png');
+	    background-image: url('../img/arrow.png');
 	    background-repeat: no-repeat;
 	    background-position: 232px 14px;
 	    width: 226px;
@@ -170,7 +170,7 @@
 	#selected_1 a:hover, #selected_2 a:hover {
 	    color: #fff;
 	    background: #E6BE00;
-	    background-image: url('img/arrow.png');
+	    background-image: url('../img/arrow.png');
 	    background-repeat: no-repeat;
 	    background-position: 232px 14px;
 	}
