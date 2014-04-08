@@ -131,6 +131,7 @@
 
 	#toolbar {
 		position: absolute;
+		top: 550px;
 		padding: 8px;
 		margin-top: 2em;
 	}
