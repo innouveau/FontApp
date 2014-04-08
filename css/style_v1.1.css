@@ -620,10 +620,6 @@ a.close_message:hover {
 /* OTHER PAGES */
 
 #content {
-    border-top: 1px solid #000;
-    position: absolute;
-    left: 8px;
-    top: 160px;
     color: #000;
     width: 500px;
     font-weight: 400;
