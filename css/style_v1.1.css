@@ -405,6 +405,7 @@
 	}
 	
 	.label {
+		font-size: 14px;
 	    background: #6D6F71;
 	    color: #fff;
 	    padding: 8px;
