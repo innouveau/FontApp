@@ -723,9 +723,9 @@ text_6: Say "Hi!" to info@fontapp.org
 			function resize_paper () {
 			    document.getElementById("paper").style.height = mode[this_mode].height;
 			    if (this_mode == 1) {
-			    	var a = parseInt(document.getElementById("paper").style.height, 10) / 1.4;
+			    	//var a = parseInt(document.getElementById("paper").style.height, 10) / 1.4;
 			    	var temp_width = parseInt(document.getElementById("paper").style.height, 10) / 1.4;
-			    	console.log ("test");
+			    	document.getElementById("test").innerHTML = "test";
 			    }
 			    else {
 			    	var temp_width = mode[this_mode].width
