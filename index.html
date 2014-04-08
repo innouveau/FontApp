@@ -772,7 +772,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 				<div class="textfield" id="textfield_6" contenteditable="true"><?php echo $text_6 ?></div>	
 			</div>
 		</div>
-		
+		<!-- end of paper -->
 		
 		
 		<div id="toolbar">
@@ -781,10 +781,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 				<div class="action">&#8594; 01. Choose category and style</div>
 				<div id="selected_1">
 				    <a id="a_selected_1" onclick='drop_out(1);'>Sans Serif</a>
-						
-
 				</div>
-				
 				<div id="list_1">
 				    <a onclick='change_fontcategory("01. Sans Serif"); find_best_match(0);'>Sans Serif</a>
 				    <a onclick='change_fontcategory("02. Serif"); find_best_match(0);'>Serif</a>
@@ -794,21 +791,18 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 				    <a onclick='change_fontcategory("06. Fun"); find_best_match(0);'>Fun</a>
 				    <a onclick='change_fontcategory("07. All Caps"); find_best_match(0);'>All Caps</a>
 				</div>
-				
-					
 				<div id="selected_2">
 				    <a id="a_selected_2" onclick='drop_out(2);'>Regular</a>
 				</div>
-				
 				<div id="list_2">
 				       <a onclick='change_fontstyle("Regular"); find_best_match(0);'>Regular</a>
 				       <a onclick='change_fontstyle("Italic"); find_best_match(0);'>Italic</a>
 			       </div>
-				
 				<div id="nr_of_fonts">
 					... fonts found
 				</div>
 		    </div>
+		    <!-- end of block 1 -->
 		    
 		    <div id="block_2" style="width:260px;" class="block_a">
 				<div class="action">&#8594; 02. Set the properties for the font</div>
@@ -853,81 +847,81 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 					</div>
 				</div>
 		    </div>
+		    <!-- end of block 2 -->
 		    
 		    <div id="block_3" class="block_a" style="width:260px;">
-			<div class="action">&#8594; 03. This is your font!</div>
-			<div style="position:relative;">
-			    <div id="font_name" style="width:195px; height:20px">...</div>
-			    <div id="favorite_font" style="position:absolute; top:0px; left:230px;">...</div>
+				<div class="action">&#8594; 03. This is your font!</div>
+				
+				<div style="position:relative;">
+				    <div id="font_name">...</div>
+				    <div id="favorite_font">...</div>
+				    
+				</div>
 			    
-			</div>
-		    
-		    
-			<div id='text_size' class='box'>
-				Text size
-				<div class='property_container'>
-					<div class='property_line'></div>
-					<div id='size_slider' class='drag' style='left:100px;' on></div>
-				</div>
-			</div>
-			
-			<div id='line_height' class='box'>
-				Line-height
-				<div class='property_container'>
-					<div class='property_line'></div>
-					<div id='line_height_slider' class='drag' style='left:50px;' on></div>
-				</div>
-			</div>
-			<div id="editor">
-				<div id="text_align">
-					...
-				</div>
-				<a onclick="show_colorbox();"><img id="color_button" src="img/color1.png" border="0"></a>
-			</div>
-			
-			<div id="colorbox">
-				<div id='color_1' class='colorbox'>
-					C
+			    
+				<div id='text_size' class='box'>
+					Text size
 					<div class='property_container'>
 						<div class='property_line'></div>
-						<div id='c' class='drag' style='left:0px;' on></div>
+						<div id='size_slider' class='drag' style='left:100px;' on></div>
 					</div>
 				</div>
-				<div id='color_2' class='colorbox'>
-					M
+				
+				<div id='line_height' class='box'>
+					Line-height
 					<div class='property_container'>
 						<div class='property_line'></div>
-						<div id='m' class='drag' style='left:0px;' on></div>
+						<div id='line_height_slider' class='drag' style='left:50px;' on></div>
 					</div>
 				</div>
-				<div id='color_3' class='colorbox'>
-					Y
-					<div class='property_container'>
-						<div class='property_line'></div>
-						<div id='y' class='drag' style='left:0px;' on></div>
+				<div id="editor">
+					<div id="text_align">
+						...
 					</div>
+					<a onclick="show_colorbox();"><img id="color_button" src="img/color1.png" border="0"></a>
 				</div>
-				<div id='color_1' class='colorbox'>
-					K
-					<div class='property_container'>
-						<div class='property_line'></div>
-						<div id='k' class='drag' style='left:100px;' on></div>
+				
+				<div id="colorbox">
+					<div id='color_1' class='colorbox'>
+						C
+						<div class='property_container'>
+							<div class='property_line'></div>
+							<div id='c' class='drag' style='left:0px;' on></div>
+						</div>
 					</div>
+					<div id='color_2' class='colorbox'>
+						M
+						<div class='property_container'>
+							<div class='property_line'></div>
+							<div id='m' class='drag' style='left:0px;' on></div>
+						</div>
+					</div>
+					<div id='color_3' class='colorbox'>
+						Y
+						<div class='property_container'>
+							<div class='property_line'></div>
+							<div id='y' class='drag' style='left:0px;' on></div>
+						</div>
+					</div>
+					<div id='color_1' class='colorbox'>
+						K
+						<div class='property_container'>
+							<div class='property_line'></div>
+							<div id='k' class='drag' style='left:100px;' on></div>
+						</div>
+					</div>
+				
 				</div>
-			
-			</div>
-			
-			<div id="downloadbox">
-				<a id='download_img' onclick="download_font();"><img src='img/download1.png' border='0' onMouseOver='this.src="img/download2.png";' onMouseOut='this.src="img/download1.png";'></a>&nbsp;&nbsp;
-				<a id='url_img' onclick="get_url();"><img src='img/url1.png' border='0' onMouseOver='this.src="img/url2.png";' onMouseOut='this.src="img/url1.png";'></a><br>
-				<input type="text" id="url" value="">
-			</div>
+				
+				<div id="downloadbox">
+					<a id='download_img' onclick="download_font();"><img src='img/download1.png' border='0' onMouseOver='this.src="img/download2.png";' onMouseOut='this.src="img/download1.png";'></a>&nbsp;&nbsp;
+					<a id='url_img' onclick="get_url();"><img src='img/url1.png' border='0' onMouseOver='this.src="img/url2.png";' onMouseOut='this.src="img/url1.png";'></a><br>
+					<input type="text" id="url" value="">
+				</div>
 		    </div>
-		    
-		    
-		    
+		    <!-- end of block 3 -->
 		</div>
-		
+		<!-- end of toolbar -->
 		
 		
 		<div id="topmenu">
@@ -979,12 +973,11 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 		    </div>
 			
 		</div>
-		
+		<!-- end of topmenu -->
 		
 		<div id="loading">
 			<img src="img/loading.gif">
 		</div>
-		
 		
 		<div id="message">
 		    <div id="message_txt">
@@ -994,9 +987,6 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			    <br><a onclick="close_message();" class="close_message">OK</a>
 		    </div>
 		</div>
-		
-		
-
 		
 		<div id="test" style="position:absolute; left:300px; top:10px; color:#000; display: block;">
 		</div>

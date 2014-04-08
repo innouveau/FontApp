@@ -316,6 +316,7 @@
 	
 /********* Block 3 **********/
 	
+	
 	#font_name {
 	    margin-left: 0px;
 	    margin-right: 2px;
@@ -323,6 +324,9 @@
 	    color: #fff;
 	    padding: 8px 16px;
 	    background: #E6BE00;
+	    width: 227px; 
+	    height: 36px;
+	    float: left;
 	}
 	
 	#font_name b {
@@ -330,12 +334,13 @@
 	}
 	
 	#favorite_font {
-	    width: 10px;
-	    height: 20px;
-	    margin-left: 0px;
+	    width: 30px;
+	    height: 36px;
+	    margin-left: 2px;
 	    margin-bottom: 4px;
 	    background: #E6BE00;
 	    padding: 8px 10px;
+	    float: left;
 	}
 	
 	a.heart {
