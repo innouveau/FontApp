@@ -7,20 +7,6 @@ title: Home
 
 ---
 
-<?php
-if (isset($_GET['id'])) { $id = $_GET['id']; } else { $id = 294; }
-if (isset($_GET['size'])) { $size = $_GET['size']; } else { $size = 200; }
-if (isset($_GET['line'])) { $line = $_GET['line']; } else { $line = 50; }
-if (isset($_GET['align'])) { $align = $_GET['align']; } else { $align = "left"; }
-if (isset($_GET['color'])) { $color = $_GET['color']; $setcolor = 1; } else { $color = "0,0,0,100"; $setcolor = 0; }
-if (isset($_GET['text'])) { $text_1 = $_GET['text']; } else { $text_1 = "The quick brown fox jumps over the lazy dog"; }
-$text_2 = "LOREM IPSUM DOLOR SIT";
-$text_3 = "Aut viam inveniam aut faciam ";
-$text_4 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in elit velit. Vivamus sit amet risus dictum, consequat tellus consequat, fringilla augue. Pellentesque placerat vel dui non venenatis. Integer interdum nisl hendrerit felis lobortis consequat. Vivamus a tempor velit. Morbi tellus purus, ullamcorper eget sodales a, tincidunt luctus dui. Curabitur at elit ligula.";
-$text_5 = "FontApp";
-$text_6 = "Say \"Hi!\" to info@fontapp.org";
-?>
-
 		<link rel="stylesheet" type="text/css" media="all" href="css/fontface_v2.css">
 		<script type="text/JavaScript" src="js/font_v2.js"></script>
 		<script type="text/JavaScript" src="js/drag.js"></script>
@@ -30,7 +16,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 			
 			var this_field = 1;
 			var textfield = new Array ();
-			textfield[1] = { id: {% if request.id %} {{ request.id }} {% else %} 294 {% endif %}, size: <?php echo $size; ?>, line: <?php echo $line; ?>, align: "<?php echo $align; ?>", color: [<?php echo $color; ?>], focus: 0 }
+			textfield[1] = { id: {% if request.id %} {{ request.id }} {% else %} 294{% endif %}, size: <?php echo $size; ?>, line: <?php echo $line; ?>, align: "<?php echo $align; ?>", color: [<?php echo $color; ?>], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100], focus: 0 }
 			textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100], focus: 0 }
 			textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100], focus: 0 }
@@ -741,7 +727,7 @@ $text_6 = "Say \"Hi!\" to info@fontapp.org";
 		</script>
 		
 
-		
+		{{ request.hallo }}
 		
 		<div id="paper">
 			<div id="textcontainer_1">
