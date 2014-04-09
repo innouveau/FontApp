@@ -98,11 +98,8 @@ properties:
 			function fill_initial_fields () {
 				for (i = 1; i < 7; i++) {
 					var id = textfield[i].id;
-					var size = size_correction (textfield[i].size, font[id][2]);
 					var color = cmyk_to_rgb (textfield[i].color[0], textfield[i].color[1], textfield[i].color[2], textfield[i].color[3]);
-					change_font_family (id, i);
-					document.getElementById("textfield_" + i).style.fontSize = size;
-					document.getElementById("textfield_" + i).style.lineHeight =  textfield[i].line;
+					change_font_family (i, id);
 					document.getElementById("textfield_" + i).style.textAlign =  textfield[i].align;
 					document.getElementById("textfield_" + i).style.color =  "#" + color;
 
@@ -110,7 +107,14 @@ properties:
 				//set_slides(1, id);	 
 			}
 			
-			function change_font_family (id, field) {
+			
+			
+			
+			// CHANGE ////////////////////////////////////////////////////////////////////
+			
+			
+			function change_font_family (field, id) {
+				// by changing the font family, size and lineheight is automatically changed
 				document.getElementById("url").style.display = "none";
 				
 				var font_family = font[id][0];
@@ -151,8 +155,7 @@ properties:
 							document.getElementById("textfield_" + field).style.fontFamily = new_font[0];
 							document.getElementById("textfield_" + field).style.fontWeight = new_font[1];
 							document.getElementById("textfield_" + field).style.fontStyle = new_font[2];
-							change_size ();
-							update_margin ();
+							change_size (field, id);
 							old_font = new_font;
 						 },
 						 inactive: function() {
@@ -191,8 +194,7 @@ properties:
 							document.getElementById("textfield_" + field).style.fontFamily = new_font[0];
 							document.getElementById("textfield_" + field).style.fontWeight = new_font[1];
 							document.getElementById("textfield_" + field).style.fontStyle = new_font[2];
-							change_size ();
-							update_margin ();
+							change_size (field, id);
 							old_font = new_font;
 						 },
 						 inactive: function() {
@@ -211,8 +213,28 @@ properties:
 				}
 			}
 
+			function change_font_size (field, id) {
+				var size = size_correction (textfield[field].size, font[id][2]);
+			    document.getElementById("textfield_" + field).style.fontSize = size + "px";
+			    change_line_height (field, id);
+			}
 			
+			function change_line_height (field, id) {
+			    var size = size_correction (textfield[field].size, font[id][2]);
+			    var line = textfield[field].line;
+			    var line_correction = (line + 50) * size / 100;
+			    document.getElementById("textfield_" + field).style.lineHeight = line_correction + "px";
+			    update_margin (field, id);
+			}
 			
+			function update_margin (field, id) {
+				// correct x-line for height correction
+				var a = 0.5 * textfield[field].size + 20;
+				var size = size_correction (textfield[field].size, font[id][2]);
+				var margin = a - size;
+				if (field == 1 ) { margin += 70; }
+				document.getElementById("textfield_" + this_field).style.marginTop = margin + "px";
+			}
 			
 			
 			
