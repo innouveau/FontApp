@@ -84,6 +84,7 @@ properties:
 					var color = cmyk_to_rgb (textfield[i].color[0], textfield[i].color[1], textfield[i].color[2], textfield[i].color[3]);
 					document.getElementById("textfield_" + i).style.color =  "#" + color;
 				}	
+				document.getElementById("mytest").innerHTML = textfield[1].size + ", " + textfield[2].size + ", " + textfield[3].size + ", " + textfield[4].size + ", " + textfield[5].size + ", " + textfield[6].size; 
 			}
 						
 			function find_best_match (q) {
@@ -287,11 +288,9 @@ properties:
 			
 			
 			function change_size (field) {
-				field = 1;
 			    var a = $("#size_slider").slider("value");
 			    
 			    if (field == 1) { a *= 2; }
-			    document.getElementById("mytest").innerHTML = a;
 			    textfield[field].size = a;
 			    
 			    var height = correct_height (a, found_font.height);
