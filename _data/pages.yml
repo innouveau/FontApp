@@ -1,17 +1,12 @@
 - name: Home
   link: index.html
-
 - name: Why
   link: why.html
-
 - name: Explain!
   link: explain.html
-
 - name: Classification
   link: classification.html
-
 - name: Version
   link: version.html
-
 - name: Feedback
   link: feedback.html
