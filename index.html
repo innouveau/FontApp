@@ -76,6 +76,7 @@ properties:
 			}
 			
 			function fill_initial_fields () {
+				document.getElementById("mytest").innerHTML = textfield[2].size;
 				for (i = 1; i < 7; i++) {
 					var id = textfield[i].id;
 					change_size (i);
@@ -351,7 +352,6 @@ properties:
 			
 			function set_editor_slides (field) {
 				var a = textfield[field].size;
-				document.getElementById("mytest").innerHTML = field + ": " + a;
 				if (this_field == 1) { a /= 2; }
 				$("#size_slider").slider("value", a);
 				$("#line_height_slider").slider("value", textfield[field].line);
