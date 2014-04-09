@@ -6,7 +6,7 @@ category: help
 title: Home
 
 id: 294
-size: 90
+size: 180
 line: 50
 align: left
 color: "0,0,0,100"
@@ -82,7 +82,7 @@ properties:
 					handle: ".handle"
 				}).resizable();
 				$('#size_slider').slider({
-					value: 90, slide: change_size(this_field), change: change_size(this_field)
+					value: 90, slide: change_font_size(this_field), change: change_font_size(this_field)
 				});
 				$('#line_height_slider').slider({
 					value: 50, slide: change_line_height(this_field), change: change_line_height(this_field)
@@ -234,7 +234,7 @@ properties:
 				var size = size_correction (textfield[field].size, font[id][2]);
 				var margin = a - size;
 				if (field == 1 ) { margin += 70; }
-				document.getElementById("textfield_" + this_field).style.marginTop = margin + "px";
+				document.getElementById("textfield_" + field).style.marginTop = margin + "px";
 			}
 			
 			
