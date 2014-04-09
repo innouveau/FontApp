@@ -75,6 +75,8 @@
 
 	#paper {
 		position: absolute;
+		top: 145px;
+		left: 0px;
 	    overflow: hidden;
 	    height: 360px;
 	    width: 100%;
