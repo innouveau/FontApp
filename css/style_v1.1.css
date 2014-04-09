@@ -321,6 +321,10 @@
 /********* Block 3 **********/
 	
 	
+	#result {
+		overflow: auto;
+	}
+	
 	#font_name {
 	    margin-left: 0px;
 	    margin-right: 2px;
