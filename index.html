@@ -351,6 +351,7 @@ properties:
 			
 			function set_editor_slides (field) {
 				var a = textfield[field].size;
+				document.getElementById("mytest").innerHTML = field + ": " + a;
 				if (this_field == 1) { a /= 2; }
 				$("#size_slider").slider("value", a);
 				$("#line_height_slider").slider("value", textfield[field].line);
@@ -392,10 +393,8 @@ properties:
 					//set_slides (id);
 					textfield[q].focus = 1;
 					document.getElementById("textfield_" + q).focus();
-					set_properties(id);
-					
+					set_properties(id);					
 					set_editor_slides (q);
-					document.getElementById("mytest").innerHTML = q;
 					set_align(q);
 					set_color_slides (q);
 					show_chosen_lines (q);
