@@ -391,7 +391,6 @@ properties:
 			function field_focus (q) {
 				this_field = q;
 				var id = textfield[q].id;
-				document.getElementById("mytest").innerHTML = id;
 				textfield[q].focus = 1;
 				document.getElementById("textfield_" + q).focus();
 				set_properties(id);
@@ -402,6 +401,7 @@ properties:
 				show_chosen_lines (q);
 				change_fontcategory (font[id][3]);
 				change_fontstyle (font[id][10]);
+				document.getElementById("mytest").innerHTML = id;
 			}
 			
 			
