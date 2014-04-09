@@ -811,9 +811,9 @@ properties:
 		    <div id="block_2" style="width:260px;" class="block_a">
 				<div class="action">&#8594; 02. Set the properties for the font</div>
 				
-				{% for propertie in page.properties %}
+				{% for property in page.properties %}
 				<div id='parameter_{{ forloop.index }}' class='box'>
-					{{ propertie.name }}
+					{{ property.name }}
 					<div class='property_container'>
 						<div class='property_line'></div>
 						<div id='slider_{{ forloop.index }}' class='drag' style='left:52px;' on></div>
