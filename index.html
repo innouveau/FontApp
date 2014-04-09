@@ -809,6 +809,9 @@ properties:
 		    <!-- end of block 1 -->
 		    
 		    <div id="block_2" style="width:260px;" class="block_a">
+		    	{% for property in page.properties %}
+						{{ property.name }}
+				{% end for %}
 				<div class="action">&#8594; 02. Set the properties for the font</div>
 				<div id='parameter_1' class='box'>
 					Boldness
