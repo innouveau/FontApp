@@ -393,7 +393,7 @@ properties:
 				if (q != this_field) {
 					this_field = q;
 					var id = textfield[q].id;
-					set_slides (id);
+					//set_slides (id);
 					textfield[q].focus = 1;
 					document.getElementById("textfield_" + q).focus();
 					set_properties(id);
@@ -406,8 +406,7 @@ properties:
 					document.getElementById("mytest").innerHTML = q;
 				}
 			}
-			
-			
+					
 			function show_focus_lines (q) {
 				for (i = 2; i < 7; i++) {
 					document.getElementById("textcontainer_" + i).style.border = "1px solid #fff";
