@@ -1,0 +1,104 @@
+.sliderbox {
+	background: #fff;
+	padding: 8px 16px;
+	position: relative;
+	width: 228px;
+}
+
+.colorbox {
+	background: #fff;
+	padding: 2px 16px;
+	position: relative;
+	width: 200px;
+}
+
+.sliderbox:hover, .colorbox:hover {
+	color: #000;
+}
+
+.box_inactive {
+	background: #fff;
+	padding: 8px 16px;
+	position: relative;
+	width: 228px;
+	opacity: 0.3;
+}
+
+.slider_holder {
+	position: absolute;
+	left: 95px;
+	top: 18px;
+}
+
+.color_slider_holder {
+	position: absolute;
+	left: 50px;
+	top: 18px;
+}
+
+.slider {
+	width: 120px;
+}
+
+.ui-slider {
+	background: #6D6F71;
+	border: 0px;
+	height: 2px;
+}
+
+.sliderbox:hover .ui-slider, .colorbox .ui-slider { background: #000;  }
+
+.ui-slider .ui-slider-handle {
+	top: -9px;
+	z-index: 2;
+	transition: background, border 0.2s ease;
+	cursor: pointer;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	width: 16px;
+	height: 16px;
+	border: 2px solid #6D6F71;
+	background: #fff;
+}
+
+.sliderbox:hover .ui-slider-handle, .colorbox:hover .ui-slider-handle { border: 2px solid #000; }
+
+.sliderbox:hover .ui-slider-handle:hover, .colorbox:hover .ui-slider-handle:hover {
+	background: #000;
+}
+
+.ui-slider-handle:focus {
+	outline: 0px;
+}
+
+.close {
+    transition: background 0.2s ease;
+    position: absolute;
+    top: 16px;
+    left: 230px;
+    cursor: pointer;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    z-index: 2;
+    border: 2px solid #6D6F71;
+}
+
+.close:hover {
+    background: #000;
+}
+
+.sliderbox:hover .close {
+    border: 2px solid #000;
+}
+
+.box_inactive .close {
+    background: #6D6F71;
+}
+
+.box_inactive .close:hover {
+    border: 2px solid #6D6F71;
+    background: #fff;
+}
+
