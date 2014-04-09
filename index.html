@@ -155,7 +155,7 @@ properties:
 							document.getElementById("textfield_" + field).style.fontFamily = new_font[0];
 							document.getElementById("textfield_" + field).style.fontWeight = new_font[1];
 							document.getElementById("textfield_" + field).style.fontStyle = new_font[2];
-							change_size (field, id);
+							change_font_size (field, id);
 							old_font = new_font;
 						 },
 						 inactive: function() {
@@ -194,7 +194,7 @@ properties:
 							document.getElementById("textfield_" + field).style.fontFamily = new_font[0];
 							document.getElementById("textfield_" + field).style.fontWeight = new_font[1];
 							document.getElementById("textfield_" + field).style.fontStyle = new_font[2];
-							change_size (field, id);
+							change_font_size (field, id);
 							old_font = new_font;
 						 },
 						 inactive: function() {
@@ -220,14 +220,15 @@ properties:
 			}
 			
 			function change_line_height (field, id) {
+				// line height is depending on font size, since its a ratio not an absolute number
 			    var size = size_correction (textfield[field].size, font[id][2]);
 			    var line = textfield[field].line;
 			    var line_correction = (line + 50) * size / 100;
 			    document.getElementById("textfield_" + field).style.lineHeight = line_correction + "px";
-			    update_margin (field, id);
+			    change_top_margin (field, id);
 			}
 			
-			function update_margin (field, id) {
+			function change_top_margin (field, id) {
 				// correct x-line for height correction
 				var a = 0.5 * textfield[field].size + 20;
 				var size = size_correction (textfield[field].size, font[id][2]);
