@@ -385,9 +385,10 @@ properties:
 			}
 										
 			function field_focus (q) {
-				document.getElementById("mytest").innerHTML = q + " , " + this_field;
+				
 				// only change slides when you change from field. 
 				if (q != this_field) {
+					document.getElementById("mytest").innerHTML = q;
 					this_field = q;
 					var id = textfield[q].id;
 					//set_slides (id);
