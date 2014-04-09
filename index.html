@@ -252,6 +252,27 @@ properties:
 				var size = Math.round ((wanted_size + 32) * 150 / original_size);
 				return size;
 			}
+			
+			function cmyk_to_rgb (c, m, y, k) {
+				c /= 100; 
+				m /= 100;
+				y /= 100;
+				k /= 100;
+				var r = Math.round (255 * (1 - c) * (1 - k));
+				var g = Math.round (255 * (1 - m) * (1 - k));
+				var b = Math.round (255 * (1 - y) * (1 - k));
+					
+				r = r.toString(16);
+				g = g.toString(16);
+				b = b.toString(16);
+				
+				if (r.length == 1) { r = "0" + r; }
+				if (g.length == 1) { g = "0" + g; }
+				if (b.length == 1) { b = "0" + b; }
+				
+				var color = r+g+b;
+				return color;
+			}
 		</script>
 		
 
