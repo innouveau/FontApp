@@ -739,7 +739,23 @@ properties:
 				init();
 			});
 			
-			$(function() { $('.resizable').draggable( {handle: ".handle" }).resizable();});
+			$(function() {
+				$('.resizable').draggable({
+					handle: ".handle"
+				}).resizable();
+				$('#size_slider').slider({
+					value: 50, slide: change_size, change: change_size
+				});
+				$('#line_height_slider').slider({
+					value: 50, slide: change_line_height, change: change_line_height
+				});
+				$('#c, #m, #y, #k').slider({
+					value: 100, slide: change_color, change: change_color
+				});
+				$('#slider_1, #slider_2, #slider_3, #slider_4, #slider_5').slider({
+					value: 50, slide: find_best_match, change: find_best_match
+				});
+			});
 		</script>
 		
 
