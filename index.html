@@ -295,8 +295,7 @@ properties:
 			    document.getElementById("textfield_" + field).style.fontSize = height + "px";
 			    change_line_height (field);
 			}
-			
-			
+				
 			function change_line_height (field) {
 			    var a = $("#size_slider").slider("value");
 			    if (field == 1) { a *= 2; }
@@ -728,10 +727,10 @@ properties:
 					handle: ".handle"
 				}).resizable();
 				$('#size_slider').slider({
-					value: 90, slide: change_size(this_field), change: change_size
+					value: 90, slide: change_size(this_field), change: change_size(this_field)
 				});
 				$('#line_height_slider').slider({
-					value: 50, slide: change_line_height(this_field), change: change_line_height
+					value: 50, slide: change_line_height(this_field), change: change_line_height(this_field)
 				});
 				$('#c, #m, #y, #k').slider({
 					value: 100, slide: change_color, change: change_color
