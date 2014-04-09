@@ -95,8 +95,8 @@ properties:
 				close_message ();
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
+					document.getElementById("mytest").innerHTML = found_font.category;
 					if (font[i][3] == found_font.category && found_font.style == font[i][10]) {
-						document.getElementById("mytest").innerHTML = font[i][3];
 						var difference = 0;
 						for (j = 1; j < 6; j++) {
 							if (properties[j] == 1) {
