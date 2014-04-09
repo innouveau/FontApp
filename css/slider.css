@@ -53,11 +53,9 @@
 	z-index: 2;
 	transition: background, border 0.2s ease;
 	cursor: pointer;
-	-moz-border-radius: 16px;
-	-webkit-border-radius: 16px;
-	border-radius: 16px;
-	width: 16px;
-	height: 16px;
+	border-radius: 10px;
+	width: 20px;
+	height: 20px;
 	border: 2px solid #6D6F71;
 	background: #fff;
 }
