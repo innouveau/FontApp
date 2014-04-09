@@ -388,13 +388,13 @@ properties:
 				
 				// only change slides when you change from field. 
 				if (q != this_field) {
-					document.getElementById("mytest").innerHTML = q;
 					this_field = q;
 					var id = textfield[q].id;
 					//set_slides (id);
 					textfield[q].focus = 1;
 					document.getElementById("textfield_" + q).focus();
 					set_properties(id);
+					document.getElementById("mytest").innerHTML = q;
 					set_editor_slides (q);
 					
 					set_align(q);
