@@ -288,8 +288,9 @@ properties:
 			
 			function change_size (field) {
 			    var a = $("#size_slider").slider("value");
-			    document.getElementById("mytest").innerHTML = a;
+			    
 			    if (field == 1) { a *= 2; }
+			    document.getElementById("mytest").innerHTML = a;
 			    textfield[field].size = a;
 			    
 			    var height = correct_height (a, found_font.height);
