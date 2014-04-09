@@ -33,7 +33,7 @@ properties:
 		<script type="text/JavaScript">
 			var found_font = { category: "01. Sans Serif", style: "Regular", id: 0, height: 0, file_name: "", correct_height: 0 };
 			
-			var this_field = 1;
+			var this_field = 0;
 			var textfield = new Array ();
 			textfield[1] = { id: {{ page.id }}, size: {{ page.size }}, line: {{ page.line }}, align: "{{ page.align }}", color: [{{ page.color }}], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100], focus: 0 }
@@ -389,19 +389,22 @@ properties:
 			}
 										
 			function field_focus (q) {
-				this_field = q;
-				var id = textfield[q].id;
-				textfield[q].focus = 1;
-				document.getElementById("textfield_" + q).focus();
-				set_properties(id);
-				set_slides (id);
-				//set_editor_slides (q);
-				//set_align(q);
-				//set_color_slides (q);
-				//show_chosen_lines (q);
-				//change_fontcategory (font[id][3]);
-				//change_fontstyle (font[id][10]);
-				document.getElementById("mytest").innerHTML = id;
+				// only change slides when you change from field. 
+				if (q != this_field) {
+					this_field = q;
+					var id = textfield[q].id;
+					set_slides (id);
+					textfield[q].focus = 1;
+					document.getElementById("textfield_" + q).focus();
+					set_properties(id);
+					set_editor_slides (q);
+					set_align(q);
+					set_color_slides (q);
+					show_chosen_lines (q);
+					change_fontcategory (font[id][3]);
+					change_fontstyle (font[id][10]);
+					document.getElementById("mytest").innerHTML = id;
+				}
 			}
 			
 			
