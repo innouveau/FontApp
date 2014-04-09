@@ -288,7 +288,7 @@ properties:
 			
 			function change_size (field) {
 			    var a = $("#size_slider").slider("value");
-			    document.getElementById("mytest").innerHTML = field + ": " + a;
+			    
 			    if (field == 1) { a *= 2; }
 			    textfield[field].size = a;
 			    var height = correct_height (a, found_font.height);
@@ -394,6 +394,7 @@ properties:
 					document.getElementById("textfield_" + q).focus();
 					set_properties(id);
 					set_editor_slides (q);
+					document.getElementById("mytest").innerHTML = q;
 					set_align(q);
 					set_color_slides (q);
 					show_chosen_lines (q);
