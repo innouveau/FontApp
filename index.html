@@ -18,11 +18,11 @@ text_5: FontApp
 text_6: Say "Hi!" to info@sfontapp.org
 
 properties:
-	- name: xxx
-	- name: Serif size
-	- name: Width
-	- name: Roundness
-	- name: Ascender
+- name: xxx
+- name: Serif size
+- name: Width
+- name: Roundness
+- name: Ascender
 
 ---
 
@@ -811,7 +811,16 @@ properties:
 		    <div id="block_2" style="width:260px;" class="block_a">
 				<div class="action">&#8594; 02. Set the properties for the font</div>
 				
-
+				{% for property in page.properties %}
+				<div id='parameter_{{ forloop.index }}' class='box'>
+					{{ property.name }}
+					<div class='property_container'>
+						<div class='property_line'></div>
+						<div id='slider_{{ forloop.index }}' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_{{ forloop.index }}' class='close' onclick='deactivate({{ forloop.index }}); find_best_match(0);'></div>
+					</div>
+				</div>
+				{% end for %}
 
 		    </div>
 		    <!-- end of block 2 -->
