@@ -79,12 +79,12 @@ properties:
 				for (i = 1; i < 7; i++) {
 					var id = textfield[i].id;
 					change_size (i);
+					document.getElementById("mytest").innerHTML = textfield[2].size;
 					update_image (id, i);
 					document.getElementById("textfield_" + i).style.textAlign =  textfield[i].align;
 					var color = cmyk_to_rgb (textfield[i].color[0], textfield[i].color[1], textfield[i].color[2], textfield[i].color[3]);
 					document.getElementById("textfield_" + i).style.color =  "#" + color;
 				}	
-				document.getElementById("mytest").innerHTML = textfield[2].size;
 			}
 						
 			function find_best_match (q) {
