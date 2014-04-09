@@ -170,7 +170,6 @@ properties:
 							document.getElementById("loading").style.display = "none";
 							overrule[field] = 1;
 							document.getElementById("textfield_" + field).style.visibility = "visible";
-							document.getElementById("test").innerHTML = "";
 							document.getElementById("textfield_" + field).style.fontFamily = new_font[0];
 							document.getElementById("textfield_" + field).style.fontWeight = new_font[1];
 							document.getElementById("textfield_" + field).style.fontStyle = new_font[2];
@@ -211,7 +210,6 @@ properties:
 							document.getElementById("loading").style.display = "none";
 							overrule[field] = 1;
 							document.getElementById("textfield_" + field).style.visibility = "visible";
-							document.getElementById("test").innerHTML = "";
 							document.getElementById("textfield_" + field).style.fontFamily = new_font[0];
 							document.getElementById("textfield_" + field).style.fontWeight = new_font[1];
 							document.getElementById("textfield_" + field).style.fontStyle = new_font[2];
@@ -220,7 +218,6 @@ properties:
 							old_font = new_font;
 						 },
 						 inactive: function() {
-							document.getElementById("test").innerHTML = overrule;
 							if (overrule[field] == 0) {
 								for (var i = 0; i < timeouts.length; i++) {
 									clearTimeout(timeouts[i]);
