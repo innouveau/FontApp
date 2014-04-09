@@ -17,6 +17,13 @@ text_4: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in elit v
 text_5: FontApp
 text_6: Say "Hi!" to info@sfontapp.org
 
+properties:
+	- name: Boldness
+	- name: Serif size
+	- name: Width
+	- name: Roundness
+	- name: Ascender
+
 ---
 
 		<link rel="stylesheet" type="text/css" media="all" href="css/fontface_v2.css">
@@ -803,46 +810,18 @@ text_6: Say "Hi!" to info@sfontapp.org
 		    
 		    <div id="block_2" style="width:260px;" class="block_a">
 				<div class="action">&#8594; 02. Set the properties for the font</div>
-				<div id='parameter_1' class='box'>
-					Boldness
+				
+				{% for propertie in page.properties %}
+				<div id='parameter_{{ forloop.index }}' class='box'>
+					{{ propertie.name }}
 					<div class='property_container'>
 						<div class='property_line'></div>
-						<div id='slider_1' class='drag' style='left:52px;' on></div>
-						<div id='hide_show_1' class='close' onclick='deactivate(1); find_best_match(0);'></div>
+						<div id='slider_{{ forloop.index }}' class='drag' style='left:52px;' on></div>
+						<div id='hide_show_{{ forloop.index }}' class='close' onclick='deactivate({{ forloop.index }}); find_best_match(0);'></div>
 					</div>
 				</div>
-				<div id='parameter_2' class='box'>
-					Serif size
-					<div class='property_container'>
-						<div class='property_line'></div>
-						<div id='slider_2' class='drag' style='left:52px;' on></div>
-						<div id='hide_show_2' class='close' onclick='deactivate(2); find_best_match(0);'></div>
-					</div>
-				</div>
-				<div id='parameter_3' class='box'>
-					Width
-					<div class='property_container'>
-						<div class='property_line'></div>
-						<div id='slider_3' class='drag' style='left:52px;' on></div>
-						<div id='hide_show_3' class='close' onclick='deactivate(3); find_best_match(0);'></div>
-					</div>
-				</div>
-				<div id='parameter_4' class='box'>
-					Roundness
-					<div class='property_container'>
-						<div class='property_line'></div>
-						<div id='slider_4' class='drag' style='left:52px;' on></div>
-						<div id='hide_show_4' class='close' onclick='deactivate(4); find_best_match(0);'></div>
-					</div>
-				</div>
-				<div id='parameter_5' class='box'>
-					Ascender
-					<div class='property_container'>
-						<div class='property_line'></div>
-						<div id='slider_5' class='drag' style='left:52px;' on></div>
-						<div id='hide_show_5' class='close' onclick='deactivate(5); find_best_match(0);'></div>
-					</div>
-				</div>
+				{% end for %}
+
 		    </div>
 		    <!-- end of block 2 -->
 		    
