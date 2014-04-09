@@ -71,7 +71,7 @@ properties:
 				deactivate(4);
 				deactivate(5);
 				fill_initial_fields ();
-				//field_focus (1);
+				field_focus (1);
 				set_found_font ({{ page.id }});
 			}
 			
@@ -123,7 +123,6 @@ properties:
 				found_font.id = id;
 				found_font.category = font[id][3];
 				found_font.style = font[id][10];
-				document.getElementById("mytest").innerHTML = id;
 			}
 			
 			function make_text (id) {
@@ -392,6 +391,7 @@ properties:
 			function field_focus (q) {
 				this_field = q;
 				var id = textfield[q].id;
+				document.getElementById("mytest").innerHTML = id;
 				textfield[q].focus = 1;
 				document.getElementById("textfield_" + q).focus();
 				set_properties(id);
