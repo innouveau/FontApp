@@ -65,6 +65,7 @@ properties:
 /////////////////////////////////// INITIALIZE ////////////////////////////////////////////////////////////////////
 			
 			function init() {
+				document.getElementById("mytest").innerHTML = $("#c").slider("value")
 				close_top_item (1);
 				close_top_item (2);
 				close_top_item (3);
@@ -415,7 +416,6 @@ properties:
 				var m = color[1];
 				var y = color[2];
 				var k = color[3];
-				document.getElementById("mytest").innerHTML = $("#c").slider("value");
 				$("#c").slider("value", c);
 				$("#m").slider("value", m);
 				$("#y").slider("value", y);
