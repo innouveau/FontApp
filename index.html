@@ -143,11 +143,9 @@ properties:
 			
 			function write_array_font_size () {
 				var size = $("#size_slider").slider("value");
-				//if (field == 1) { size *= 2; }
+				if (field == 1) { size *= 2; }
 				textfield[this_field].size = size;
-				
-				
-				document.getElementById("mytest").innerHTML = $("#size_slider").slider("value");
+document.getElementById("mytest").innerHTML = size;
 				change_font_size (this_field);
 			}
 			
