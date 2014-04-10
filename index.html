@@ -339,6 +339,7 @@ properties:
 			
 			function set_all_slides (field) {
 				// misschien zelfs de id er hieruit halen en in elke subfunctie per field eruit halen?
+				document.getElementById("mytest").innerHTML = textfield[field].color;
 				var id = textfield[field].id;
 				set_font_category (font[id][3]);
 				set_font_style (font[id][10]);
