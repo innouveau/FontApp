@@ -113,7 +113,6 @@ properties:
 					change_text_align (i);
 					change_color (i);
 				} 
-				var size = $("#size_slider").slider("value");
 			}
 			
 
@@ -151,7 +150,6 @@ properties:
 				if (this_field == 1) { size *= 2; }
 				textfield[this_field].size = size;
 				change_font_size (this_field);
-				$("#c").slider("value", size);
 			}
 			
 			function write_array_line_height () {
@@ -421,6 +419,7 @@ properties:
 				$("#m").slider("value", m);
 				$("#y").slider("value", y);
 				$("#k").slider("value", k);
+				document.getElementById("mytest").innerHTML = c;
 			}
 			
 			
