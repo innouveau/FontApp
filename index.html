@@ -530,9 +530,56 @@ properties:
 			
 			
 			
+/////////////////////////////////// VIEW MODE FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
-/////////////////////////////////// SIDE FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
+			function view_mode (q) {
+			    this_mode = q;
+			    // move paper
+			    resize_paper ();
+			    reposition_paper ();
+			    
+			    // set button
+			    for (i = 0; i < 3; i++) {
+				    document.getElementById("viewmode_" + i).className = "fav_and_rel";	
+			    }
+			    document.getElementById("viewmode_" + q).className = "chosen_mode";
+			    
+			    // move menu
+			    if (q == 0) {
+				    var a = "a";
+				    var y = "510px";
+				    var overflow = "hidden";
+				    document.getElementById("url_img").style.display = "inline";
+			    }
+			    if (q > 0) {
+				    var a = "b";
+				    var y = "100px";
+				    var overflow = "visible";
+				    document.getElementById("url").style.display = "none";
+				    document.getElementById("url_img").style.display = "none";
+			    }
+			    document.getElementById("toolbar").style.top = y;
+			    document.getElementById("paper").style.overflow = overflow;
+			    for (i = 1; i < 4; i++) {
+				    document.getElementById("block_" + i).className = "block_" + a;
+			    }
+			    
+			    // set fields
+			    for (i = 1; i < 7; i++) {
+				if (mode[this_mode].field.indexOf(i) != -1) {
+				    document.getElementById("textcontainer_" + i).style.display = "block";
+				}
+				else {
+				    document.getElementById("textcontainer_" + i).style.display = "none";
+				}
+			    }
+			    // focus field
+			    this_field = mode[this_mode].field[0];
+			    document.getElementById("textfield_" + this_field).focus();
+			    field_focus (this_field);
+			    show_colorbox("hide");
+			}
 			
 			function resize_paper () {
 			    document.getElementById("paper").style.height = mode[this_mode].height;
@@ -543,7 +590,57 @@ properties:
 			function reposition_paper () {
 			    document.getElementById("paper").style.left = mode[this_mode].x;
 			    document.getElementById("paper").style.top = mode[this_mode].y;
+			}	
+			
+			function field_focus (q) {		
+				// only change slides when you change from field. 
+				if (q != this_field) {
+					this_field = q;
+					var id = textfield[q].id;
+					//set_slides (id);
+					textfield[q].focus = 1;
+					document.getElementById("textfield_" + q).focus();
+					set_properties(id);					
+					set_editor_slides (q);
+					set_align(q);
+					set_color_slides (q);
+					show_chosen_lines (q);
+					change_fontcategory (font[id][3]);
+					change_fontstyle (font[id][10]);
+				}
 			}
+					
+			function show_focus_lines (q) {
+				for (i = 2; i < 7; i++) {
+					document.getElementById("textcontainer_" + i).style.border = "1px solid #fff";
+					document.getElementById("handle_" + i).style.backgroundColor = "transparent";
+				}
+				if (q > 1) {
+					document.getElementById("textcontainer_" + q).style.outline = "0px";
+					document.getElementById("textcontainer_" + q).style.border = "1px solid #E6BE00";
+					document.getElementById("handle_" + q).style.backgroundColor = "#E6BE00";
+				}
+
+				if (q != this_field) {
+					document.getElementById("textcontainer_" + this_field).style.border = "1px dotted #6D6F71";
+				}
+			}
+			
+			function show_chosen_lines (q) {
+				for (i = 2; i < 7; i++) {
+					document.getElementById("textcontainer_" + i).style.border = "1px solid #fff";
+				}
+				if (q > 1) {
+					document.getElementById("textcontainer_" + q).style.border = "1px dotted #6D6F71";
+				}
+			}
+			
+			
+			
+			
+			
+/////////////////////////////////// SIDE FUNCTIONS ////////////////////////////////////////////////////////////////////
+			
 			
 			function deactivate (q) {	
 				if (properties[q] == 1) {
