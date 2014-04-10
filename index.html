@@ -213,7 +213,7 @@ properties:
 			}
 
 			function change_font_size (field, id) {
-				 document.getElementById("mytest").innerHTML = field;
+				 document.getElementById("mytest").innerHTML = textfield[field].size;
 				var size = size_correction (textfield[field].size, font[id][2]);
 			    document.getElementById("textfield_" + field).style.fontSize = size + "px";
 			    change_line_height (field, id);
