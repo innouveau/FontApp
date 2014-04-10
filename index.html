@@ -505,7 +505,7 @@ properties:
 						if (font[i][10] != "Regular") {
 							font_style = " " + font[i][10];
 						}
-						related_fonts(j) = "<a onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>"
+						related_fonts[j] = "<a onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>"
 						j++;
 					}
 				}
@@ -516,7 +516,7 @@ properties:
 					related_fonts.sort();
 					var innerhtml = "";
 					for (var k = 0; k < j; k++) {
-						innerhtml += related_fonts(k);
+						innerhtml += related_fonts[k];
 					}
 					document.getElementById("top_item_3").innerHTML = innerhtml;
 				}
