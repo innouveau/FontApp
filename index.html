@@ -359,7 +359,7 @@ document.getElementById("mytest").innerHTML = size;
 			}
 			
 			function set_parameters (id) {
-				for (j = 1; j < 6; j++) {
+				for (var j = 1; j < 6; j++) {
 						$("#slider_" + j).slider("value", font[id][j + 3]);
 				}
 			}
@@ -389,7 +389,7 @@ document.getElementById("mytest").innerHTML = size;
 			function set_text_align (this_align) {
 				var a = new Array ("left", "center", "right");
 				var innerhtml = "";
-				for (i = 0; i < 3; i++) {
+				for (var i = 0; i < 3; i++) {
 					if (this_align == a[i] ) {
 						innerhtml = "";	
 					}
