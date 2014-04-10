@@ -389,7 +389,14 @@ document.getElementById("mytest").innerHTML = size;
 			function set_text_align (this_align) {
 				var align = new Array ("left", "center", "right");
 				var innerhtml = "";
-
+				for (i = 0; i < 3; i++) {
+					if (this_align == align[i] ) {
+						innerhtml += "";	
+					}
+					else {
+						innerhtml += "";
+					}
+				}
 				document.getElementById("text_align").innerHTML = innerhtml;
 			}
 			
