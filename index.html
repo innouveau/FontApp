@@ -108,7 +108,8 @@ properties:
 					change_font_size (i);
 					change_text_align (i);
 					change_color (i);
-				}	 
+				}
+				set_all_slides (1);	 
 			}
 			
 
@@ -322,7 +323,9 @@ properties:
 			// SET FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
-			function set_all_slides (field, id) {
+			function set_all_slides (field) {
+				// misschien zelfs de id er hieruit halen en in elke subfunctie per field eruit halen?
+				var id = textfield[field].id;
 				set_font_category (font[id][3]);
 				set_font_style (font[id][10]);
 				set_parameters (id);
