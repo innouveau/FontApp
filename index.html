@@ -123,6 +123,7 @@ properties:
 			// font_family (equals id), font_size, line_height, align, color
 			
 			function write_array_font_family () {
+				document.getElementById("mytest").innerHTML = this_font_category + " " + this_font_style;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
 					if (font[i][3] == this_font_category && this_font_style == font[i][10]) {
@@ -147,7 +148,6 @@ properties:
 				var size = $("#size_slider").slider("value");
 				if (this_field == 1) { size *= 2; }
 				textfield[this_field].size = size;
-document.getElementById("mytest").innerHTML = size;
 				change_font_size (this_field);
 			}
 			
