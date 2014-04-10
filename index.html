@@ -428,6 +428,84 @@ properties:
 /////////////////////////////////// TOPMENU FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
+			function search_font (){
+			    var j = 0;
+			    var search = document.getElementById("search_field").value.toLowerCase();
+			    var text = "";
+			    var a = "";
+			    if (search.length > 0) {
+				    for (var i = 1; i < font.length; i++) {
+					    needle = font[i][0].toLowerCase();
+					    if (needle.indexOf(search) > -1) {
+						    if (j < 15) {
+							    if (font[i][10] != "Regular") {
+								    a = " " + font[i][10];
+							    }
+							    else {
+								    a = "";
+							    }
+							    text += "<a onclick='change_one(" + i + ");' class='search'>" + font[i][0] +" " + font[i][9] + a + "</a>";
+						    }
+						    j++;
+					    }
+				    }
+			    }
+			    if (j > 14) {
+				    text += "<br><font style='padding-left:16px;'>... and " + j + " more fonts</font><br><br>";
+			    }
+			    document.getElementById("search_results").innerHTML = text;
+			    if (text != "") {
+				    document.getElementById("search_results").style.visibility = "visible";
+			    }
+			    else {
+				    document.getElementById("search_results").style.visibility = "hidden";
+			    }		
+			}
+			
+			function add_favorite (id) {
+				var l = favorites.length;
+				var hit = 0;
+				for (i = 0; i < l; i++) {
+					if (favorites[i] == id) {
+						hit = 1;
+					}
+				}
+				if (hit == 0) {
+					favorites[l] = id;
+					show_favorites ();
+					if (top_items[2] == 0) {
+						document.getElementById("label_small_2").style.background = "#fff";
+						setTimeout( function() {
+							document.getElementById("label_small_2").style.background = "#6D6F71";
+						},100);
+					}
+				}
+				else {
+					document.getElementById("message").style.visibility = "visible";
+					document.getElementById("message_txt").innerHTML = "Font already added. Check the Favourites tab at the right of your window.";
+				}
+			}
+			
+			function remove_favorite (i) {
+				favorites[i] = "";
+				show_favorites();
+			}
+			
+			function show_favorites () {
+				var text = "";	
+				for (i = 0; i < favorites.length; i++) {
+					if (favorites[i] != "") {
+						var a = "";
+						if (font[favorites[i]][10]  != "Regular") {
+							a = " " + font[favorites[i]][10] ;
+						}
+						text += "<a onclick='change_one (" +  favorites[i] + ");' class='fav_and_rel'>" + font[favorites[i]][0] + " " + font[favorites[i]][9] + a + "</a>&nbsp;&nbsp;<a onclick='remove_favorite(" +  i + ");' class='close_fav'>x</a>";
+					}
+				}
+				document.getElementById("top_item_2").innerHTML = text;
+			}
+
+			
 			function find_related_fonts (id) {
 				document.getElementById("top_item_3").innerHTML = "";
 				var innerhtml = "";
@@ -455,6 +533,17 @@ properties:
 			
 /////////////////////////////////// SIDE FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
+			
+			function resize_paper () {
+			    document.getElementById("paper").style.height = mode[this_mode].height;
+			    document.getElementById("paper").style.width = mode[this_mode].width;
+			    
+			}
+			
+			function reposition_paper () {
+			    document.getElementById("paper").style.left = mode[this_mode].x;
+			    document.getElementById("paper").style.top = mode[this_mode].y;
+			}
 			
 			function deactivate (q) {	
 				if (properties[q] == 1) {
