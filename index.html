@@ -84,7 +84,9 @@ properties:
 					handle: ".handle"
 				}).resizable();
 				$('#slider_1, #slider_2, #slider_3, #slider_4, #slider_5').slider({
-					value: 50
+					value: 50,
+					slide: write_array_font_family,
+					change: write_array_font_family
 				});
 				$('#size_slider').slider({
 					value: 90, 
@@ -392,7 +394,7 @@ document.getElementById("mytest").innerHTML = size;
 						innerhtml += '<img src="img/align-' + align[i] + '3.png" border="0">&nbsp;';					
 					}
 					else {
-						innerhtml += '<a onclick="text_align(\'' + align[i] + '\');"><img src="img/align-' + align[i] + '1.png" border="0" onmouseover="this.src=\'img/align-' + align[i] + '2.png\';"  onmouseout="this.src=\'img/align-' + align[i] + '1.png\';"></a>&nbsp;';
+						innerhtml += '<a onclick="write_array_text_align(\'' + align[i] + '\');"><img src="img/align-' + align[i] + '1.png" border="0" onmouseover="this.src=\'img/align-' + align[i] + '2.png\';"  onmouseout="this.src=\'img/align-' + align[i] + '1.png\';"></a>&nbsp;';
 					}
 				}
 				document.getElementById("text_align").innerHTML = innerhtml;
@@ -496,6 +498,19 @@ document.getElementById("mytest").innerHTML = size;
 				
 				var color = r+g+b;
 				return color;
+			}
+			
+			function show_colorbox (a) {
+				if (colorbox == 1 || a == "hide") {
+					document.getElementById("colorbox").style.display = "none";
+					document.getElementById("color_button").src = "img/color1.png";
+					colorbox = 0;
+				}
+				else {
+					document.getElementById("colorbox").style.display = "block";
+					document.getElementById("color_button").src = "img/color2.png";
+					colorbox = 1;
+				}
 			}
 			
 			function count_fonts () {
