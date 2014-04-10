@@ -33,6 +33,8 @@ properties:
 		<script type="text/JavaScript">
 			var this_field = 1;
 			var this_id = {{ page.id }};
+			var this_font_category = "";
+			var this_font_style = "";
 			
 			var textfield = new Array ();
 			textfield[1] = { id: {{ page.id }}, size: {{ page.size }}, line: {{ page.line }}, align: "{{ page.align }}", color: [{{ page.color }}], focus: 0 }
@@ -63,37 +65,46 @@ properties:
 			// INITIALIZE ////////////////////////////////////////////////////////////////////
 			
 			function init() {
-				close_top_item(1);
-				close_top_item(2);
-				close_top_item(3);
-				deactivate(2);
-				deactivate(4);
-				deactivate(5);
+				close_top_item (1);
+				close_top_item (2);
+				close_top_item (3);
+				deactivate (2);
+				deactivate (4);
+				deactivate (5);
 				fill_initial_fields ();
-				//set_slides(1, id);
+				set_all_slides (this_field, this_id);
 			}
 
-			$(document).ready (function() {
-				init();
-			});
+
+			$(document).ready (function() {	init ();	});
+			
 			
 			$(function() {
 				$('.resizable').draggable({
 					handle: ".handle"
 				}).resizable();
+				$('#slider_1, #slider_2, #slider_3, #slider_4, #slider_5').slider({
+					value: 50, 
+					slide: write_array_font_family (this_field), 
+					change: write_array_font_family (this_field)
+				});
 				$('#size_slider').slider({
-					value: 90, slide: change_font_size(this_field, this_id), change: change_font_size(this_field, this_id)
+					value: 90, 
+					slide: write_array_font_size (this_field), 
+					change: write_array_font_size (this_field)
 				});
 				$('#line_height_slider').slider({
-					value: 50, slide: change_line_height(this_field, this_id), change: change_line_height(this_field, this_id)
+					value: 50, 
+					slide: write_array_line_height (this_field), 
+					change: write_array_line_height (this_field)
 				});
 				$('#c, #m, #y, #k').slider({
-					value: 100, slide: change_color, change: change_color
-				});
-				$('#slider_1, #slider_2, #slider_3, #slider_4, #slider_5').slider({
-					value: 50, slide: find_best_match, change: find_best_match
+					value: 100, 
+					slide: write_array_color (this_field), 
+					change: write_array_color (this_field)
 				});
 			});
+			
 			
 			function fill_initial_fields () {
 				for (i = 1; i < 7; i++) {
@@ -108,11 +119,69 @@ properties:
 			
 			
 			
-			// CHANGE ////////////////////////////////////////////////////////////////////
+			
+			// WRITE ARRAY FUNCTIONS ////////////////////////////////////////////////////////////////////
+			// font_family (equals id), font_size, line_height, align, color
+			
+			function write_array_font_family (field) {
+				var difference_array = new Array();
+				for (var i = 1; i < font.length; i++) {
+					if (font[i][3] == found_font.category && found_font.style == font[i][10]) {
+						var difference = 0;
+						for (j = 1; j < 6; j++) {
+							if (properties[j] == 1) {
+								var prop_focus = anti_normal ($("#slider_" + j).slider("value"));
+								difference += Math.abs (font[i][j + 3] - prop_focus);
+							}
+						}
+						difference_array[i] = new Array (i, difference);
+					}
+				}
+					
+				difference_array.sort ( function (a, b) { return a[1] - b[1] } );
+				var best_match = difference_array[0][0];
+				textfield[field].id = best_match;
+				change_font_family (field);
+			}
+			
+			function write_array_font_size (field) {
+				var size = $("#size_slider").slider("value");
+				if (field == 1) { size *= 2; }
+				textfield[field].size = size;
+				change_font_size (field);
+			}
+			
+			function write_array_line_height (field) {
+				textfield[field].line = $("#line_height_slider").slider("value");
+				change_line_height (field);
+			}
+			
+			function write_array_text_align (field, align) {
+				textfield[field].align = align;
+				change_text_align (field);
+			}
+			
+			function write_array_color (field) {
+				var c = $("#c").slider("value");
+				var m = $("#m").slider("value");
+				var y = $("#y").slider("value");
+				var k = $("#k").slider("value");
+				textfield[field].color = [c, m, y, k];
+				change_color (field);
+			}
 			
 			
-			function change_font_family (field, id) {
-				// by changing the font family, size and lineheight is automatically changed
+			
+			
+			
+			// CHANGE FUNCTIONS ////////////////////////////////////////////////////////////////////
+			// font_family (equals id), font_size, line_height, top_margin (as reaction on changed line_height) align, color
+			
+			
+			
+			function change_font_family (field) {
+				var id = textfield[field].id;
+				
 				document.getElementById("url").style.display = "none";
 				
 				var font_family = font[id][0];
@@ -166,8 +235,7 @@ properties:
 								document.getElementById("textfield_" + field).style.visibility = "hidden";
 								document.getElementById("test").innerHTML = "Problems finding " + new_font[0] + " " + new_font[1] + " " + new_font[2] +  ". We are looking at it, if you are using Safari, try Firefox or Chrome instead";
 							}
-						 }
-						 
+						 }		 
 					});
 				}
 				else if (font[id][12] == "custom") {
@@ -205,21 +273,21 @@ properties:
 								document.getElementById("textfield_" + field).style.visibility = "hidden";
 								document.getElementById("test").innerHTML = "Problems finding " + new_font[0] + " " + new_font[1] + " " + new_font[2] +  ". We are looking at it, if you are using Safari, try Firefox or Chrome instead";
 							}
-						 }
-						 
+						 }	 
 					});
 				}
 			}
 
-			function change_font_size (field, id) {
-				 document.getElementById("mytest").innerHTML = textfield[field].size;
+			function change_font_size (field) {
+				var id = textfield[field].id;
 				var size = size_correction (textfield[field].size, font[id][2]);
 			    document.getElementById("textfield_" + field).style.fontSize = size + "px";
 			    change_line_height (field, id);
 			}
 			
-			function change_line_height (field, id) {
+			function change_line_height (field) {
 				// line height is depending on font size, since its a ratio not an absolute number
+				var id = textfield[field].id;			
 			    var size = size_correction (textfield[field].size, font[id][2]);
 			    var line = textfield[field].line;
 			    var line_correction = (line + 50) * size / 100;
@@ -227,8 +295,9 @@ properties:
 			    change_top_margin (field, id);
 			}
 			
-			function change_top_margin (field, id) {
+			function change_top_margin (field) {
 				// correct x-line for height correction
+				var id = textfield[field].id;
 				var a = 0.5 * textfield[field].size + 20;
 				var size = size_correction (textfield[field].size, font[id][2]);
 				var margin = a - size;
@@ -236,23 +305,136 @@ properties:
 				document.getElementById("textfield_" + field).style.marginTop = margin + "px";
 			}
 			
+			function change_text_align (field) {
+				var align = textfield[field].align;
+				document.getElementById("textfield_" + field).style.textAlign = align;
+				set_text_align(align);
+			}
+			
+			function change_color (field) {
+				var c = textfield[field].color[0];
+				var m = textfield[field].color[1];
+				var y = textfield[field].color[2];
+				var k = textfield[field].color[3];
+				
+				var color = cmyk_to_rgb (c, m, y, k);
+				document.getElementById("textfield_" + field).style.color = "#" + color;
+			}
+			
+			
+			
+			
+			// SET FUNCTIONS ////////////////////////////////////////////////////////////////////
+			
+			
+			function set_all_slide (field, id) {
+				set_font_category (font[id][3]);
+				set_font_style (font[id][10]);
+				set_parameters (id);
+				set_font_info (id);
+				set_font_size (field, textfield[field].size);
+				set_line_height (textfield[field].line);
+				set_text_align (textfield[field].align);
+				set_color (textfield[field].color);
+			}
+			
+			function set_font_category (font_category) {
+				this_font_cateogry = font_category;
+			    document.getElementById("selected_1").innerHTML = "<a id='a_selected_1' onclick='drop_out(1);'>" + font_category.substr(4) + "</a>";
+			    if (drops[1] == 1) {
+				    drop_out(1);
+			    }
+			    count_fonts ();
+			}
+			
+			function set_font_style (font_style) {
+			    this_font_style = font_style;
+			    document.getElementById("selected_2").innerHTML = "<a id='a_selected_2' onclick='drop_out(2);'>" + font_stylei + "</a>";
+			    if (drops[2] == 1) {
+				    drop_out(2);
+			    }
+			    count_fonts ();
+			}
+			
+			function set_parameters (id) {
+				for (j = 1; j < 6; j++) {
+						$("#slider_" + j).slider("value", font[id][j + 3]);
+				}
+			}
+			
+			function set_font_info (id) {
+				var font_name = font[id][0];
+				var font_weight = font[id][9];
+				var font_style = font[id][10];
+				if (font_style == "Regular") { font_style = ""; }
+				var download_link = font[id][11];
+				document.getElementById("font_name").innerHTML = font_name + " <b> " + fontweight + " " + fontstyle + "</b>";
+				document.getElementById("favorite_font").innerHTML = "<a id='heart_img' onclick='add_favorite(" + id + ");' class='heart'><img src='img/heart1.png' border='0' onMouseOver='this.src=\"img/heart2.png\";' onMouseOut='this.src=\"img/heart1.png\";'></a>";
+				document.getElementById("download_font").href = download_link;
+				
+				find_related_font (id);
+			}
+
+			function set_font_size (field, font_size) {
+				if (field == 1) { font_size /= 2; }
+				$("#size_slider").slider("value", font_size);
+			}
+
+			function set_line_height (line_height) {
+				$("#line_height_slider").slider("value", line_height);
+			}
+			
+			function set_text_align (this_align) {
+				var align = new Array ("left", "center", "right");
+				var innerhtml = "";
+				for (i = 0; i < 3; i++) {
+					if (this_align == align[i] ) {
+						innerhtml += '<img src="img/align-' + align[i] + '3.png" border="0">&nbsp;';					
+					}
+					else {
+						innerhtml += '<a onclick="text_align(\'' + align[i] + '\');"><img src="img/align-' + align[i] + '1.png" border="0" onmouseover="this.src=\'img/align-' + align[i] + '2.png\';"  onmouseout="this.src=\'img/align-' + align[i] + '1.png\';"></a>&nbsp;';
+					}
+				}
+				document.getElementById("text_align").innerHTML = innerhtml;
+			}
+			
+			function set_color (color) {
+				var c = color[0];
+				var m = color[1];
+				var y = color[2];
+				var k = color[3];
+				$("#c").slider("value", c);
+				$("#m").slider("value", m);
+				$("#y").slider("value", y);
+				$("#k").slider("value", k);
+			}
 			
 			
 			
 			
 			
+			// TOPMENU FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			function find_related (id) {
+				document.getElementById("top_item_3").innerHTML = "";
+				var innerhtml = "";
+				for (var i = 1; i < font.length; i++) {
+					if (font[id][0] == font[i][0] && id != i) {
+						var font_style = "";
+						if (font[i][10] != "Regular") {
+							font_style = " " + font[i][10];
+						}
+						innerhtml += "<a onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>";
+					}
+				}
+				if (innerhtml == "") {
+					document.getElementById("top_item_3").innerHTML = "<i>No related fonts</i>";
+				}
+				else {
+					document.getElementById("top_item_3").innerHTML = innerhtml;
+				}
+			}
 			
 			
 			
@@ -314,6 +496,16 @@ properties:
 				
 				var color = r+g+b;
 				return color;
+			}
+			
+			function count_fonts () {
+				var count_fonts = 0;
+				for (var i = 1; i < font.length; i++) {
+					if (font[i][3] == this_font_category && font[i][10] == this_font_style) {
+						count_fonts++;
+					}
+				}
+				document.getElementById("nr_of_fonts").innerHTML = count_fonts + " fonts found";
 			}
 			
 			function loading_gif () {
@@ -422,7 +614,7 @@ properties:
 				</div>
 				
 				<div id="downloadbox">
-					<a id='download_img' onclick="download_font();"><img src='img/download1.png' border='0' onMouseOver='this.src="img/download2.png";' onMouseOut='this.src="img/download1.png";'></a>&nbsp;&nbsp;
+					<a id='download_font' href="#" target="_blank"><img src='img/download1.png' border='0' onMouseOver='this.src="img/download2.png";' onMouseOut='this.src="img/download1.png";'></a>&nbsp;&nbsp;
 					<a id='url_img' onclick="get_url();"><img src='img/url1.png' border='0' onMouseOver='this.src="img/url2.png";' onMouseOut='this.src="img/url1.png";'></a><br>
 					<input type="text" id="url" value="">
 				</div>
