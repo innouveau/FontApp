@@ -32,6 +32,8 @@ properties:
 		
 		<script type="text/JavaScript">
 			var this_field = 1;
+			var this_id = {{ page.id }};
+			
 			var textfield = new Array ();
 			textfield[1] = { id: {{ page.id }}, size: {{ page.size }}, line: {{ page.line }}, align: "{{ page.align }}", color: [{{ page.color }}], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100], focus: 0 }
@@ -45,7 +47,6 @@ properties:
 			var drops = new Array (0, 0, 0);
 			var favorites = new Array();
 			var colorbox = 0;
-			var screen_width = 0;
 			
 			var this_mode = 0;
 			var mode = new Array();
@@ -81,10 +82,10 @@ properties:
 					handle: ".handle"
 				}).resizable();
 				$('#size_slider').slider({
-					value: 90, slide: change_font_size(this_field), change: change_font_size(this_field)
+					value: 90, slide: change_font_size(this_field, this_id), change: change_font_size(this_field, this_id)
 				});
 				$('#line_height_slider').slider({
-					value: 50, slide: change_line_height(this_field), change: change_line_height(this_field)
+					value: 50, slide: change_line_height(this_field, this_id), change: change_line_height(this_field, this_id)
 				});
 				$('#c, #m, #y, #k').slider({
 					value: 100, slide: change_color, change: change_color
