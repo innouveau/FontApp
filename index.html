@@ -475,6 +475,19 @@ document.getElementById("mytest").innerHTML = this_font_category + " " + this_fo
 				}
 			}
 			
+			function drop_out (i) {
+				if (drops[i] == 0) {
+					document.getElementById("list_" + i).style.display = "block";
+					document.getElementById("a_selected_" + i).style.backgroundImage = "url('img/arrow3.png')";
+					drops[i] = 1;
+				}
+				else {
+					document.getElementById("list_" + i).style.display = "none";
+					document.getElementById("a_selected_" + i).style.backgroundImage = "url('img/arrow.png')";
+					drops[i] = 0;
+				}
+			}
+			
 			function size_correction (wanted_size, original_size) {
 				var size = Math.round ((wanted_size + 32) * 150 / original_size);
 				return size;
