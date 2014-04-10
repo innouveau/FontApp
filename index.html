@@ -496,21 +496,28 @@ properties:
 
 			
 			function find_related_fonts (id) {
+				var related_fonts = new Array();
+				var j = 0;
 				document.getElementById("top_item_3").innerHTML = "";
-				var innerhtml = "";
 				for (var i = 1; i < font.length; i++) {
 					if (font[id][0] == font[i][0] && id != i) {
 						var font_style = "";
 						if (font[i][10] != "Regular") {
 							font_style = " " + font[i][10];
 						}
-						innerhtml += "<a onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>";
+						related_fonts(j) = "<a onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>"
+						j++;
 					}
 				}
-				if (innerhtml == "") {
+				if (j == 0) {
 					document.getElementById("top_item_3").innerHTML = "<i>No related fonts</i>";
 				}
 				else {
+					related_fonts.sort();
+					var innerhtml = "";
+					for (var k = 0; k < j; k++) {
+						innerhtml += related_fonts(k);
+					}
 					document.getElementById("top_item_3").innerHTML = innerhtml;
 				}
 			}
