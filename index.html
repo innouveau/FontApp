@@ -142,7 +142,7 @@ properties:
 				difference_array.sort ( function (a, b) { return a[1] - b[1] } );
 				var best_match = difference_array[0][0];
 				textfield[this_field].id = best_match;
-				find_best_match (this_field);
+				change_font_family (this_field);
 			}
 			
 			function write_array_font_size () {
