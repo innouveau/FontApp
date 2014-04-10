@@ -348,6 +348,7 @@ properties:
 				set_line_height (textfield[field].line);
 				set_text_align (textfield[field].align);
 				set_color (textfield[field].color);
+				document.getElementById("mytest").innerHTML = textfield[field].color;
 			}
 			
 			function set_font_category (font_category) {
@@ -411,7 +412,7 @@ properties:
 			}
 			
 			function set_color (color) {
-				document.getElementById("mytest").innerHTML = color;
+				
 				var c = color[0];
 				var m = color[1];
 				var y = color[2];
