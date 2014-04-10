@@ -151,7 +151,7 @@ properties:
 				if (this_field == 1) { size *= 2; }
 				textfield[this_field].size = size;
 				change_font_size (this_field);
-				document.getElementById("mytest").innerHTML = "x" + size;
+				$("#c").slider("value", size);
 			}
 			
 			function write_array_line_height () {
