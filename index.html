@@ -107,13 +107,13 @@ properties:
 			
 			
 			function fill_initial_fields () {
-				document.getElementById("mytest").innerHTML = "?" + $("#size_slider").slider("value");
 				for (i = 1; i < 7; i++) {
 					change_font_family (i);
 					change_font_size (i);
 					change_text_align (i);
 					change_color (i);
 				} 
+				document.getElementById("mytest").innerHTML = "?" + $("#size_slider").slider("value");
 			}
 			
 
