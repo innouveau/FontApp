@@ -126,7 +126,7 @@ properties:
 						var difference = 0;
 						for (j = 1; j < 6; j++) {
 							if (properties[j] == 1) {
-								var prop_focus = anti_normal ($("#slider_" + j).slider("value"));
+								var prop_focus = $("#slider_" + j).slider("value");
 								difference += Math.abs (font[i][j + 3] - prop_focus);
 							}
 						}
