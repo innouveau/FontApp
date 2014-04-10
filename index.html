@@ -123,7 +123,7 @@ properties:
 /////////////////////////////////// font_family (equals id), font_size, line_height, align, color
 			
 			
-			function write_array_font_family () {
+			function find_best_match () {
 document.getElementById("mytest").innerHTML = this_font_category + " " + this_font_style;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
@@ -180,7 +180,7 @@ document.getElementById("mytest").innerHTML = this_font_category + " " + this_fo
 			
 			
 			
-			function find_best_match (field) {
+			function change_font_family (field) {
 				var id = textfield[field].id;
 				
 				document.getElementById("url").style.display = "none";
