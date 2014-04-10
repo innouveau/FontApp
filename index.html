@@ -108,7 +108,7 @@ properties:
 			
 			function fill_initial_fields () {
 				for (i = 1; i < 7; i++) {
-					change_font_family (i);
+					find_best_match (i);
 					change_font_size (i);
 					change_text_align (i);
 					change_color (i);
@@ -142,7 +142,7 @@ document.getElementById("mytest").innerHTML = this_font_category + " " + this_fo
 				difference_array.sort ( function (a, b) { return a[1] - b[1] } );
 				var best_match = difference_array[0][0];
 				textfield[this_field].id = best_match;
-				change_font_family (this_field);
+				find_best_match (this_field);
 			}
 			
 			function write_array_font_size () {
@@ -180,7 +180,7 @@ document.getElementById("mytest").innerHTML = this_font_category + " " + this_fo
 			
 			
 			
-			function change_font_family (field) {
+			function find_best_match (field) {
 				var id = textfield[field].id;
 				
 				document.getElementById("url").style.display = "none";
@@ -584,20 +584,20 @@ document.getElementById("mytest").innerHTML = this_font_category + " " + this_fo
 				    <a id="a_selected_1" onclick='drop_out(1);'>Sans Serif</a>
 				</div>
 				<div id="list_1">
-				    <a onclick='change_fontcategory("01. Sans Serif"); find_best_match(0);'>Sans Serif</a>
-				    <a onclick='change_fontcategory("02. Serif"); find_best_match(0);'>Serif</a>
-				    <a onclick='change_fontcategory("03. Slab Serif"); find_best_match(0);'>Slab Serif</a>
-				    <a onclick='change_fontcategory("04. Monospace"); find_best_match(0);'>Monospace</a>
-				    <a onclick='change_fontcategory("05. Script"); find_best_match(0);'>Script</a>
-				    <a onclick='change_fontcategory("06. Fun"); find_best_match(0);'>Fun</a>
-				    <a onclick='change_fontcategory("07. All Caps"); find_best_match(0);'>All Caps</a>
+				    <a onclick='change_font_category ("01. Sans Serif"); find_best_match (this_field);'>Sans Serif</a>
+				    <a onclick='change_font_category ("02. Serif"); find_best_match (this_field);'>Serif</a>
+				    <a onclick='change_font_category ("03. Slab Serif"); find_best_match (this_field);'>Slab Serif</a>
+				    <a onclick='change_font_category ("04. Monospace"); find_best_match (this_field);'>Monospace</a>
+				    <a onclick='change_font_category ("05. Script"); find_best_match (this_field);'>Script</a>
+				    <a onclick='change_font_category ("06. Fun"); find_best_match (this_field);'>Fun</a>
+				    <a onclick='change_font_category ("07. All Caps"); find_best_match (this_field);'>All Caps</a>
 				</div>
 				<div id="selected_2">
 				    <a id="a_selected_2" onclick='drop_out(2);'>Regular</a>
 				</div>
 				<div id="list_2">
-				       <a onclick='change_fontstyle("Regular"); find_best_match(0);'>Regular</a>
-				       <a onclick='change_fontstyle("Italic"); find_best_match(0);'>Italic</a>
+				       <a onclick='change_font_style("Regular"); find_best_match (this_field);'>Regular</a>
+				       <a onclick='change_font_style("Italic"); find_best_match (this_field);'>Italic</a>
 			       </div>
 				<div id="nr_of_fonts">
 					... fonts found
