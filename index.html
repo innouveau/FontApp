@@ -87,14 +87,19 @@ properties:
 					value: 50
 				});
 				$('#size_slider').slider({
-					value: 90, slide: write_array_font_size (this_field), change: write_array_font_size (this_field)
+					value: 90, 
+					slide: write_array_font_size, 
+					change: write_array_font_size
 				});
 				$('#line_height_slider').slider({
-					value: 50, slide: write_array_line_height (this_field),	change: write_array_line_height (this_field)
+					value: 50, 
+					slide: write_array_line_height,	
+					change: write_array_line_height
 				});
 				$('#c, #m, #y, #k').slider({
-					value: 100, slide: write_array_color (this_field), change: write_array_color (this_field)
-				});
+					value: 100, 
+					slide: write_array_color, 
+					change: write_array_color
 			});
 			
 			
@@ -141,7 +146,7 @@ properties:
 				textfield[field].size = size;
 				
 				
-				document.getElementById("mytest").innerHTML = $("#line_height_slider").slider("value");
+				document.getElementById("mytest").innerHTML = $("#size_slider").slider("value");
 				change_font_size (field);
 			}
 			
