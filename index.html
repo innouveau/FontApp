@@ -145,7 +145,7 @@ properties:
 			
 			function write_array_font_size () {
 				var size = $("#size_slider").slider("value");
-				if (field == 1) { size *= 2; }
+				if (this_field == 1) { size *= 2; }
 				textfield[this_field].size = size;
 document.getElementById("mytest").innerHTML = size;
 				change_font_size (this_field);
@@ -308,7 +308,7 @@ document.getElementById("mytest").innerHTML = size;
 			function change_text_align (field) {
 				var align = textfield[field].align;
 				document.getElementById("textfield_" + field).style.textAlign = align;
-				//set_text_align(align);
+				set_text_align(align);
 			}
 			
 			function change_color (field) {
