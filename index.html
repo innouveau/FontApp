@@ -119,11 +119,12 @@ properties:
 
 
 
-			// WRITE ARRAY FUNCTIONS ////////////////////////////////////////////////////////////////////
-			// font_family (equals id), font_size, line_height, align, color
+/////////////////////////////////// WRITE ARRAY FUNCTIONS ////////////////////////////////////////////////////////////////////
+/////////////////////////////////// font_family (equals id), font_size, line_height, align, color
+			
 			
 			function write_array_font_family () {
-				document.getElementById("mytest").innerHTML = this_font_category + " " + this_font_style;
+document.getElementById("mytest").innerHTML = this_font_category + " " + this_font_style;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
 					if (font[i][3] == this_font_category && this_font_style == font[i][10]) {
@@ -174,8 +175,8 @@ properties:
 			
 			
 			
-			// CHANGE FUNCTIONS ////////////////////////////////////////////////////////////////////
-			// font_family (equals id), font_size, line_height, top_margin (as reaction on changed line_height) align, color
+/////////////////////////////////// CHANGE FUNCTIONS ////////////////////////////////////////////////////////////////////
+//////////// font_family (equals id), font_size, line_height, top_margin (as reaction on changed line_height) align, color
 			
 			
 			
@@ -324,7 +325,7 @@ properties:
 			
 			
 			
-			// SET FUNCTIONS ////////////////////////////////////////////////////////////////////
+/////////////////////////////////// SET FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
 			function set_all_slides (field) {
@@ -341,7 +342,7 @@ properties:
 			}
 			
 			function set_font_category (font_category) {
-				this_font_cateogry = font_category;
+				this_font_category = font_category;
 			    document.getElementById("selected_1").innerHTML = "<a id='a_selected_1' onclick='drop_out(1);'>" + font_category.substr(4) + "</a>";
 			    if (drops[1] == 1) {
 				    drop_out(1);
@@ -415,7 +416,7 @@ properties:
 			
 			
 			
-			// TOPMENU FUNCTIONS ////////////////////////////////////////////////////////////////////
+/////////////////////////////////// TOPMENU FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
 			function find_related_fonts (id) {
@@ -443,7 +444,7 @@ properties:
 			
 			
 			
-			// SIDE FUNCTIONS ////////////////////////////////////////////////////////////////////
+/////////////////////////////////// SIDE FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
 			function deactivate (q) {	
