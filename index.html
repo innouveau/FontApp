@@ -368,7 +368,7 @@ properties:
 				var font_style = font[id][10];
 				if (font_style == "Regular") { font_style = ""; }
 				var download_link = font[id][11];
-				document.getElementById("font_name").innerHTML = font_name + " <b> " + fontweight + " " + fontstyle + "</b>";
+				document.getElementById("font_name").innerHTML = font_name + " <b> " + font_weight + " " + font_style + "</b>";
 				document.getElementById("favorite_font").innerHTML = "<a id='heart_img' onclick='add_favorite(" + id + ");' class='heart'><img src='img/heart1.png' border='0' onMouseOver='this.src=\"img/heart2.png\";' onMouseOut='this.src=\"img/heart1.png\";'></a>";
 				document.getElementById("download_font").href = download_link;
 				
