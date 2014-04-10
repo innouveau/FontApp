@@ -113,7 +113,8 @@ properties:
 					change_text_align (i);
 					change_color (i);
 				} 
-				document.getElementById("mytest").innerHTML = "?" + $("#size_slider").slider("value");
+				var size = $("#size_slider").slider("value");
+				document.getElementById("mytest").innerHTML = ":" + size;
 			}
 			
 
