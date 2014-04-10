@@ -64,21 +64,6 @@ properties:
 			
 /////////////////////////////////// INITIALIZE ////////////////////////////////////////////////////////////////////
 			
-			function init() {
-				close_top_item (1);
-				close_top_item (2);
-				close_top_item (3);
-				deactivate (2);
-				deactivate (4);
-				deactivate (5);
-				fill_initial_fields ();
-				set_all_slides (1);	
-			}
-
-
-			$(document).ready (function() {	init ();	});
-			
-			
 			$(function() {
 				$('.resizable').draggable({
 					handle: ".handle"
@@ -104,6 +89,21 @@ properties:
 					change: write_array_color
 				});
 			});
+			
+			function init() {
+				close_top_item (1);
+				close_top_item (2);
+				close_top_item (3);
+				deactivate (2);
+				deactivate (4);
+				deactivate (5);
+				fill_initial_fields ();
+				set_all_slides (1);	
+			}
+
+
+			$(document).ready (function() {	init ();	});
+			
 			
 			
 			function fill_initial_fields () {
