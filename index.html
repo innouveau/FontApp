@@ -372,7 +372,7 @@ properties:
 				document.getElementById("favorite_font").innerHTML = "<a id='heart_img' onclick='add_favorite(" + id + ");' class='heart'><img src='img/heart1.png' border='0' onMouseOver='this.src=\"img/heart2.png\";' onMouseOut='this.src=\"img/heart1.png\";'></a>";
 				document.getElementById("download_font").href = download_link;
 				
-				find_related_font (id);
+				find_related_fonts (id);
 			}
 
 			function set_font_size (field, font_size) {
@@ -416,7 +416,7 @@ properties:
 			// TOPMENU FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
-			function find_related (id) {
+			function find_related_fonts (id) {
 				document.getElementById("top_item_3").innerHTML = "";
 				var innerhtml = "";
 				for (var i = 1; i < font.length; i++) {
