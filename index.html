@@ -502,10 +502,10 @@ properties:
 				for (var i = 1; i < font.length; i++) {
 					if (font[id][0] == font[i][0] && id != i) {
 						var font_style = "";
-						if (font[i][10] != "Regular") {
+						if (font[i][10] != "Normal") {
 							font_style = " " + font[i][10];
 						}
-						related_fonts[j] = "<a weight='" + font[i][9] + "' onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>"
+						related_fonts[j] = "<a style='" + font_style + "' weight='" + font[i][9] + "' onclick='change_one(" + i + ");' class='fav_and_rel'>" + font[i][0] + " " + font[i][9] + font_style + "</a>"
 						j++;
 					}
 				}
