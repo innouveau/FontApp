@@ -61,8 +61,6 @@ properties:
 			var overrule = [];
 			var timeouts = [];
 			
-			var qqq = 1;
-			
 			
 /////////////////////////////////// INITIALIZE ////////////////////////////////////////////////////////////////////
 			
@@ -126,8 +124,6 @@ properties:
 			
 			
 			function find_best_match () {
-				qqq++;
-				document.getElementById("mytest").innerHTML = qqq;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
 					if (font[i][3] == this_font_category && this_font_style == font[i][10]) {
@@ -415,6 +411,7 @@ properties:
 			}
 			
 			function set_color (color) {
+				document.getElementById("mytest").innerHTML = color;
 				var c = color[0];
 				var m = color[1];
 				var y = color[2];
