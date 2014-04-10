@@ -196,20 +196,9 @@ properties:
 				
 				var font_family = font[id][0];
 				var font_weight = font[id][9];
-				if (font_weight == "Thin" || font_weight == "Hairline") { font_weight = "100"; }
-				if (font_weight == "ExtraLight") { font_weight = 200; }
-				if (font_weight == "Light") { font_weight = 300; }
-				if (font_weight == "Regular") { font_weight = 400; }
-				if (font_weight == "Medium") { font_weight = 500; }
-				if (font_weight == "SemiBold") { font_weight = 600; }
-				if (font_weight == "Bold") { font_weight = 700; }
-				if (font_weight == "ExtraBold") { font_weight = 800; }
-				if (font_weight == "Black") { font_weight = 900; }
-				
 				var font_style = font[id][10];
-				if (font_style == "Regular") { font_style = "Normal"; }
-				
 				var new_font = new Array (font_family, font_weight, font_style);
+				
 				if (font[id][12] == "google") {
 					WebFont.load ({
 						google: { families: [new_font[0] + ":" + font_weight + font_style.toLowerCase()] },
@@ -243,7 +232,7 @@ properties:
 								timeouts = [];
 								document.getElementById("loading").style.display = "none";
 								document.getElementById("textfield_" + field).style.visibility = "hidden";
-								document.getElementById("test").innerHTML = "Problems finding " + new_font[0] + " " + new_font[1] + " " + new_font[2] +  ". We are looking at it, if you are using Safari, try Firefox or Chrome instead";
+								document.getElementById("mytest").innerHTML = "Problems finding " + new_font[0] + " " + new_font[1] + " " + new_font[2] +  ". We are looking at it, if you are using Safari, try Firefox or Chrome instead";
 							}
 						 }		 
 					});
@@ -281,7 +270,7 @@ properties:
 								timeouts = [];
 								document.getElementById("loading").style.display = "none";
 								document.getElementById("textfield_" + field).style.visibility = "hidden";
-								document.getElementById("test").innerHTML = "Problems finding " + new_font[0] + " " + new_font[1] + " " + new_font[2] +  ". We are looking at it, if you are using Safari, try Firefox or Chrome instead";
+								document.getElementById("mytest").innerHTML = "Problems finding " + new_font[0] + " " + new_font[1] + " " + new_font[2] +  ". We are looking at it, if you are using Safari, try Firefox or Chrome instead";
 							}
 						 }	 
 					});
@@ -419,7 +408,6 @@ properties:
 				$("#m").slider("value", m);
 				$("#y").slider("value", y);
 				$("#k").slider("value", k);
-				document.getElementById("mytest").innerHTML = c;
 			}
 			
 			
