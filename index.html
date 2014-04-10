@@ -389,14 +389,7 @@ document.getElementById("mytest").innerHTML = size;
 			function set_text_align (this_align) {
 				var align = new Array ("left", "center", "right");
 				var innerhtml = "";
-				for (i = 0; i < 3; i++) {
-					if (this_align == align[i] ) {
-						innerhtml += '<img src="img/align-' + align[i] + '3.png" border="0">&nbsp;';					
-					}
-					else {
-						innerhtml += '<a onclick="write_array_text_align(\'' + align[i] + '\');"><img src="img/align-' + align[i] + '1.png" border="0" onmouseover="this.src=\'img/align-' + align[i] + '2.png\';"  onmouseout="this.src=\'img/align-' + align[i] + '1.png\';"></a>&nbsp;';
-					}
-				}
+
 				document.getElementById("text_align").innerHTML = innerhtml;
 			}
 			
