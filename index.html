@@ -62,6 +62,7 @@ properties:
 			var timeouts = [];
 			
 			var prevent_slide = 0;
+			var qqq = 0;
 			
 			
 /////////////////////////////////// INITIALIZE ////////////////////////////////////////////////////////////////////
@@ -132,6 +133,8 @@ properties:
 			}
 			
 			function find_best_match () {
+				q++;
+				document.getElementById("mytest").innerHTML = qqq;
 				prevent_slide = 0;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
