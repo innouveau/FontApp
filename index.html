@@ -62,7 +62,6 @@ properties:
 			var timeouts = [];
 			
 			var prevent_slide = 0;
-			var qqq = 0;
 			
 			
 /////////////////////////////////// INITIALIZE ////////////////////////////////////////////////////////////////////
@@ -124,6 +123,7 @@ properties:
 
 /////////////////////////////////// WRITE ARRAY FUNCTIONS ////////////////////////////////////////////////////////////////////
 // font_family (equals id), font_size, line_height, align, color
+// document.getElementById("mytest").innerHTML = 
 			
 			
 			function helper () {
@@ -132,9 +132,11 @@ properties:
 				}
 			}
 			
+			// the helper function is a workaround for the 'slider problem'
+			// the ui slider isn't working properly with only 'slide'. It also needs 'change', otherwise, sometimes it doesn't respond correctly when you slide to the 0 or 100 value (don't know why exactly, has something to do with the speed you are sliding?)
+			// but we need to prevent the change to call find_best_match, when you use set_parameters () to put the slides to a position. Therefore this construction.
+			
 			function find_best_match () {
-				qqq++;
-				document.getElementById("mytest").innerHTML = qqq;
 				prevent_slide = 0;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
@@ -383,7 +385,7 @@ properties:
 				if (font_style == "Normal") { font_style = ""; }
 				var download_link = font[id][11];
 				document.getElementById("font_name").innerHTML = font_name + " <b> " + font_weight + " " + font_style + "</b>";
-				document.getElementById("favorite_font").innerHTML = "<a id='heart_img' onclick='add_favorite(" + id + ");' class='heart'><img src='img/heart1.png' border='0' onMouseOver='this.src=\"img/heart2.png\";' onMouseOut='this.src=\"img/heart1.png\";'></a>";
+				document.getElementById("heat_img").onclick = "add_favorite(" + id + ");"
 				document.getElementById("download_font").href = download_link;
 				
 				find_related_fonts (id);
@@ -843,7 +845,7 @@ properties:
 				
 				<div id="result">
 				    <div id="font_name">...</div>
-				    <div id="favorite_font">...</div> 
+				    <div id="favorite_font"><a id="heart_img" onclick="add_favorite();" class="heart"><img src="img/heart1.png" border="0" onMouseOver="this.src='img/heart2.png';" onMouseOut="this.src='img/heart1.png';"></a></div> 
 				</div>
 			     
 				<div id="text_size" class="sliderbox">Text size	<div class="slider_holder"><div id="size_slider" class="slider"></div></div></div>
