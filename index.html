@@ -385,7 +385,7 @@ properties:
 				if (font_style == "Normal") { font_style = ""; }
 				var download_link = font[id][11];
 				document.getElementById("font_name").innerHTML = font_name + " <b> " + font_weight + " " + font_style + "</b>";
-				document.getElementById("heart_img").onclick = add_favorite(" + id + ");
+				document.getElementById("heart_img").onclick = function() { add_favorite(" + id + "); } 
 				document.getElementById("download_font").href = download_link;
 				
 				find_related_fonts (id);
@@ -761,6 +761,11 @@ properties:
 			function loading_gif () {
 				document.getElementById("loading").style.display = "block";
 			}
+			
+			function close_message () {	
+				document.getElementById("message").style.visibility = "hidden";
+			}
+			
 		</script>
 		
 
