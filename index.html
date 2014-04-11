@@ -357,12 +357,9 @@ properties:
 			    count_fonts ();
 			}
 			
-			//
-			
 			function set_parameters (id) {
 				for (var j = 1; j < 6; j++) {
-					console.log(font[id][j + 3]);
-						document.getElementById("slider_" + j).a.style.left = "'" + font[id][j + 3] + "%'";
+						$("#slider_" + j).slider("value", font[id][j + 3]);
 				}
 			}
 			
