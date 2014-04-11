@@ -416,6 +416,10 @@
 	    padding: 2px 8px;
 	}
 	
+	a.strikethrough {
+		text-decoration: line-through !important;
+	}
+	
 	a.fav_and_rel:hover {
 	    color: #6D6F71;
 	    background: #E6BE00;
