@@ -126,13 +126,13 @@ properties:
 			
 			
 			function helper () {
-				if (prevent_change == 0 ) {
+				if (prevent_slide == 0 ) {
 					find_best_match ();
 				}
 			}
 			
 			function find_best_match () {
-				prevent_change == 0;
+				prevent_slide = 0;
 				var difference_array = new Array();
 				for (var i = 1; i < font.length; i++) {
 					if (font[i][3] == this_font_category && this_font_style == font[i][10]) {
@@ -367,7 +367,7 @@ properties:
 			}
 			
 			function set_parameters (id) {
-				prevent_change = 1;
+				prevent_slide = 1;
 				for (var j = 1; j < 6; j++) {
 						$("#slider_" + j).slider("value", font[id][j + 3]);
 				}
