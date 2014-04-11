@@ -385,7 +385,7 @@ properties:
 				if (font_style == "Normal") { font_style = ""; }
 				var download_link = font[id][11];
 				document.getElementById("font_name").innerHTML = font_name + " <b> " + font_weight + " " + font_style + "</b>";
-				document.getElementById("heart_img").onclick = function() { add_favorite(" + id + "); } 
+				document.getElementById("heart_img").href = "javascript:add_favorite(" + id + ");"; 
 				document.getElementById("download_font").href = download_link;
 				
 				find_related_fonts (id);
@@ -850,7 +850,7 @@ properties:
 				
 				<div id="result">
 				    <div id="font_name">...</div>
-				    <div id="favorite_font"><a id="heart_img" onclick="add_favorite();" class="heart"><img src="img/heart1.png" border="0" onMouseOver="this.src='img/heart2.png';" onMouseOut="this.src='img/heart1.png';"></a></div> 
+				    <div id="favorite_font"><a id="heart_img" href="#" class="heart"><img src="img/heart1.png" border="0" onMouseOver="this.src='img/heart2.png';" onMouseOut="this.src='img/heart1.png';"></a></div> 
 				</div>
 			     
 				<div id="text_size" class="sliderbox">Text size	<div class="slider_holder"><div id="size_slider" class="slider"></div></div></div>
