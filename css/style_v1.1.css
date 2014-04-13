@@ -574,10 +574,9 @@
 	#classification b {
 		font-weight: 400;
 		background-color: #F8F8F8;
-		border: 2px solid #DDDDDD;
-		border-radius: 3px;
-		display: inline-block;
+		border: 1px solid #DDDDDD;
+		border-radius: 5px;
 		margin: 0;
-		padding: 3px;
+		padding: 2px 4px;
 		vertical-align: middle;
 	}
