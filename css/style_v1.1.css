@@ -417,7 +417,11 @@
 	}
 	
 	a.strikethrough {
-		text-decoration: line-through !important;
+		background: #fff; !important;
+	}
+	
+	a.strikethrough:hover {
+		background: #fff; !important;
 	}
 	
 	a.fav_and_rel:hover {
