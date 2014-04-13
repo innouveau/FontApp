@@ -572,11 +572,11 @@
 	}
 	
 	#classification b {
-	    padding: 2px;
-	    text-transform: uppercase;
-	    font-weight: 400;
-	    font-size: 14px;
-	    line-height: 20px;
-	    color: #000;
-	    background: #E6BE00;
+		background-color: #F8F8F8;
+		border: 1px solid #DDDDDD;
+		border-radius: 3px;
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
 	}
