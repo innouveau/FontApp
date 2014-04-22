@@ -102,8 +102,8 @@ properties:
 					if (value_array[0] == wanted_parameter) {
 						if (wanted_parameter == "color") {
 							var colors = value_array[1].split(",");
-							var color = [color[0], color[1], color[2], color[3]]
-							return color;
+							var color_array = [colors[0], colors[1], colors[2], colors[3]]
+							return color_array;
 						}
 						else {
 							return value_array[1];
