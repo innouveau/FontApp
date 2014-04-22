@@ -65,6 +65,15 @@
 			    color: #000;
 			    text-decoration: underline;
 			}
+			
+			.menu_link:after {
+				content: '\183';
+			}
+			
+			.menu_link:nth-child(6):after {
+				content: '';
+			}
+			
 
 
 
