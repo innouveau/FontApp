@@ -29,12 +29,12 @@ properties:
 		
 		<script type="text/JavaScript">
 			var this_field = 1;
-			var this_id = getParams("id", 294);
+			var this_id = get_parameters("id", 294);
 			var this_font_category = "";
 			var this_font_style = "";
 			
 			var textfield = new Array ();
-			textfield[1] = { id: getParams("id", 294), size: getParams("size", 180), line: getParams("line", 50), align: getParams("align", "left"), color: [0, 0, 0, 100], focus: 0 }
+			textfield[1] = { id: get_parameters("id", 294), size: get_parameters("size", 180), line: get_parameters("line", 50), align: get_parameters("align", "left"), color: [0, 0, 0, 100], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100] }
 			textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100] }
 			textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100] }
@@ -89,23 +89,22 @@ properties:
 				});
 			});
 			
-			function getParams(search, alternative) {
-				var par = window.location.search.substring(1);
-				parsArray = par.split("&");
+			function get_parameters (wanted_parameter, alternative) {
+				// javascript solution for php GET
+				var get_string = window.location.search.substring(1);
+				var found = 0;
+				get_parameters = get_string.split("&");
 				
-				for (var i = 0; i < parsArray.length; i++) {
-					var valArray =  parsArray[i].split("=");
-					if(valArray[0] == search) {
-						return valArray[1];
-					}
-					else {
-						if (search == "color") {
-							return [0, 0, 0, 100];
-						}
-						else {
-							return alternative;
-						}
-					}				 
+				for (var i = 0; i < get_parameters.length; i++) {
+					var valua_array = get_parameters[i].split("=");
+					if (valua_array[0] == wanted_parameter) {
+						return valua_array[1];
+						found = 1;
+						break;
+					}		 
+				}
+				if (found == 0) { 
+					return alternative;
 				}
 			}
 			
