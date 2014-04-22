@@ -5,11 +5,8 @@ weight: 1
 category: help
 title: Home
 
-id: 294
-size: 180
-line: 50
-align: left
-color: "0,0,0,100"
+
+
 text_1: The quick brown fox jumps over the lazy dog
 text_2: LOREM IPSUM DOLOR SIT
 text_3: Aut viam inveniam aut faciam
@@ -37,7 +34,7 @@ properties:
 			var this_font_style = "";
 			
 			var textfield = new Array ();
-			textfield[1] = { id: getParams("id", 294), size: {{ page.size }}, line: {{ page.line }}, align: "{{ page.align }}", color: [{{ page.color }}], focus: 0 }
+			textfield[1] = { id: getParams("id", 294), size: getParams("size", 180), line: getParams("line", 50), align: "getParams("align", "left")", color: [getParams("color", "0,0,0,100")], focus: 0 }
 			textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100] }
 			textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100] }
 			textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100] }
