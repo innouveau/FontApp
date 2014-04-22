@@ -16,9 +16,15 @@
 			<div id="menubar">
 				{% for menu in site.data.pages %}
 					{% if page.title == menu.name %}
-					<font class='current bullet'>{{ menu.name }}</font> 
+					<font class='current'>{{ menu.name }}</font>
+						{% if forloop.index != 6 %}
+							&#183; 
+						{% endif %}
 				    {% else %}
-				    <a class='menu_link bullet' href="{{ menu.link }}">{{ menu.name }}</a>
+				    <a class='menu_link' href="{{ menu.link }}">{{ menu.name }}</a>  
+					    {% if forloop.index != 6 %}
+							&#183; 
+						{% endif %}
 				    {% endif %}
 				{% endfor %}
 			</div>
