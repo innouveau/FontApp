@@ -129,6 +129,7 @@ properties:
 				deactivate (2);
 				deactivate (4);
 				deactivate (5);
+				document.getElementById("textfield_1").innerHTML = get_parameters("text", "The quick brown fox jumps over the lazy dog");
 				fill_initial_fields ();
 				set_all_slides (1);	
 			}
@@ -804,7 +805,7 @@ properties:
 
 		<div id="paper">
 			<div id="textcontainer_1">
-				<div id="textfield_1" contenteditable="true"  onfocus="field_focus(1);">{{ page.text_1 }}</div>
+				<div id="textfield_1" contenteditable="true"  onfocus="field_focus(1);"></div>
 			</div>
 			
 			<div id="textcontainer_2" class="resizable" onclick="field_focus(2);" style="position:absolute; top:50px;" onmousemove="show_focus_lines(2);" onmouseout="show_focus_lines(0);">
