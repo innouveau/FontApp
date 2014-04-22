@@ -93,12 +93,12 @@ properties:
 				// javascript solution for php GET
 				var get_string = window.location.search.substring(1);
 				var found = 0;
-				get_parameters = get_string.split("&");
+				var parameters = get_string.split("&");
 				
-				for (var i = 0; i < get_parameters.length; i++) {
-					var valua_array = get_parameters[i].split("=");
-					if (valua_array[0] == wanted_parameter) {
-						return valua_array[1];
+				for (var i = 0; i < parameters.length; i++) {
+					var value_array = parameters[i].split("=");
+					if (value_array[0] == wanted_parameter) {
+						return value_array[1];
 						found = 1;
 						break;
 					}		 
