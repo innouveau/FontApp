@@ -67,7 +67,7 @@
 			}
 			
 			.bullet:after {
-				content: '\2022';
+				content: ' \2022 ';
 			}
 			
 			.bullet:nth-child(6):after {
