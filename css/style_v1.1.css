@@ -66,11 +66,11 @@
 			    text-decoration: underline;
 			}
 			
-			.menu_link:after {
-				content: '\183';
+			.bullet:after {
+				content: '\2022';
 			}
 			
-			.menu_link:nth-child(6):after {
+			.bullet:nth-child(6):after {
 				content: '';
 			}
 			
