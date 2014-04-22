@@ -99,8 +99,12 @@ properties:
 						return valArray[1];
 					}
 					else {
-						console.log(alternative);
-						return alternative;
+						if (search == "color") {
+							return [0, 0, 0, 100];
+						}
+						else {
+							return alternative;
+						}
 					}				 
 				}
 			}
