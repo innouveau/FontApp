@@ -32,7 +32,7 @@ properties:
 		
 		<script type="text/JavaScript">
 			var this_field = 1;
-			var this_id = {{ page.id }};
+			var this_id = getParams(id, 294);
 			var this_font_category = "";
 			var this_font_style = "";
 			
@@ -91,6 +91,27 @@ properties:
 					change: write_array_color
 				});
 			});
+			
+			function getParams(search, alternative) {
+				var par = window.location.search.substring(1);
+				parsArray = par.split("&");
+				
+				for (var i = 0; i < parsArray.length; i++) {
+					var valArray =  parsArray[i].split("=");
+					 
+					if (valArray.length > 0) {
+						if(valArray[0] == search) {
+							return valArray[1];
+						}
+					 	
+						else {
+							return alternative;
+						}
+						
+					}
+					 
+				}
+			}
 			
 			function init() {
 				close_top_item (1);
