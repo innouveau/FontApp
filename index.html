@@ -95,19 +95,13 @@ properties:
 				
 				for (var i = 0; i < parsArray.length; i++) {
 					var valArray =  parsArray[i].split("=");
-					 
-					if (valArray.length > 0) {
-						if(valArray[0] == search) {
-							return valArray[1];
-						}
-					 	
-						else {
-							console.log(alternative);
-							return alternative;
-						}
-						
+					if(valArray[0] == search) {
+						return valArray[1];
 					}
-					 
+					else {
+						console.log(alternative);
+						return alternative;
+					}				 
 				}
 			}
 			
