@@ -4,12 +4,12 @@ var this_font_category = "";
 var this_font_style = "";
 
 var textfield = new Array ();
-textfield[1] = { id: get_parameters("id", 294), size: get_parameters("size", 180), line: get_parameters("line", 50), align: get_parameters("align", "left"), color: get_parameters("color", "100,0,0,0"), focus: 0 }
-textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100] }
-textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100] }
-textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100] }
-textfield[5] = { id: 294, size: 80, line: 60, align: "center", color: [0,0,0,100] }
-textfield[6] = { id: 683, size: 15, line: 70, align: "center", color: [0,40,30,0] }
+textfield[1] = { id: get_parameters("id", 294), size: get_parameters("size", 180), line: get_parameters("line", 50), align: get_parameters("align", "left"), color: get_parameters("color", "100,0,0,0"), focus: 0 };
+textfield[2] = { id: 138, size: 0, line: 50, align: "center", color: [0,0,0,100] };
+textfield[3] = { id: 23, size: 100, line: 30, align: "center", color: [0,0,0,100] };
+textfield[4] = { id: 901, size: 0, line: 75, align: "left", color: [0,0,0,100] };
+textfield[5] = { id: 294, size: 80, line: 60, align: "center", color: [0,0,0,100] };
+textfield[6] = { id: 683, size: 15, line: 70, align: "center", color: [0,40,30,0] };
 
 var properties = new Array (1, 1, 1, 1, 1, 1);	
 var top_items = new Array (1, 1, 1, 1, 1);
@@ -29,6 +29,10 @@ var overrule = [];
 var timeouts = [];
 
 var prevent_slide = 0;
+
+
+
+
 
 /////////////////////////////////// INITIALIZE ////////////////////////////////////////////////////////////////////
 
@@ -148,7 +152,7 @@ function find_best_match () {
 		}
 	}
 		
-	difference_array.sort ( function (a, b) { return a[1] - b[1] } );
+	difference_array.sort ( function (a, b) { return a[1] - b[1]; } );
 	var best_match = difference_array[0][0];
 	textfield[this_field].id = best_match;
 	set_font_info (best_match);
@@ -199,9 +203,9 @@ function change_one (id) {
 }
 
 function change_font_family (field) {
+	close_all ();
 	var id = textfield[field].id;
 	
-	document.getElementById("url").style.display = "none";
 	
 	var font_family = font[id][0];
 	var font_weight = font[id][9];
@@ -287,6 +291,7 @@ function change_font_family (field) {
 }
 
 function change_font_size (field) {
+	close_all ();
 	var id = textfield[field].id;
 	var size = size_correction (textfield[field].size, font[id][2]);
     document.getElementById("textfield_" + field).style.fontSize = size + "px";
@@ -294,7 +299,8 @@ function change_font_size (field) {
 }
 
 function change_line_height (field) {
-	// line height is depending on font size, since its a ratio not an absolute number
+// line height is depending on font size, since its a ratio not an absolute number
+	close_all ();
 	var id = textfield[field].id;			
     var size = size_correction (textfield[field].size, font[id][2]);
     var line = textfield[field].line;
@@ -304,7 +310,8 @@ function change_line_height (field) {
 }
 
 function change_top_margin (field) {
-	// correct x-line for height correction
+// correct x-line for height correction
+	close_all ();
 	var id = textfield[field].id;
 	var a = 0.5 * textfield[field].size + 20;
 	var size = size_correction (textfield[field].size, font[id][2]);
@@ -314,12 +321,14 @@ function change_top_margin (field) {
 }
 
 function change_text_align (field) {
+	close_all ();
 	var align = textfield[field].align;
 	document.getElementById("textfield_" + field).style.textAlign = align;
 	set_text_align (align);
 }
 
 function change_color (field) {
+	close_all ();
 	var c = textfield[field].color[0];
 	var m = textfield[field].color[1];
 	var y = textfield[field].color[2];
@@ -337,7 +346,7 @@ function change_color (field) {
 			
 			
 function set_all_slides (field) {
-	// misschien zelfs de id er hieruit halen en in elke subfunctie per field eruit halen?
+// misschien zelfs de id er hieruit halen en in elke subfunctie per field eruit halen?
 	var id = textfield[field].id;
 	set_font_category (font[id][3]);
 	set_font_style (font[id][10]);
@@ -424,6 +433,7 @@ function set_color (color) {
 
 
 
+
 /////////////////////////////////// TOPMENU FUNCTIONS ////////////////////////////////////////////////////////////////////
 			
 			
@@ -504,7 +514,6 @@ function show_favorites () {
 	document.getElementById("top_item_2").innerHTML = text;
 }
 
-
 function find_related_fonts (id) {
 	var related_fonts = new Array();
 	var j = 0;
@@ -518,7 +527,7 @@ function find_related_fonts (id) {
 			if (font[i][10] != "Normal") {
 				font_style = font[i][10];
 			}
-			related_fonts[j] = "<a style='" + font_style + "' weight='" + font[i][9] + "' onclick='change_one(" + i + ");' class='fav_and_rel" + subclass + "'>" + font[i][0] + " " + font[i][9] + " " + font_style + "</a>"
+			related_fonts[j] = "<a style='" + font_style + "' weight='" + font[i][9] + "' onclick='change_one(" + i + ");' class='fav_and_rel" + subclass + "'>" + font[i][0] + " " + font[i][9] + " " + font_style + "</a>";
 			j++;
 		}
 	}
@@ -576,12 +585,12 @@ function view_mode (q) {
     
     // set fields
     for (i = 1; i < 7; i++) {
-	if (mode[this_mode].field.indexOf(i) != -1) {
-	    document.getElementById("textcontainer_" + i).style.display = "block";
-	}
-	else {
-	    document.getElementById("textcontainer_" + i).style.display = "none";
-	}
+		if (mode[this_mode].field.indexOf(i) != -1) {
+		    document.getElementById("textcontainer_" + i).style.display = "block";
+		}
+		else {
+		    document.getElementById("textcontainer_" + i).style.display = "none";
+		}
     }
     // focus field
     this_field = mode[this_mode].field[0];
@@ -733,7 +742,7 @@ function count_fonts () {
 }
 
 function get_url () {
-	// for now only possible for field 1. Otherwise replace 1 with this_field
+// for now only possible for field 1. Otherwise replace 1 with this_field
 	var id = textfield[1].id;
 	var link = "http://www.fontapp.org?id=" + id;
 	if (document.getElementById("textfield_1").innerHTML != "The quick brown fox jumps over the lazy dog") {
@@ -760,6 +769,7 @@ function loading_gif () {
 	document.getElementById("loading").style.display = "block";
 }
 
-function close_message () {	
+function close_all () {
+	document.getElementById("url").style.display = "none";
 	document.getElementById("message").style.visibility = "hidden";
 }
