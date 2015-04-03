@@ -64,6 +64,7 @@
         position: relative;
         cursor: pointer;
         margin-bottom: 4px;
+        max-width: 260px;
     }
     
     .dd-head {
@@ -183,3 +184,17 @@
                     .slider-handle:hover {
                         fill: #000;
                     }
+                    
+                .slider-button-on {
+                    stroke: #000;
+                    stroke-width: 2;
+                    fill: #fff;
+                    cursor: pointer;
+                }
+                
+                .slider-button-off {
+                    stroke: #000;
+                    stroke-width: 2;
+                    fill: #000;
+                    cursor: pointer;
+                }

@@ -3,25 +3,25 @@
         Choose category and style…
     </div>
     <dropdown>
-        <div class="dd-head" ng-mousedown="openDropdown('category')" ng-class="{'in': !settings.dropdown.category, 'out': settings.dropdown.category}">
-            {{settings.category}}
+        <div class="dd-head" ng-mousedown="shared.openDropdown('category')" ng-class="{'in': !shared.settings.dropdown.category, 'out': shared.settings.dropdown.category}">
+            {{shared.settings.category}}
         </div>
-        <div class="dd-body" ng-if="settings.dropdown.category">
-            <div class="dd-button" ng-click="changeCategory(cat)" ng-repeat="cat in category" ng-if="cat != settings.category">{{cat}}</div>
+        <div class="dd-body" ng-if="shared.settings.dropdown.category">
+            <div class="dd-button" ng-click="changeCategory(cat)" ng-repeat="cat in category" ng-if="cat != shared.settings.category">{{cat}}</div>
         </div>
     </dropdown>
     
     <dropdown>
-        <div class="dd-head" ng-mousedown="openDropdown('style')" ng-class="{'in': !settings.dropdown.style, 'out': settings.dropdown.style}">
-            {{settings.style}}
+        <div class="dd-head" ng-mousedown="shared.openDropdown('style')" ng-class="{'in': !shared.settings.dropdown.style, 'out': shared.settings.dropdown.style}">
+            {{shared.settings.style}}
         </div>
-        <div class="dd-body" ng-if="settings.dropdown.style">
-            <div class="dd-button" ng-click="changeStyle(st)" ng-repeat="st in style" ng-if="st != settings.style">{{st}}</div>
+        <div class="dd-body" ng-if="shared.settings.dropdown.style">
+            <div class="dd-button" ng-click="changeStyle(st)" ng-repeat="st in style" ng-if="st != shared.settings.style">{{st}}</div>
         </div>
     </dropdown>
         
     
-    {{settings.totalFonts}} fonts found
+    {{shared.settings.totalFonts}} fonts found
 </div>
 
 <div class="toolbar-set">

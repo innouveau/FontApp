@@ -3,39 +3,47 @@ app.controller('toolsController', function($scope, sharedScope) {
     
     $scope.category = ["Sans Serif", "Serif", "Slab Serif", "Monospace", "Script", "Fun"];
     $scope.style = ["Normal", "Italic"];
-    $scope.settings = {
+    $scope.shared.settings = {
         category: $scope.category[0],
         style: $scope.style[0],
         totalFonts : null,
         dropdown: {
             category: false,
-            style: false
+            style: false,
+            workarea: false
         }
     };
     
-    $scope.openDropdown = function (type) {
-        $scope.settings.dropdown[type] = !$scope.settings.dropdown[type];
+    $scope.shared.openDropdown = function (type) {
+        console.log(type);
+        $scope.shared.settings.dropdown[type] = !$scope.shared.settings.dropdown[type];
+    };
+    
+    $scope.shared.changeWorkarea= function (workarea) {
+        $scope.shared.current.workarea = workarea; 
+        $scope.shared.current.paper = $scope.shared.current.workarea.papers[0];
+        $scope.shared.current.field = $scope.shared.current.paper.fields[0];
+        $scope.shared.settings.dropdown.workarea = false;
     };
     
     $scope.changeCategory = function (category) {
-        $scope.settings.category = category; 
+        $scope.shared.settings.category = category; 
         $scope.shared.findFont(); 
-        $scope.settings.dropdown.category = false;
+        $scope.shared.settings.dropdown.category = false;
     };
     
     $scope.changeStyle = function (style) {
-        $scope.settings.style = style; 
+        $scope.shared.settings.style = style; 
         $scope.shared.findFont(); 
-        $scope.settings.dropdown.style = false;
+        $scope.shared.settings.dropdown.style = false;
     };
         
     $scope.shared.findFont = function () {
         var totalFonts = 0;
-        console.log($scope.settings.category);
         var differenceArray = [];
         for (var i = 1; i < $scope.font.length; i++) {
             var thisFont = $scope.font[i];
-            if (thisFont[3] == $scope.settings.category && thisFont[10] == $scope.settings.style && thisFont[12] == "google") {
+            if (thisFont[3] == $scope.shared.settings.category && thisFont[10] == $scope.shared.settings.style && thisFont[12] == "google") {
                 totalFonts++;
                 var difference = 0;
                 for (j = 0; j < 5; j++) {
@@ -49,7 +57,7 @@ app.controller('toolsController', function($scope, sharedScope) {
         }
         differenceArray.sort ( function (a, b) { return a[1] - b[1]; } );
         var q = differenceArray[0][0];
-        $scope.settings.totalFonts = totalFonts;
+        $scope.shared.settings.totalFonts = totalFonts;
         var fontFamily = $scope.font[q][0];
         var fontWeight = $scope.font[q][9];
         var fontStyle = $scope.font[q][10];
