@@ -3,6 +3,8 @@ app.controller('toolsController', function($scope, sharedScope) {
     
     $scope.category = ["Sans Serif", "Serif", "Slab Serif", "Monospace", "Script", "Fun"];
     $scope.style = ["Normal", "Italic"];
+    $scope.align = ["left", "center", "right"];
+    $scope.cmyk = ["C","M","Y","K"];
     $scope.shared.settings = {
         category: $scope.category[0],
         style: $scope.style[0],
@@ -10,12 +12,12 @@ app.controller('toolsController', function($scope, sharedScope) {
         dropdown: {
             category: false,
             style: false,
-            workarea: false
+            workarea: false,
+            color: false
         }
     };
     
     $scope.shared.openDropdown = function (type) {
-        console.log(type);
         $scope.shared.settings.dropdown[type] = !$scope.shared.settings.dropdown[type];
     };
     
@@ -36,6 +38,32 @@ app.controller('toolsController', function($scope, sharedScope) {
         $scope.shared.settings.style = style; 
         $scope.shared.findFont(); 
         $scope.shared.settings.dropdown.style = false;
+    };
+    
+    $scope.updateColor = function() {
+        var c = $scope.shared.current.field.cmyk[0];
+        var m = $scope.shared.current.field.cmyk[1];
+        var y = $scope.shared.current.field.cmyk[2];
+        var k = $scope.shared.current.field.cmyk[3];
+        c /= 100;
+        m /= 100;
+        y /= 100;
+        k /= 100;
+        var r = Math.round (255 * (1 - c) * (1 - k));
+        var g = Math.round (255 * (1 - m) * (1 - k));
+        var b = Math.round (255 * (1 - y) * (1 - k));
+            
+        r = r.toString(16);
+        g = g.toString(16);
+        b = b.toString(16);
+        
+        if (r.length == 1) { r = "0" + r; }
+        if (g.length == 1) { g = "0" + g; }
+        if (b.length == 1) { b = "0" + b; }
+        
+        var color = "#" + r+g+b;
+        $scope.shared.current.field.color = color;
+        //$scope.data.current.field.color = "rgba(" + r + ","+ g + ","+ b+ ")";
     };
         
     $scope.shared.findFont = function () {

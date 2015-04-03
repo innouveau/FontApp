@@ -36,6 +36,10 @@ app.directive('slider', function($document) {
             if (type == "parameter") {
                 var thisValue = scope.shared.current.field.sliders[thisIndex];
                 var labelName = scope.shared.sliders[thisIndex].name;
+            } else if (type == "color") {
+                labelWidth = 30;
+                var thisValue = scope.shared.current.field.cmyk[thisIndex];
+                var labelName = scope.cmyk[thisIndex];
             } else {
                 axisWidth += buttonWidth;
                 if (type == "fontsize") {
@@ -73,6 +77,9 @@ app.directive('slider', function($document) {
                         if (scope.shared.sliders[thisIndex].edit) {
                             scope.shared.findFont();
                         }
+                    } else if (type == "color") {
+                        scope.shared.current.field.cmyk[thisIndex] = thisValue;
+                        scope.updateColor();
                     } else if (type == "fontsize") {
                         scope.shared.current.field.fontSize = thisValue;
                     } else if (type == "lineheight") {
@@ -116,3 +123,19 @@ app.directive('slider', function($document) {
     };
 });
 
+app.directive('body', function() {
+    return {
+        restrict : 'E',
+        link : function(scope, element, attrs, ctrl) {
+            element.bind('mouseup', function(event) {
+                if (!$(event.target).parents('dropdown').length && !$(event.target).parents('.dropdown').length) {
+                    console.log("!");
+                    for (var x in scope.shared.settings.dropdown) {
+                        scope.shared.settings.dropdown[x] = false;
+                    }
+                }
+                scope.$apply();
+            });
+        }
+    };
+});

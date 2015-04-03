@@ -2,43 +2,55 @@
     <div class="toolbar-set-head">
         Choose category and style…
     </div>
-    <dropdown>
-        <div class="dd-head" ng-mousedown="shared.openDropdown('category')" ng-class="{'in': !shared.settings.dropdown.category, 'out': shared.settings.dropdown.category}">
-            {{shared.settings.category}}
-        </div>
-        <div class="dd-body" ng-if="shared.settings.dropdown.category">
-            <div class="dd-button" ng-click="changeCategory(cat)" ng-repeat="cat in category" ng-if="cat != shared.settings.category">{{cat}}</div>
-        </div>
-    </dropdown>
-    
-    <dropdown>
-        <div class="dd-head" ng-mousedown="shared.openDropdown('style')" ng-class="{'in': !shared.settings.dropdown.style, 'out': shared.settings.dropdown.style}">
-            {{shared.settings.style}}
-        </div>
-        <div class="dd-body" ng-if="shared.settings.dropdown.style">
-            <div class="dd-button" ng-click="changeStyle(st)" ng-repeat="st in style" ng-if="st != shared.settings.style">{{st}}</div>
-        </div>
-    </dropdown>
+    <div class="toolbar-set-body">
+        <dropdown>
+            <div class="dd-head" ng-mousedown="shared.openDropdown('category')" ng-class="{'in': !shared.settings.dropdown.category, 'out': shared.settings.dropdown.category}">
+                {{shared.settings.category}}
+            </div>
+            <div class="dd-body" ng-if="shared.settings.dropdown.category">
+                <div class="dd-button" ng-click="changeCategory(cat)" ng-repeat="cat in category" ng-if="cat != shared.settings.category">{{cat}}</div>
+            </div>
+        </dropdown>
         
-    
-    {{shared.settings.totalFonts}} fonts found
+        <dropdown>
+            <div class="dd-head" ng-mousedown="shared.openDropdown('style')" ng-class="{'in': !shared.settings.dropdown.style, 'out': shared.settings.dropdown.style}">
+                {{shared.settings.style}}
+            </div>
+            <div class="dd-body" ng-if="shared.settings.dropdown.style">
+                <div class="dd-button" ng-click="changeStyle(st)" ng-repeat="st in style" ng-if="st != shared.settings.style">{{st}}</div>
+            </div>
+        </dropdown>
+        {{shared.settings.totalFonts}} fonts found
+    </div>
 </div>
 
 <div class="toolbar-set">
     <div class="toolbar-set-head">
         …set the properties for the font…
     </div>
-    <slider type="parameter" index="{{$index}}" ng-repeat="slider in shared.sliders" ng-class="{'inactive': !slider.edit}"></slider>
+    <div class="toolbar-set-body">
+        <slider type="parameter" index="{{$index}}" ng-repeat="slider in shared.sliders" ng-class="{'inactive': !slider.edit}"></slider>
+    </div>
 </div>
 
 <div class="toolbar-set">
     <div class="toolbar-set-head">
         …this is your font!
     </div>
-    <div class="font-name">
-        {{shared.current.field.fontFamily}} {{shared.current.field.fontWeight}}
+    <div class="toolbar-set-body">
+        <div class="font-name">
+            {{shared.current.field.fontFamily}} {{shared.current.field.fontWeight}}
+        </div>
+        <slider type="fontsize" index="1"></slider>
+        <slider type="lineheight" index="1"></slider>
+        <div id="align">
+            <div ng-click="shared.current.field.textAlign = al" class="align align-{{al}}" ng-repeat="al in align" ng-class="{'selected': al == shared.current.field.textAlign}"></div>
+        </div>
+        <div id="color" class="dropdown">
+            <img src="img/color1.png" ng-mousedown="shared.openDropdown('color')">
+            <div id="color-picker" ng-if="shared.settings.dropdown.color">
+                <slider type="color" index="{{$index}}" ng-repeat="color in cmyk"></slider>
+            </div>
+        </div>
     </div>
-    <slider type="fontsize" index="1"></slider>
-    <slider type="lineheight" index="1"></slider>
-
 </div>

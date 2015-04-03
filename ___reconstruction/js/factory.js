@@ -18,6 +18,7 @@ app.factory("sharedScope", function($rootScope) {
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
+                    cmyk: [0,0,0,100],
                     left : 0,
                     top : 0,
                     width : "100%",

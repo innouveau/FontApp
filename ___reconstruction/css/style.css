@@ -6,6 +6,8 @@
     }
 
     body {
+        width: 100%;
+        height: 100%;
         background: #F2F0E6;
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 14px;
@@ -64,7 +66,7 @@
         position: relative;
         cursor: pointer;
         margin-bottom: 4px;
-        max-width: 260px;
+        max-width: 200px;
     }
     
     .dd-head {
@@ -124,16 +126,24 @@
     }
     
         .toolbar-set {
-            display: block;
-            width: 260px;
-            margin-right: 12px;
+            width: 280px;
+            display: inline-block;
             float: left;
+            border-left: 1px dotted rgba(0,0,0,0.4);
+            margin-right: 10px;
+            border: 1px dotted rgba(0,0,0,0.4);
         }
         
             .toolbar-set-head {
                 width: 100%;
                 color: #e6be00;
-                padding: 4px;
+                padding: 10px;
+                font-size: 16px;
+                border-bottom: 1px dotted rgba(0,0,0,0.4);
+            }
+            
+            .toolbar-set-body {
+                padding: 10px;
             }
         
             .font-name {
@@ -198,3 +208,68 @@
                     fill: #000;
                     cursor: pointer;
                 }
+                
+     #align {
+         margin-top: 10px;
+     }
+                
+    .align {
+        display: inline-block;
+        width: 22px;
+        height: 16px;
+        margin-right: 4px;
+        cursor: pointer;
+    }
+    
+        .align-left {
+            background-image: url('../img/align-left1.png');
+        }
+        
+        .align-left:hover {
+            background-image: url('../img/align-left3.png');
+        }
+    
+        .align-left.selected {
+            background-image: url('../img/align-left2.png');
+        }
+        
+        .align-center {
+            background-image: url('../img/align-center1.png');
+        }
+        
+        .align-center:hover {
+            background-image: url('../img/align-center3.png');
+        }
+    
+        .align-center.selected {
+            background-image: url('../img/align-center2.png');
+        }
+        
+        .align-right {
+            background-image: url('../img/align-right1.png');
+        }
+        
+        .align-right:hover {
+            background-image: url('../img/align-right3.png');
+        }
+    
+        .align-right.selected {
+            background-image: url('../img/align-right2.png');
+        }
+        
+    #color {
+        cursor: pointer;
+        position: relative;
+    }
+    
+        #color-picker {
+            display: inline-block;
+            position: absolute;
+            left: 26px;
+            top: -106px;
+            width: 180px;
+            height: 128px;
+            background: #fff;
+            padding: 8px;
+            box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+        }
