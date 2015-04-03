@@ -1,3 +1,44 @@
-<slider index="{{$index}}" ng-repeat="slider in shared.sliders" ng-class="{'inactive': !slider.edit}"></slider>
+<div class="toolbar-set">
+    <div class="toolbar-set-head">
+        Choose category and style…
+    </div>
+    <dropdown>
+        <div class="dd-head" ng-mousedown="openDropdown('category')" ng-class="{'in': !settings.dropdown.category, 'out': settings.dropdown.category}">
+            {{settings.category}}
+        </div>
+        <div class="dd-body" ng-if="settings.dropdown.category">
+            <div class="dd-button" ng-click="changeCategory(cat)" ng-repeat="cat in category" ng-if="cat != settings.category">{{cat}}</div>
+        </div>
+    </dropdown>
+    
+    <dropdown>
+        <div class="dd-head" ng-mousedown="openDropdown('style')" ng-class="{'in': !settings.dropdown.style, 'out': settings.dropdown.style}">
+            {{settings.style}}
+        </div>
+        <div class="dd-body" ng-if="settings.dropdown.style">
+            <div class="dd-button" ng-click="changeStyle(st)" ng-repeat="st in style" ng-if="st != settings.style">{{st}}</div>
+        </div>
+    </dropdown>
+        
+    
+    {{settings.totalFonts}} fonts found
+</div>
 
-{{settings.totalFonts}}
+<div class="toolbar-set">
+    <div class="toolbar-set-head">
+        …set the properties for the font…
+    </div>
+    <slider type="parameter" index="{{$index}}" ng-repeat="slider in shared.sliders" ng-class="{'inactive': !slider.edit}"></slider>
+</div>
+
+<div class="toolbar-set">
+    <div class="toolbar-set-head">
+        …this is your font!
+    </div>
+    <div class="font-name">
+        {{shared.current.field.fontFamily}} {{shared.current.field.fontWeight}}
+    </div>
+    <slider type="fontsize" index="1"></slider>
+    <slider type="lineheight" index="1"></slider>
+
+</div>

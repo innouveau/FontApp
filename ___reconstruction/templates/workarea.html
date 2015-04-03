@@ -1,4 +1,4 @@
-<paper ng-repeat="paper in shared.current.workarea.papers" ng-style="{'left': paper.left + 'px', 'top': paper.top + 'px', 'width': paper.width, 'height': paper.height, 'overflow': paper.overflow}">
-    <field ng-model="field.text" ng-repeat="field in paper.fields" ng-class="{'current': field == shared.current.field}" ng-style="{'left': field.left + 'px', 'top': field.top + 'px', 'width': field.width, 'height': field.height, 'font-family': field.fontFamily, 'font-weight': field.fontWeight, 'font-size': field.fontSize, 'line-height': (field.fontSize * field.lineHeight) + 'px', 'color': field.color, 'text-align': field.textAlign}">
+<paper ng-repeat="paper in shared.current.workarea.papers" ng-style="{'width': paper.width, 'height': paper.height, 'overflow': paper.overflow}">
+    <field ng-model="field.text" ng-repeat="field in paper.fields" ng-class="{'current': field == shared.current.field}" ng-style="{'left': field.left + 'px', 'top': field.top + 'px', 'width': field.width, 'height': field.height, 'font-family': field.fontFamily, 'font-weight': field.fontWeight, 'font-size': (1.5 * field.fontSize + 10), 'line-height': (field.fontSize * field.lineHeight / 100 + 0.8 * field.fontSize) + 'px', 'color': field.color, 'text-align': field.textAlign}">
     </field>
 </paper>

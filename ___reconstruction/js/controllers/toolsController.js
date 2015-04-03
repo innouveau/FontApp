@@ -6,11 +6,32 @@ app.controller('toolsController', function($scope, sharedScope) {
     $scope.settings = {
         category: $scope.category[0],
         style: $scope.style[0],
-        totalFonts : null
+        totalFonts : null,
+        dropdown: {
+            category: false,
+            style: false
+        }
+    };
+    
+    $scope.openDropdown = function (type) {
+        $scope.settings.dropdown[type] = !$scope.settings.dropdown[type];
+    };
+    
+    $scope.changeCategory = function (category) {
+        $scope.settings.category = category; 
+        $scope.shared.findFont(); 
+        $scope.settings.dropdown.category = false;
+    };
+    
+    $scope.changeStyle = function (style) {
+        $scope.settings.style = style; 
+        $scope.shared.findFont(); 
+        $scope.settings.dropdown.style = false;
     };
         
     $scope.shared.findFont = function () {
         var totalFonts = 0;
+        console.log($scope.settings.category);
         var differenceArray = [];
         for (var i = 1; i < $scope.font.length; i++) {
             var thisFont = $scope.font[i];
@@ -42,11 +63,13 @@ app.controller('toolsController', function($scope, sharedScope) {
                 $scope.shared.current.field.fontFamily = fontFamily;
                 $scope.shared.current.field.fontWeight = fontWeight;
                 $scope.shared.current.field.fontStyle = fontStyle;
+                $scope.$apply();
              },
              inactive: function() {
              }
              
         });
+        
     };
     
     
