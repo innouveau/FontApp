@@ -7,7 +7,7 @@ app.factory("sharedScope", function($rootScope) {
                 left : 0,
                 top : 100,
                 width : "100%",
-                height : "360px",
+                height : "100%",
                 overflow : "hidden",
                 fields : [{
                     text : "The quick brown fox jumps over a lazy dog.",

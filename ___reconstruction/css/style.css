@@ -22,122 +22,42 @@
         -moz-box-sizing: border-box;  
     }
     
-    menubar, workarea, tools, sidepanel, footer, field, paper, slider, dropdown {
+    menubar, sidepanel, footer, field, paper, slider, dropdown {
         display: block;
     }
     
-    
-    
-    
-/********** menu **********/
-
-
     #logo {
-        
-    }
-
-
-
-
-/********** workarea **********/
-
-    paper {
-        background: #fff;
-        position: relative;
-        box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-    }
-    
-        field {
-            position: absolute;
-            padding: 40px 0 0 40px;
-            border: 1px solid transparent;
-        }
-        
-        field.current {
-            border: 1px dotted #ddd;
-        }
-        
-        
-        
-
-/********** dropdown **********/
-
-    dropdown {
-        position: relative;
-        cursor: pointer;
         margin-bottom: 4px;
-        max-width: 200px;
+        height: 60px;
+        width: auto;
     }
     
-    .dd-head {
-        width: 100%;
-        padding: 4px;
-        position: relative;
-        height: 28px;
-    }
     
-        .dd-head.in:before {
-            font-size: 12px;
-            padding-top: 2px;
-            content: "▼";
-            right: 8px;
-            position: absolute;
-        }
-        
-        .dd-head.out:before {
-            font-size: 12px;
-            padding-top: 2px;
-            content: "▲";
-            right: 8px;
-            position: absolute;
-        }
-    
-        .dd-body {
-            position: absolute;
-            left: 0;
-            top: 28px;
-            z-index: 100;
-            width: 100%;
-        }
-        
-            .dd-button {
-                width: 100%;
-                height: 28px;
-                background: #ddd;
-                color: #555;
-                padding: 4px;
-            }
-            
-            .dd-head:hover, .dd-button:hover {
-                background: #e6be00;
-                color: #fff;
-            }
-
-
-
 
 
         
 /********** tools **********/
 
     tools {
-        margin-top: 16px;
-        width: 100%;
+        width: 300px;
+        padding-right: 20px;
+        height: 100%;
+        display: inline-block;
+        float: left;
     }
     
         .toolbar-set {
-            width: 280px;
+            width: 100%;
             display: inline-block;
-            float: left;
             border-left: 1px dotted rgba(0,0,0,0.4);
-            margin-right: 10px;
+            margin-bottom: 4px;
             border: 1px dotted rgba(0,0,0,0.4);
         }
         
             .toolbar-set-head {
                 width: 100%;
                 color: #e6be00;
-                padding: 10px;
+                padding: 4px 10px;
                 font-size: 16px;
                 border-bottom: 1px dotted rgba(0,0,0,0.4);
             }
@@ -269,7 +189,127 @@
             top: -106px;
             width: 180px;
             height: 128px;
-            background: #fff;
+            background: #F2F0E6;
+            border: 1px dotted rgba(0,0,0,0.4);
             padding: 8px;
-            box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
         }
+        
+    #search-container {
+        position: relative;
+        height: 26px;
+    }
+    
+        #searchbox {
+            margin-bottom: 4px;
+            width: 258px;
+            border: 0;
+            padding: 4px 8px;
+        }
+    
+        #found-fonts {
+            position: absolute;
+            left: 0;
+            bottom: 26px;
+            z-index: 100;
+            background: #ddd;
+            width: 258px;
+            padding: 8px 0;
+        }     
+        
+        #found-more {
+            padding: 8px 2px;
+            color: #555;
+            border-top: 1px dotted rgba(0,0,0,0.4);
+            margin-top: 4px;
+        }   
+        
+        
+        
+/********** workarea **********/
+
+    workarea {
+        display: inline-block;
+        width: calc(100% - 300px);
+        height: 100%;
+        float: left;
+    }
+    
+    paper {
+        background: #fff;
+        position: relative;
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    }
+    
+        field {
+            position: absolute;
+            padding: 40px 0 0 40px;
+            border: 1px solid transparent;
+        }
+        
+        field.current {
+            border: 1px dotted #ddd;
+        }
+        
+        
+        
+
+/********** dropdown **********/
+
+    dropdown {
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 4px;
+        max-width: 260px;
+    }
+    
+    .dd-head {
+        width: 100%;
+        padding: 3px 4px;
+        position: relative;
+        height: 24px;
+    }
+    
+        .dd-head.in:before {
+            font-size: 10px;
+            padding-top: 1px;
+            content: "▼";
+            right: 8px;
+            position: absolute;
+        }
+        
+        .dd-head.out:before {
+            font-size: 10px;
+            padding-top: 1px;
+            content: "▲";
+            right: 8px;
+            position: absolute;
+        }
+    
+        .dd-body {
+            position: absolute;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+        }
+        
+            .dd-body.dd-down {
+                top: 24px;
+            }
+        
+            .dd-body.dd-up {
+                bottom: 24px;
+            }
+        
+            .dd-button {
+                width: 100%;
+                height: 24px;
+                background: #ddd;
+                color: #555;
+                padding: 3px 4px;
+                cursor: pointer;
+            }
+            
+            .dd-head:hover, .dd-button:hover {
+                background: #e6be00;
+                color: #fff;
+            }

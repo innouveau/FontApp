@@ -1,17 +1,3 @@
-app.directive('menubar', function() {
-    return {
-        restrict : 'E',
-        templateUrl : 'templates/menubar.html'
-    };
-}); 
-
-app.directive('workarea', function() {
-    return {
-        restrict : 'E',
-        templateUrl : 'templates/workarea.html'
-    };
-}); 
-
 app.directive('tools', function() {
     return {
         restrict : 'E',
@@ -19,10 +5,10 @@ app.directive('tools', function() {
     };
 }); 
 
-app.directive('sidepanel', function() {
+
+app.directive('workarea', function() {
     return {
         restrict : 'E',
-        templateUrl : 'templates/sidepanel.html'
+        templateUrl : 'templates/workarea.html'
     };
 }); 
-

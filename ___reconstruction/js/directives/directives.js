@@ -128,8 +128,7 @@ app.directive('body', function() {
         restrict : 'E',
         link : function(scope, element, attrs, ctrl) {
             element.bind('mouseup', function(event) {
-                if (!$(event.target).parents('dropdown').length && !$(event.target).parents('.dropdown').length) {
-                    console.log("!");
+                if (!$(event.target).parents('dropdown').length && !$(event.target).parents('.dropdown').length && !$(event.target).parents('.clickfree').length) {
                     for (var x in scope.shared.settings.dropdown) {
                         scope.shared.settings.dropdown[x] = false;
                     }

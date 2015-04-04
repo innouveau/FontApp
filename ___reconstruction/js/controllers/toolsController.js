@@ -1,45 +1,114 @@
 app.controller('toolsController', function($scope, sharedScope) {
     $scope.shared = sharedScope.data;
-    
+
+    $scope.shared.current.workarea = $scope.shared.workareas[0];
+    $scope.shared.current.paper = $scope.shared.current.workarea.papers[0];
+    $scope.shared.current.field = $scope.shared.current.paper.fields[0];
+
+    $scope.favourites = [];
+    $scope.relatedFonts = [];
+    $scope.foundFont = [];
+    $scope.foundMore = "";
+    $scope.search = "";
+
     $scope.category = ["Sans Serif", "Serif", "Slab Serif", "Monospace", "Script", "Fun"];
     $scope.style = ["Normal", "Italic"];
     $scope.align = ["left", "center", "right"];
-    $scope.cmyk = ["C","M","Y","K"];
+    $scope.cmyk = ["C", "M", "Y", "K"];
     $scope.shared.settings = {
-        category: $scope.category[0],
-        style: $scope.style[0],
+        category : $scope.category[0],
+        style : $scope.style[0],
         totalFonts : null,
-        dropdown: {
-            category: false,
-            style: false,
-            workarea: false,
-            color: false
+        dropdown : {
+            category : false,
+            style : false,
+            workarea : false,
+            color : false,
+            favourites : null,
+            related : null,
+            search : null
         }
     };
-    
-    $scope.shared.openDropdown = function (type) {
+
+    $scope.setFont = function(id) {
+        var field = $scope.shared.current.field;
+        var font = $scope.font[id];
+        var fontFamily = font[0];
+        var fontWeight = font[9];
+        var fontStyle = font[10];
+        WebFont.load({
+            google : {
+                families : [fontFamily + ":" + fontWeight + fontStyle.toLowerCase()]
+            },
+            loading : function() {
+            },
+            active : function() {
+                field.fontFamily = fontFamily;
+                field.fontWeight = fontWeight;
+                field.fontStyle = fontStyle;
+                $scope.shared.settings.category = font[3];
+                $scope.shared.settings.style = fontStyle;
+                field.sliders = [font[4], font[5], font[6], font[7], font[8]];
+                $scope.findRelated(id);
+                for (var x in $scope.shared.settings.dropdown) {
+                    $scope.shared.settings.dropdown[x] = false;
+                }
+                $scope.$apply();
+            },
+            inactive : function() {
+            }
+        });
+    };
+
+    $scope.searchFont = function() {
+        $scope.foundFont = [];
+        $scope.foundMore = "";
+        var j = 0;
+        var search = $scope.search.toLowerCase();
+        if (search.length > 0) {
+            for (var i = 1; i < $scope.font.length; i++) {
+                if ($scope.font[i][12] == "google") {
+                    needle = $scope.font[i][0].toLowerCase();
+                    if (needle.indexOf(search) > -1) {
+                        if (j < 15) {
+                            $scope.foundFont.push({
+                                string : $scope.makeFontString(i),
+                                id : i
+                            });
+                        }
+                        j++;
+                    }
+                }
+            }
+        }
+        if (j > 14) {
+            $scope.foundMore = "... and " + j + " more fonts";
+        }
+    };
+
+    $scope.shared.openDropdown = function(type) {
         $scope.shared.settings.dropdown[type] = !$scope.shared.settings.dropdown[type];
     };
-    
-    $scope.shared.changeWorkarea= function (workarea) {
-        $scope.shared.current.workarea = workarea; 
+
+    $scope.shared.changeWorkarea = function(workarea) {
+        $scope.shared.current.workarea = workarea;
         $scope.shared.current.paper = $scope.shared.current.workarea.papers[0];
         $scope.shared.current.field = $scope.shared.current.paper.fields[0];
         $scope.shared.settings.dropdown.workarea = false;
     };
-    
-    $scope.changeCategory = function (category) {
-        $scope.shared.settings.category = category; 
-        $scope.shared.findFont(); 
+
+    $scope.changeCategory = function(category) {
+        $scope.shared.settings.category = category;
+        $scope.shared.findFont();
         $scope.shared.settings.dropdown.category = false;
     };
-    
-    $scope.changeStyle = function (style) {
-        $scope.shared.settings.style = style; 
-        $scope.shared.findFont(); 
+
+    $scope.changeStyle = function(style) {
+        $scope.shared.settings.style = style;
+        $scope.shared.findFont();
         $scope.shared.settings.dropdown.style = false;
     };
-    
+
     $scope.updateColor = function() {
         var c = $scope.shared.current.field.cmyk[0];
         var m = $scope.shared.current.field.cmyk[1];
@@ -49,24 +118,53 @@ app.controller('toolsController', function($scope, sharedScope) {
         m /= 100;
         y /= 100;
         k /= 100;
-        var r = Math.round (255 * (1 - c) * (1 - k));
-        var g = Math.round (255 * (1 - m) * (1 - k));
-        var b = Math.round (255 * (1 - y) * (1 - k));
-            
+        var r = Math.round(255 * (1 - c) * (1 - k));
+        var g = Math.round(255 * (1 - m) * (1 - k));
+        var b = Math.round(255 * (1 - y) * (1 - k));
+
         r = r.toString(16);
         g = g.toString(16);
         b = b.toString(16);
-        
-        if (r.length == 1) { r = "0" + r; }
-        if (g.length == 1) { g = "0" + g; }
-        if (b.length == 1) { b = "0" + b; }
-        
-        var color = "#" + r+g+b;
+
+        if (r.length == 1) {
+            r = "0" + r;
+        }
+        if (g.length == 1) {
+            g = "0" + g;
+        }
+        if (b.length == 1) {
+            b = "0" + b;
+        }
+
+        var color = "#" + r + g + b;
         $scope.shared.current.field.color = color;
-        //$scope.data.current.field.color = "rgba(" + r + ","+ g + ","+ b+ ")";
     };
-        
-    $scope.shared.findFont = function () {
+
+    $scope.makeFontString = function(id) {
+        var italic = "";
+        if ($scope.font[id][10] != "Normal") {
+            italic = " " + $scope.font[id][10];
+        }
+        var string = $scope.font[id][0] + " " + $scope.font[id][9] + italic;
+        return string;
+    };
+
+    $scope.findRelated = function(id) {
+        $scope.relatedFonts = [];
+        for (var i = 1; i < $scope.font.length; i++) {
+            var thisFont = $scope.font[i];
+            if (thisFont[0] == $scope.font[id][0] && thisFont[12] == "google") {
+                $scope.relatedFonts.push({
+                    string : $scope.makeFontString(i),
+                    weight : $scope.font[i][9],
+                    id : i
+                });
+                ;
+            }
+        }
+    };
+
+    $scope.shared.findFont = function() {
         var totalFonts = 0;
         var differenceArray = [];
         for (var i = 1; i < $scope.font.length; i++) {
@@ -74,53 +172,30 @@ app.controller('toolsController', function($scope, sharedScope) {
             if (thisFont[3] == $scope.shared.settings.category && thisFont[10] == $scope.shared.settings.style && thisFont[12] == "google") {
                 totalFonts++;
                 var difference = 0;
-                for (j = 0; j < 5; j++) {
+                for ( j = 0; j < 5; j++) {
                     if ($scope.shared.sliders[j].edit) {
                         var property = anti_normal($scope.shared.current.field.sliders[j]);
                         difference += Math.abs(thisFont[j + 4] - property);
                     }
                 }
-                differenceArray[i] = new Array (i, difference);
+                differenceArray[i] = new Array(i, difference);
             }
         }
-        differenceArray.sort ( function (a, b) { return a[1] - b[1]; } );
-        var q = differenceArray[0][0];
-        $scope.shared.settings.totalFonts = totalFonts;
-        var fontFamily = $scope.font[q][0];
-        var fontWeight = $scope.font[q][9];
-        var fontStyle = $scope.font[q][10];
-
-        
-        WebFont.load ({
-            google: { families: [fontFamily + ":" + fontWeight + fontStyle.toLowerCase()] },
-            loading: function() {
-             },
-             active: function() {
-                $scope.shared.current.field.fontFamily = fontFamily;
-                $scope.shared.current.field.fontWeight = fontWeight;
-                $scope.shared.current.field.fontStyle = fontStyle;
-                $scope.$apply();
-             },
-             inactive: function() {
-             }
-             
+        differenceArray.sort(function(a, b) {
+            return a[1] - b[1];
         });
-        
+        var fontId = differenceArray[0][0];
+        $scope.shared.settings.totalFonts = totalFonts;
+        $scope.setFont(fontId);
     };
-    
-    
-    function anti_normal (x) {
-        var y = x + 12 * Math.sin (x / 15.71);
+
+    function anti_normal(x) {
+        var y = x + 12 * Math.sin(x / 15.71);
         return y;
     }
-    
-    
-    
-    
-    
-    
+
     /********** font array **********/
-    
+
     $scope.font = [];
     $scope.font[0] = ['...', '-', 0, '-', 50, 50, 50, 50, 50, '-', '-', '-', '-'];
     $scope.font[1] = ['ABeeZee', 'ABeeZee-Italic.ttf', 278, 'Sans Serif', 25, 0, 53, 46, 21, 400, 'Italic', 'http://www.google.com/fonts/specimen/ABeeZee', 'google'];
