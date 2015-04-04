@@ -87,6 +87,11 @@ app.controller('toolsController', function($scope, sharedScope) {
     };
 
     $scope.shared.openDropdown = function(type) {
+        for (var x in $scope.shared.settings.dropdown) {
+            if (x != type) {
+                $scope.shared.settings.dropdown[x] = false;
+            }
+        }
         $scope.shared.settings.dropdown[type] = !$scope.shared.settings.dropdown[type];
     };
 
@@ -153,7 +158,7 @@ app.controller('toolsController', function($scope, sharedScope) {
         $scope.relatedFonts = [];
         for (var i = 1; i < $scope.font.length; i++) {
             var thisFont = $scope.font[i];
-            if (thisFont[0] == $scope.font[id][0] && thisFont[12] == "google") {
+            if (thisFont[0] == $scope.font[id][0] && id != i && thisFont[12] == "google") {
                 $scope.relatedFonts.push({
                     string : $scope.makeFontString(i),
                     weight : $scope.font[i][9],
