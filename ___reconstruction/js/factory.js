@@ -2,7 +2,6 @@ app.factory("sharedScope", function($rootScope) {
     var scope = $rootScope.$new(true);
     scope.data = {
         workareas : [{
-            name : "Specimen mode",
             papers : [{
                 left : 0,
                 top : 100,
@@ -10,39 +9,89 @@ app.factory("sharedScope", function($rootScope) {
                 height : "100%",
                 overflow : "hidden",
                 fields : [{
+                    fieldId: 0,
                     text : "The quick brown fox jumps over a lazy dog.",
-                    fontFamily : "Dosis",
-                    fontWeight : 900,
+                    fontFamily : null,
+                    fontWeight : null,
+                    id : 99,
                     fontStyle : "regular",
-                    fontSize : 90,
+                    fontSize : 50,
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
-                    cmyk: [0,0,0,100],
+                    cmyk : [0, 0, 0, 100],
                     left : 0,
                     top : 0,
                     width : "100%",
                     height : "100%",
                     sliders : [50, 50, 50, 50, 50]
                 }]
-            }]
-        }, {
-            name : "Poster Mode",
-            papers : [{
+            }, {
                 left : 0,
                 top : 100,
-                width : "40%",
-                height : "60%",
-                overflow : "visible",
+                width : "100%",
+                height : "100%",
+                overflow : "hidden",
                 fields : [{
+                    fieldId: 0,
                     text : "The quick brown fox jumps over a lazy dog.",
-                    fontFamily : "Roboto",
-                    fontWeight : 900,
+                    fontFamily : null,
+                    fontWeight : null,
+                    id : 71,
                     fontStyle : "regular",
-                    fontSize : 90,
+                    fontSize : 50,
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
+                    cmyk : [0, 0, 0, 100],
+                    left : 0,
+                    top : 0,
+                    width : "100%",
+                    height : "100%",
+                    sliders : [50, 50, 50, 50, 50]
+                }]
+            }, {
+                left : 0,
+                top : 100,
+                width : "100%",
+                height : "100%",
+                overflow : "hidden",
+                fields : [{
+                    fieldId: 0,
+                    text : "The quick brown fox jumps over a lazy dog.",
+                    fontFamily : null,
+                    fontWeight : null,
+                    id : 475,
+                    fontStyle : "regular",
+                    fontSize : 50,
+                    lineHeight : 50,
+                    textAlign : "left",
+                    color : "rgb(0,0,0)",
+                    cmyk : [0, 0, 0, 100],
+                    left : 0,
+                    top : 0,
+                    width : "100%",
+                    height : "100%",
+                    sliders : [50, 50, 50, 50, 50]
+                }]
+            }, {
+                left : 0,
+                top : 100,
+                width : "100%",
+                height : "100%",
+                overflow : "hidden",
+                fields : [{
+                    fieldId: 0,
+                    text : "The quick brown fox jumps over a lazy dog.",
+                    fontFamily : null,
+                    fontWeight : null,
+                    id : 539,
+                    fontStyle : "regular",
+                    fontSize : 50,
+                    lineHeight : 50,
+                    textAlign : "left",
+                    color : "rgb(0,0,0)",
+                    cmyk : [0, 0, 0, 100],
                     left : 0,
                     top : 0,
                     width : "100%",
@@ -71,7 +120,8 @@ app.factory("sharedScope", function($rootScope) {
         }, {
             name : "Ascender",
             edit : false
-        }]
+        }],
+        redrawTrigger : 0
     };
     return scope;
 });

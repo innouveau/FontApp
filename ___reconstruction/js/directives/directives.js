@@ -18,7 +18,7 @@ app.directive('field', function() {
             };
             function finishedRenaming(div) {
                 scope.$apply(function() {
-                    ctrl.$setViewValue(element.html());
+                    scope.changeText(element.html());
                 });
             }
 
@@ -30,29 +30,11 @@ app.directive('slider', function($document) {
     return {
         restrict : 'E',
         link : function(scope, element, attrs, ctrl) {
-            var labelWidth = 90, axisWidth = 120, boxHeight = 20, buttonWidth = 32, spacing = 16, buttonSize = 6;
+            var labelWidth = 90, axisWidth = 136, boxHeight = 20, buttonWidth = 32, spacing = 16, buttonSize = 6;
             var thisIndex = attrs.index;
             var type = attrs.type;
-            if (type == "parameter") {
-                var thisValue = scope.shared.current.field.sliders[thisIndex];
-                var labelName = scope.shared.sliders[thisIndex].name;
-            } else if (type == "color") {
-                labelWidth = 30;
-                var thisValue = scope.shared.current.field.cmyk[thisIndex];
-                var labelName = scope.cmyk[thisIndex];
-            } else {
-                axisWidth += buttonWidth;
-                if (type == "fontsize") {
-                    var thisValue = scope.shared.current.field.fontSize;
-                    var labelName = "Font Size";
-                } else if (type == "lineheight") {
-                    var thisValue = scope.shared.current.field.lineHeight;
-                    var labelName = "Line Height";
-                }
-            }
-
             var boundaryLeft = labelWidth, boundaryRight = axisWidth + labelWidth;
-            var xPosition = labelWidth + thisValue / 100 * axisWidth;
+            
             var svg = d3.select(element[0]).append('svg');
             var layer2 = svg.append('g');
             var layer1 = svg.append('g');
@@ -63,6 +45,25 @@ app.directive('slider', function($document) {
 
             /***** redraw *****/
             function redraw() {
+                if (type == "parameter") {
+                    var thisValue = scope.shared.current.field.sliders[thisIndex];
+                    var labelName = scope.shared.sliders[thisIndex].name;
+                } else if (type == "color") {
+                    labelWidth = 30;
+                    var thisValue = scope.shared.current.field.cmyk[thisIndex];
+                    var labelName = scope.cmyk[thisIndex];
+                } else {
+                    if (type == "fontsize") {
+                        var thisValue = scope.shared.current.field.fontSize;
+                        var labelName = "Font Size";
+                    } else if (type == "lineheight") {
+                        var thisValue = scope.shared.current.field.lineHeight;
+                        var labelName = "Line Height";
+                    }
+                }
+                var xPosition = labelWidth + thisValue / 100 * axisWidth;
+                
+                
                 // remove previous slider
                 layer1.selectAll('*').remove();
 
@@ -81,9 +82,9 @@ app.directive('slider', function($document) {
                         scope.shared.current.field.cmyk[thisIndex] = thisValue;
                         scope.updateColor();
                     } else if (type == "fontsize") {
-                        scope.shared.current.field.fontSize = thisValue;
+                        scope.changeFontSize(thisValue);
                     } else if (type == "lineheight") {
-                        scope.shared.current.field.lineHeight = thisValue;
+                        scope.changeLineHeight(thisValue);
                     }
                     scope.$apply();
                 }).on('dragend', function() {

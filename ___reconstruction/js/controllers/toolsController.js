@@ -10,6 +10,24 @@ app.controller('toolsController', function($scope, sharedScope) {
     $scope.foundFont = [];
     $scope.foundMore = "";
     $scope.search = "";
+    
+    $scope.nrOfWorkareas = 4;
+    $scope.width = 2;
+    $scope.height = 2;
+    
+    $scope.changeMode = function (x) {
+        $scope.nrOfWorkareas = x;
+        if (x > 1) {
+            $scope.width = 2;
+        } else {
+            $scope.width = 1; 
+        }
+        if (x == 4) {
+            $scope.height = 2;
+        } else {
+            $scope.height = 1;
+        }
+    };
 
     $scope.category = ["Sans Serif", "Serif", "Slab Serif", "Monospace", "Script", "Fun"];
     $scope.style = ["Normal", "Italic"];
@@ -30,8 +48,7 @@ app.controller('toolsController', function($scope, sharedScope) {
         }
     };
 
-    $scope.setFont = function(id) {
-        var field = $scope.shared.current.field;
+    $scope.setFont = function(field, id) {
         var font = $scope.font[id];
         var fontFamily = font[0];
         var fontWeight = font[9];
@@ -46,6 +63,7 @@ app.controller('toolsController', function($scope, sharedScope) {
                 field.fontFamily = fontFamily;
                 field.fontWeight = fontWeight;
                 field.fontStyle = fontStyle;
+                field.id = id;
                 $scope.shared.settings.category = font[3];
                 $scope.shared.settings.style = fontStyle;
                 field.sliders = [font[4], font[5], font[6], font[7], font[8]];
@@ -58,6 +76,67 @@ app.controller('toolsController', function($scope, sharedScope) {
             inactive : function() {
             }
         });
+    };
+    
+    $scope.changeText = function (value) {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId == fieldId) {
+                        field.text = value;
+                    }
+                });
+            });    
+        }); 
+    };
+    
+    $scope.changeAlign = function (value) {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId == fieldId) {
+                        field.textAlign = value;
+                    }
+                });
+            });    
+        }); 
+    };
+    
+    $scope.changeFontSize = function (value) {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId == fieldId) {
+                        field.fontSize = value;
+                    }
+                });
+            });    
+        }); 
+    };
+    
+    $scope.changeLineHeight = function (value) {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId == fieldId) {
+                        field.lineHeight = value;
+                    }
+                });
+            });    
+        }); 
+    };
+    
+    $scope.setCurrentField = function (field) {
+        console.log(field.id);
+        var font = $scope.font[field.id];
+        $scope.shared.current.field = field;
+        $scope.shared.settings.category = font[3];
+        $scope.shared.settings.style = font[10];  
+        field.sliders = [font[4], font[5], font[6], font[7], font[8]];
     };
 
     $scope.searchFont = function() {
@@ -83,6 +162,26 @@ app.controller('toolsController', function($scope, sharedScope) {
         }
         if (j > 14) {
             $scope.foundMore = "... and " + j + " more fonts";
+        }
+    };
+    
+    $scope.addFavourite = function () {
+        var id = $scope.shared.current.field.id;
+        var found = false;
+        angular.forEach($scope.favourites, function(favourite) {
+            if (favourite.id == id) {
+                found = true;
+            }
+        });
+        if (found) {
+            //$scope.message("Font already favourited");
+        } else {
+            $scope.favourites.push({
+                id: id,
+                string: $scope.makeFontString(id)
+            });
+            $("#favourites-head").addClass("highlighted");
+            setTimeout(function(){ $("#favourites-head").removeClass("highlighted"); }, 300);
         }
     };
 
@@ -191,7 +290,17 @@ app.controller('toolsController', function($scope, sharedScope) {
         });
         var fontId = differenceArray[0][0];
         $scope.shared.settings.totalFonts = totalFonts;
-        $scope.setFont(fontId);
+        $scope.setFont($scope.shared.current.field, fontId);
+    };
+    
+    $scope.init = function () {
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    $scope.setFont(field, field.id);
+                });
+            });    
+        });    
     };
 
     function anti_normal(x) {
@@ -1484,6 +1593,6 @@ app.controller('toolsController', function($scope, sharedScope) {
     $scope.font[1279] = ['Negotiate', 'negotiate_free.ttf', 266, 'Sans Serif', 32, 0, 48, 41, 27, 400, 'Normal', 'http://www.fontsquirrel.com/fonts/Negotiate', 'custom'];
     $scope.font[1280] = ['Silverfake', 'silverfake.otf', 261, 'All Caps', 23, 100, 100, 100, 12, 400, 'Normal', 'http://fontfabric.com/silverfake-free-font/', 'custom'];
 
-    $scope.shared.findFont();
+    $scope.init();
 
 });

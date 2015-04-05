@@ -65,13 +65,32 @@
             .toolbar-set-body {
                 padding: 10px;
             }
-        
-            .font-name {
-                width: 100%;
-                background: #e6be00;
-                color: #fff;
-                padding: 4px 8px;
+            
+            #font-name-container {
+                height: 28px;
             }
+        
+                #font-name {
+                    width: calc(100% - 28px);
+                    margin-right: 4px;
+                    display: inline-block;
+                    float: left;
+                    background: #e6be00;
+                    color: #fff;
+                    padding: 4px 8px;
+                }
+                
+                #love-font {
+                    width: 20px;
+                    height: 28px;
+                    padding-top: 4px;
+                    cursor: pointer;
+                    display: inline-block;
+                    float: left;
+                    background: #e6be00;
+                    color: #555;
+                    text-align: center;
+                }
     
         slider {
             width: 260px;
@@ -227,6 +246,12 @@
         
 /********** workarea **********/
 
+    framework {
+        float: left;
+        display: inline-block;
+        padding: 10px;
+    }
+    
     workarea {
         display: inline-block;
         width: calc(100% - 300px);
@@ -247,7 +272,7 @@
         }
         
         field.current {
-            border: 1px dotted #ddd;
+            border: 1px dotted red;
         }
         
         
@@ -267,7 +292,12 @@
         padding: 3px 4px;
         position: relative;
         height: 24px;
+        transition: all 0.1s;
     }
+    
+        .dd-head.highlighted {
+            background: #fff;
+        }
     
         .dd-head.in:before {
             font-size: 10px;

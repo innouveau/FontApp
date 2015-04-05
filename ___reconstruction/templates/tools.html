@@ -30,13 +30,16 @@
 
 <div class="toolbar-set">
     <div class="toolbar-set-body">
-        <div class="font-name">
-            {{shared.current.field.fontFamily}} {{shared.current.field.fontWeight}}
+        <div id="font-name-container">
+            <div id="font-name">
+                {{shared.current.field.fontFamily}} {{shared.current.field.fontWeight}}
+            </div>
+            <div id="love-font" ng-click="addFavourite()">&hearts;</div>
         </div>
         <slider type="fontsize" index="1"></slider>
         <slider type="lineheight" index="1"></slider>
         <div id="align">
-            <div ng-click="shared.current.field.textAlign = al" class="align align-{{al}}" ng-repeat="al in align" ng-class="{'selected': al == shared.current.field.textAlign}"></div>
+            <div ng-click="changeAlign(al)" class="align align-{{al}}" ng-repeat="al in align" ng-class="{'selected': al == shared.current.field.textAlign}"></div>
         </div>
         <div id="color" class="dropdown">
             <img src="img/color1.png" ng-mousedown="shared.openDropdown('color')">
@@ -52,16 +55,16 @@
     <div id="search-container" class="clickfree">
         <input id="searchbox" ng-model="search" placeholder="Search for a font..." ng-keyup="searchFont(); shared.settings.dropdown.search = true" ng-click="shared.settings.dropdown.search = true">
         <div id="found-fonts" ng-if="foundFont.length != 0 && shared.settings.dropdown.search">
-            <div class="dd-button" ng-click="setFont(found.id)" ng-repeat="found in foundFont">{{found.string}}</div>
+            <div class="dd-button" ng-click="setFont(shared.current.field, found.id)" ng-repeat="found in foundFont">{{found.string}}</div>
             <div id="found-more" ng-if="foundMore != ''">{{foundMore}}</div>
         </div>
     </div>
     <dropdown>
-        <div class="dd-head" ng-mousedown="shared.openDropdown('favourites')" ng-class="{'in': !shared.settings.dropdown.favourites, 'out': shared.settings.dropdown.favourites}">
+        <div id="favourites-head" class="dd-head" ng-mousedown="shared.openDropdown('favourites')" ng-class="{'in': !shared.settings.dropdown.favourites, 'out': shared.settings.dropdown.favourites}">
             Favourites ({{favourites.length}})
         </div>
-        <div class="dd-body dd-down" ng-if="shared.settings.dropdown.category">
-            <div class="dd-button" ng-click="setFont(favourite.id)" ng-repeat="favourite in favourites">{{favourite.fontFamily}} {{favourite.fontWeight}}</div>
+        <div class="dd-body dd-up" ng-if="shared.settings.dropdown.favourites">
+            <div class="dd-button" ng-click="setFont(shared.current.field, favourite.id)" ng-repeat="favourite in favourites">{{favourite.string}}</div>
         </div>
     </dropdown>
     <dropdown>
@@ -69,7 +72,7 @@
             Related ({{relatedFonts.length}})
         </div>
         <div class="dd-body dd-up" ng-if="shared.settings.dropdown.related">
-            <div class="dd-button" ng-click="setFont(related.id)" ng-repeat="related in relatedFonts | orderBy: 'weight'">{{related.string}}</div>
+            <div class="dd-button" ng-click="setFont(shared.current.field, related.id)" ng-repeat="related in relatedFonts | orderBy: 'weight'">{{related.string}}</div>
         </div>
     </dropdown>
     </div>
@@ -77,6 +80,6 @@
 
 <div class="toolbar-set">
     <div class="toolbar-set-body">
-        <button>1</button> <button>2</button> <button>4</button>
+        <button ng-click="changeMode(1)">1</button> <button ng-click="changeMode(2)">2</button> <button ng-click="changeMode(4)">4</button>
     </div>
 </div>
