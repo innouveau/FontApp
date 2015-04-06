@@ -1,1 +1,1 @@
-var app = angular.module('fontApp', ['ui.sortable']);
+var app = angular.module('fontApp', []);

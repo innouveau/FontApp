@@ -26,11 +26,28 @@
         display: block;
     }
     
-    #logo {
+    #top {
         margin-bottom: 4px;
-        height: 60px;
-        width: auto;
+        overflow: auto;
     }
+    
+        #logo {
+            margin-right: 10px;
+            height: 60px;
+            width: auto;
+            display: inline-block;
+            float: left;
+        }
+        
+        #fb {
+            width: calc(100% - 63px);
+            display: inline-block;
+            float: left;
+        }
+        
+            .row {
+                margin-bottom: 4px;
+            }
     
     @font-face {
         font-family: 'pando';
