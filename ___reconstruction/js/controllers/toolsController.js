@@ -11,23 +11,34 @@ app.controller('toolsController', function($scope, sharedScope) {
     $scope.foundMore = "";
     $scope.search = "";
     
-    $scope.nrOfWorkareas = 4;
-    $scope.width = 2;
-    $scope.height = 2;
-    
+    $scope.screenModes = [{
+        workareas : 1,
+        width: 1,
+        height: 1,
+        title: "Specimen Mode"
+    },{
+        workareas : 2,
+        width: 2,
+        height: 1,
+        title: "Compare(2) Mode"
+    },{
+        workareas : 4,
+        width: 2,
+        height: 2,
+        title: "Compare(4) Mode"
+    }];
     $scope.changeMode = function (x) {
-        $scope.nrOfWorkareas = x;
-        if (x > 1) {
-            $scope.width = 2;
-        } else {
-            $scope.width = 1; 
-        }
-        if (x == 4) {
-            $scope.height = 2;
-        } else {
-            $scope.height = 1;
-        }
+        $scope.nrOfWorkareas = $scope.screenModes[x].workareas;
+        $scope.width = $scope.screenModes[x].width;
+        $scope.height = $scope.screenModes[x].height;
+        $scope.currentScreenMode = $scope.screenModes[x];
     };
+    $scope.currentScreenMode = null;
+    $scope.nrOfWorkareas = null;
+    $scope.width = null;
+    $scope.height = null;
+    $scope.changeMode(2);
+
 
     $scope.category = ["Sans Serif", "Serif", "Slab Serif", "Monospace", "Script", "Fun"];
     $scope.style = ["Normal", "Italic"];
@@ -47,6 +58,29 @@ app.controller('toolsController', function($scope, sharedScope) {
             search : null
         }
     };
+    
+    $scope.removeField = function () {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field, index) {
+                    if (field.fieldId == fieldId) {
+                        paper.fields.splice(index, 1);
+                    }
+                });
+            });    
+        }); 
+    };
+    
+    $scope.countFonts = function () {
+        var n = 0;
+        angular.forEach($scope.font, function(font) {
+            if (font[3] == $scope.shared.settings.category && font[10] == $scope.shared.settings.style && font[12] == "google") {
+               n++;
+            }
+        });  
+        return n; 
+    };
 
     $scope.setFont = function(field, id) {
         var font = $scope.font[id];
@@ -64,6 +98,7 @@ app.controller('toolsController', function($scope, sharedScope) {
                 field.fontWeight = fontWeight;
                 field.fontStyle = fontStyle;
                 field.id = id;
+                field.correctedSize = $scope.correctSize(field.fontSize, font[2]);
                 $scope.shared.settings.category = font[3];
                 $scope.shared.settings.style = fontStyle;
                 field.sliders = [font[4], font[5], font[6], font[7], font[8]];
@@ -71,6 +106,7 @@ app.controller('toolsController', function($scope, sharedScope) {
                 for (var x in $scope.shared.settings.dropdown) {
                     $scope.shared.settings.dropdown[x] = false;
                 }
+                $scope.shared.settings.totalFonts = $scope.countFonts();
                 $scope.$apply();
             },
             inactive : function() {
@@ -78,12 +114,93 @@ app.controller('toolsController', function($scope, sharedScope) {
         });
     };
     
-    $scope.changeText = function (value) {
+    
+    $scope.correctSize = function (wantedSize, measuredSize) {
+        var size = Math.round (wantedSize * 700 / measuredSize);
+        return size;
+    };
+    
+    $scope.findFieldId = function () {
+        var max = 0;
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId > max) {
+                        max = field.fieldId;
+                    }
+                });
+            });    
+        }); 
+        max++;
+        return max;    
+    };
+    
+    $scope.addField = function () {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        var newField = {
+            fieldId: $scope.findFieldId(),
+            text : "Bright vixens jump @ dozy fowl! #quack",
+            fontFamily : null,
+            fontWeight : null,
+            id : 1119,
+            fontStyle : "regular",
+            fontSize : 20,
+            correctedSize: null,
+            lineHeight : 50,
+            textAlign : "left",
+            color : "rgb(0,0,0)",
+            cmyk : [0, 0, 0, 100],
+            left : 200,
+            top : 200,
+            width : 200,
+            height : 400,
+            sliders : [50, 50, 50, 50, 50]
+        };
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                var clone = angular.copy(newField);
+                paper.fields.push(clone);
+                $scope.setFont(clone, clone.id);
+            });    
+        }); 
+        var last = $scope.shared.current.paper.fields.length - 1;
+        $scope.shared.current.field = $scope.shared.current.paper.fields[last];
+    };
+    
+    $scope.changePaper = function (width, height) {
+        var padding = 10;
+        var newWidth = width / ($("framework").outerWidth() - 2 * padding) * 100 + "%";
+        var newHeight = height / ($("framework").outerHeight() - 2 * padding) * 100 + "%";
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                paper.width = newWidth;
+                paper.height = newHeight;
+            });    
+        }); 
+    };
+    
+    $scope.changeBox = function (left, top, width, height) {
         var fieldId = $scope.shared.current.field.fieldId; 
         angular.forEach($scope.shared.workareas, function(workarea) {
             angular.forEach(workarea.papers, function(paper) {
                 angular.forEach(paper.fields, function(field) {
                     if (field.fieldId == fieldId) {
+                        field.left = left * $scope.width;
+                        field.top = top * $scope.width;
+                        field.width = width * $scope.width;
+                        field.height = height * $scope.width;
+                    }
+                });
+            });    
+        }); 
+    };
+    
+    $scope.changeText = function (value) {
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId == fieldId && field != $scope.shared.current.field) {
                         field.text = value;
                     }
                 });
@@ -111,6 +228,7 @@ app.controller('toolsController', function($scope, sharedScope) {
                 angular.forEach(paper.fields, function(field) {
                     if (field.fieldId == fieldId) {
                         field.fontSize = value;
+                        field.correctedSize = $scope.correctSize(value, $scope.font[field.id][2]);
                     }
                 });
             });    
@@ -130,13 +248,14 @@ app.controller('toolsController', function($scope, sharedScope) {
         }); 
     };
     
-    $scope.setCurrentField = function (field) {
-        console.log(field.id);
+    $scope.setCurrentField = function (field, paper) {
         var font = $scope.font[field.id];
         $scope.shared.current.field = field;
+        $scope.shared.current.paper = paper;
         $scope.shared.settings.category = font[3];
         $scope.shared.settings.style = font[10];  
         field.sliders = [font[4], font[5], font[6], font[7], font[8]];
+        $scope.shared.settings.totalFonts = $scope.countFonts();
     };
 
     $scope.searchFont = function() {
@@ -241,7 +360,16 @@ app.controller('toolsController', function($scope, sharedScope) {
         }
 
         var color = "#" + r + g + b;
-        $scope.shared.current.field.color = color;
+        var fieldId = $scope.shared.current.field.fieldId; 
+        angular.forEach($scope.shared.workareas, function(workarea) {
+            angular.forEach(workarea.papers, function(paper) {
+                angular.forEach(paper.fields, function(field) {
+                    if (field.fieldId == fieldId) {
+                        field.color = color;
+                    }
+                });
+            });    
+        });
     };
 
     $scope.makeFontString = function(id) {
@@ -269,12 +397,10 @@ app.controller('toolsController', function($scope, sharedScope) {
     };
 
     $scope.shared.findFont = function() {
-        var totalFonts = 0;
         var differenceArray = [];
         for (var i = 1; i < $scope.font.length; i++) {
             var thisFont = $scope.font[i];
             if (thisFont[3] == $scope.shared.settings.category && thisFont[10] == $scope.shared.settings.style && thisFont[12] == "google") {
-                totalFonts++;
                 var difference = 0;
                 for ( j = 0; j < 5; j++) {
                     if ($scope.shared.sliders[j].edit) {
@@ -289,7 +415,6 @@ app.controller('toolsController', function($scope, sharedScope) {
             return a[1] - b[1];
         });
         var fontId = differenceArray[0][0];
-        $scope.shared.settings.totalFonts = totalFonts;
         $scope.setFont($scope.shared.current.field, fontId);
     };
     
@@ -298,6 +423,8 @@ app.controller('toolsController', function($scope, sharedScope) {
             angular.forEach(workarea.papers, function(paper) {
                 angular.forEach(paper.fields, function(field) {
                     $scope.setFont(field, field.id);
+                    field.width = 0.8 * $("workarea").outerWidth();
+                    field.height = 0.8 * $("workarea").outerHeight();
                 });
             });    
         });    

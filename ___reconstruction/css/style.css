@@ -32,11 +32,128 @@
         width: auto;
     }
     
+    @font-face {
+        font-family: 'pando';
+        src: url('../fonts/pando.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
     
 
 
+
+/********** box **********/
+
+
+    .box {
+        position: absolute!important;
+        border: 1px dotted transparent;
+        display: inline-block;
+        box-sizing: content-box;
+    }
+    
+        box:hover .element-handle, box:hover .remove {
+            opacity: 1;
+        }
+    
+        .element-handle, .remove {
+            position: absolute;
+            top: -36px;
+            z-index: 1000;
+            font-family: "pando";
+            display: inline-block;
+            text-align: center;
+            line-height: 24px;
+            
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .element-handle {
+            padding-top: 8px;
+            background: #e6be00;
+            color: #555;
+            left: 0px;
+        }
+        
+        .remove {
+            padding-top: 8px;
+            font-size: 10px;
+            background: red;
+            color: #fff;
+            left: 36px;
+        }
+
+    box > .ui-resizable-handle {
+        width: 8px;
+        height: 8px;
+        border: 1px solid #e6be00;
+        background: #fff;  
+        transition: all 0.3s ease;
+        display: none!important;
+        z-index: 1000;
+    }
+    
+    box.current > .ui-resizable-handle {
+        display: block!important;
+    }
+   
+        box > .ui-resizable-handle:hover {
+            background: #e6be00;  
+        } 
+
+        
+    box .ui-resizable-n {
+        left: calc(50% - 4px);
+        top: -4px;
+    }
+   
+    box .ui-resizable-se {
+        right: -4px;
+        bottom: -4px;
+    }
+   
+    box .ui-resizable-s {
+       left: calc(50% - 4px);
+       bottom: -4px;
+   }
+        
+    box .ui-resizable-w {
+        top: calc(50% - 4px);
+        left: -4px;
+    }    
+    
+    box .ui-resizable-sw {
+        bottom: -4px;
+        left: -4px;
+    }   
+   
+    box .ui-resizable-e {
+        top: calc(50% - 4px);
+        right: -4px;
+    } 
+   
+    box .ui-resizable-nw {
+        top: -4px;
+        left: -4px;
+    } 
+   
+    box .ui-resizable-ne {
+        top: -4px;
+        right: -4px;
+    } 
+    
+    /* making selector stronger by repeating box to overrule other stuff */
+    box.box.box-type-line .ui-resizable-ne, box.box.box-type-line .ui-resizable-se, box.box.box-type-line .ui-resizable-s, box.box.box-type-line .ui-resizable-sw, box.box.box-type-line .ui-resizable-nw, box.box.box-type-line .ui-resizable-n {
+        display: none!important;
+    }
+
         
 /********** tools **********/
+
 
     tools {
         width: 300px;
@@ -93,7 +210,6 @@
                 }
     
         slider {
-            width: 260px;
             height: 28px;
             padding: 4px;
             opacity: 0.5;
@@ -109,7 +225,6 @@
             }
         
             slider svg {
-                width: 100%;
                 height: 100%;
             }
         
@@ -206,7 +321,7 @@
             position: absolute;
             left: 26px;
             top: -106px;
-            width: 180px;
+            width: 200px;
             height: 128px;
             background: #F2F0E6;
             border: 1px dotted rgba(0,0,0,0.4);
@@ -240,11 +355,76 @@
             color: #555;
             border-top: 1px dotted rgba(0,0,0,0.4);
             margin-top: 4px;
-        }   
+        } 
+        
+    #mode {
+        display: inline-block;
+        float: left;
+        width: 100px;
+        margin-right: 4px;
+        height: 38px;
+    }
+        
+        .mode {
+            display: inline-block;
+            width: 22px;
+            height: 16px;
+            margin-right: 4px;
+            cursor: pointer;
+            background: #fff;
+        }
+        
+            .mode-0 {
+                background-image: url('../img/mode0-1.png');
+            }
+            
+            .mode-0:hover {
+                background-image: url('../img/mode0-2.png');
+            }
+        
+            .mode-0.selected {
+                background-image: url('../img/mode0-3.png');
+            }
+            
+            .mode-1 {
+                background-image: url('../img/mode1-1.png');
+            }
+            
+            .mode-1:hover {
+                background-image: url('../img/mode1-2.png');
+            }
+        
+            .mode-1.selected {
+                background-image: url('../img/mode1-3.png');
+            }
+            
+            .mode-2 {
+                background-image: url('../img/mode2-1.png');
+            }
+            
+            .mode-2:hover {
+                background-image: url('../img/mode2-2.png');
+            }
+        
+            .mode-2.selected {
+                background-image: url('../img/mode2-3.png');
+            }
+            
+     #add-field {
+        display: inline-block;
+        float: left;
+        width: calc(100% - 104px);
+        height: 38px;
+     }
+     
+        #add-field .toolbar-set-body {
+            padding-top: 7px;
+        }
         
         
         
 /********** workarea **********/
+
 
     framework {
         float: left;
@@ -252,28 +432,32 @@
         padding: 10px;
     }
     
-    workarea {
-        display: inline-block;
-        width: calc(100% - 300px);
-        height: 100%;
-        float: left;
-    }
-    
-    paper {
-        background: #fff;
-        position: relative;
-        box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-    }
-    
-        field {
-            position: absolute;
-            padding: 40px 0 0 40px;
-            border: 1px solid transparent;
+        workarea {
+            display: inline-block;
+            width: calc(100% - 300px);
+            height: 100%;
+            float: left;
+            overflow: hidden;
         }
         
-        field.current {
-            border: 1px dotted red;
-        }
+            paper {
+                background: #fff;
+                position: relative;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+            }
+            
+                field {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    border: 1px solid transparent;
+                    outline: none;
+                    vertical-align: baseline;
+                }
+                
+                .current field {
+                    border: 1px dotted #e6be00;
+                }
         
         
         

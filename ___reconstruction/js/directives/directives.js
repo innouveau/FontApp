@@ -1,27 +1,86 @@
+app.directive('paper', function() {
+    return {
+        restrict : 'E',
+        link : function postLink(scope, element, attr, ctrl) {
+            element.resizable({
+                handles: "e, s, se",
+                resize : function(event, ui) {
+                    scope.$apply(read);
+                },
+                stop : function() {
+                    scope.$apply(read);
+                }
+            });
+
+            // view -> model
+            function read() {
+                var width = parseInt(element.css('width'));
+                var height = parseInt(element.css('height'));
+                scope.changePaper(width, height);
+            }
+        }
+    };
+});
+
+app.directive('box', function() {
+    return {
+        restrict : 'E',
+        link : function postLink(scope, element, attr, ctrl) {
+            element.draggable({
+                handle : ".element-handle",
+                drag : function() {
+                    scope.$apply(read);
+                },
+                stop : function() {
+                    scope.$apply(read);
+                }
+            }).resizable({
+                handles: "n, e, s, w, ne, se, sw, nw",
+                resize : function(event, ui) {
+                    scope.$apply(read);
+                },
+                stop : function() {
+                    scope.$apply(read);
+                }
+            });
+
+            // view -> model
+            function read() {
+                var left = parseInt(element.css('left'));
+                var top = parseInt(element.css('top'));
+                var width = parseInt(element.css('width'));
+                var height = parseInt(element.css('height'));
+                scope.changeBox(left, top, width, height);
+            }
+        }
+    };
+});
+
 app.directive('field', function() {
     return {
         restrict : 'E',
         require : 'ngModel',
         link : function(scope, element, attrs, ctrl) {
             $(element[0]).attr("contenteditable", "true");
+            element.bind('blur keyup', function(event) {
+                busyRenaming(element[0]);
+            });
             element.bind('blur', function(event) {
                 finishedRenaming(element[0]);
-            });
-            element.bind('keypress', function(event) {
-                if (event.which == 13) {
-                    finishedRenaming(element[0]);
-                    $(element[0]).blur();
-                }
             });
             ctrl.$render = function() {
                 element.html(ctrl.$viewValue);
             };
-            function finishedRenaming(div) {
+            function busyRenaming(div) {
                 scope.$apply(function() {
                     scope.changeText(element.html());
                 });
             }
-
+            function finishedRenaming(div) {
+                scope.$apply(function() {
+                    scope.shared.current.field.text = element.html();
+                });
+            }
         }
     };
 });
@@ -33,7 +92,7 @@ app.directive('slider', function($document) {
             var labelWidth = 90, axisWidth = 136, boxHeight = 20, buttonWidth = 32, spacing = 16, buttonSize = 6;
             var thisIndex = attrs.index;
             var type = attrs.type;
-            var boundaryLeft = labelWidth, boundaryRight = axisWidth + labelWidth;
+            
             
             var svg = d3.select(element[0]).append('svg');
             var layer2 = svg.append('g');
@@ -50,9 +109,11 @@ app.directive('slider', function($document) {
                     var labelName = scope.shared.sliders[thisIndex].name;
                 } else if (type == "color") {
                     labelWidth = 30;
+                    buttonWidth = 0;
                     var thisValue = scope.shared.current.field.cmyk[thisIndex];
                     var labelName = scope.cmyk[thisIndex];
                 } else {
+                    buttonWidth = 0;
                     if (type == "fontsize") {
                         var thisValue = scope.shared.current.field.fontSize;
                         var labelName = "Font Size";
@@ -61,11 +122,15 @@ app.directive('slider', function($document) {
                         var labelName = "Line Height";
                     }
                 }
+                var svgWidth = labelWidth + axisWidth + buttonWidth + spacing + 'px';
+                svg.style('width', svgWidth);
+                var boundaryLeft = labelWidth, boundaryRight = axisWidth + labelWidth;
                 var xPosition = labelWidth + thisValue / 100 * axisWidth;
                 
                 
                 // remove previous slider
                 layer1.selectAll('*').remove();
+                layer2.selectAll('*').remove();
 
                 var drag = d3.behavior.drag().on('dragstart', function() {
                 }).on('drag', function() {

@@ -7,23 +7,24 @@ app.factory("sharedScope", function($rootScope) {
                 top : 100,
                 width : "100%",
                 height : "100%",
-                overflow : "hidden",
+                overflow : "visible",
                 fields : [{
                     fieldId: 0,
                     text : "The quick brown fox jumps over a lazy dog.",
                     fontFamily : null,
                     fontWeight : null,
-                    id : 99,
+                    id : 294,
                     fontStyle : "regular",
-                    fontSize : 50,
+                    fontSize : 40,
+                    correctedSize : null,
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
                     cmyk : [0, 0, 0, 100],
-                    left : 0,
-                    top : 0,
-                    width : "100%",
-                    height : "100%",
+                    left : 40,
+                    top : 40,
+                    width : 0,
+                    height : 0,
                     sliders : [50, 50, 50, 50, 50]
                 }]
             }, {
@@ -31,23 +32,24 @@ app.factory("sharedScope", function($rootScope) {
                 top : 100,
                 width : "100%",
                 height : "100%",
-                overflow : "hidden",
+                overflow : "visible",
                 fields : [{
                     fieldId: 0,
                     text : "The quick brown fox jumps over a lazy dog.",
                     fontFamily : null,
                     fontWeight : null,
-                    id : 71,
+                    id : 747,
                     fontStyle : "regular",
-                    fontSize : 50,
+                    fontSize : 40,
+                    correctedSize : null,
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
                     cmyk : [0, 0, 0, 100],
-                    left : 0,
-                    top : 0,
-                    width : "100%",
-                    height : "100%",
+                    left : 20,
+                    top : 20,
+                    width : 0,
+                    height : 0,
                     sliders : [50, 50, 50, 50, 50]
                 }]
             }, {
@@ -55,23 +57,24 @@ app.factory("sharedScope", function($rootScope) {
                 top : 100,
                 width : "100%",
                 height : "100%",
-                overflow : "hidden",
+                overflow : "visible",
                 fields : [{
                     fieldId: 0,
                     text : "The quick brown fox jumps over a lazy dog.",
                     fontFamily : null,
                     fontWeight : null,
-                    id : 475,
+                    id : 965,
                     fontStyle : "regular",
-                    fontSize : 50,
+                    fontSize : 40,
+                    correctedSize : null,
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
                     cmyk : [0, 0, 0, 100],
-                    left : 0,
-                    top : 0,
-                    width : "100%",
-                    height : "100%",
+                    left : 20,
+                    top : 20,
+                    width : 0,
+                    height : 0,
                     sliders : [50, 50, 50, 50, 50]
                 }]
             }, {
@@ -79,23 +82,24 @@ app.factory("sharedScope", function($rootScope) {
                 top : 100,
                 width : "100%",
                 height : "100%",
-                overflow : "hidden",
+                overflow : "visible",
                 fields : [{
                     fieldId: 0,
                     text : "The quick brown fox jumps over a lazy dog.",
                     fontFamily : null,
                     fontWeight : null,
-                    id : 539,
+                    id : 745,
                     fontStyle : "regular",
-                    fontSize : 50,
+                    fontSize : 40,
+                    correctedSize : null,
                     lineHeight : 50,
                     textAlign : "left",
                     color : "rgb(0,0,0)",
                     cmyk : [0, 0, 0, 100],
-                    left : 0,
-                    top : 0,
-                    width : "100%",
-                    height : "100%",
+                    left : 20,
+                    top : 20,
+                    width : 0,
+                    height : 0,
                     sliders : [50, 50, 50, 50, 50]
                 }]
             }]
@@ -113,7 +117,7 @@ app.factory("sharedScope", function($rootScope) {
             edit : false
         }, {
             name : "Width",
-            edit : true
+            edit : false
         }, {
             name : "Roundness",
             edit : false
