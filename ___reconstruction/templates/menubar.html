@@ -1,8 +1,0 @@
-<dropdown>
-    <div class="dd-head" ng-mousedown="shared.openDropdown('workarea')" ng-class="{'in': !settings.dropdown.workarea, 'out': settings.dropdown.workarea}">
-        {{shared.current.workarea.name}}
-    </div>
-    <div class="dd-body" ng-if="shared.settings.dropdown.workarea">
-        <div class="dd-button" ng-click="shared.changeWorkarea(workarea)" ng-repeat="workarea in shared.workareas" ng-if="workarea != shared.current.workarea">{{workarea.name}}</div>
-    </div>
-</dropdown>
