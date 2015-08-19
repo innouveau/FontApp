@@ -44,9 +44,14 @@
             display: inline-block;
             float: left;
         }
+
+            .social-media {
+                display: inline-block;
+            }
         
             .row {
                 margin-bottom: 4px;
+
             }
     
     @font-face {
@@ -54,6 +59,17 @@
         src: url('../fonts/pando.ttf');
         font-weight: normal;
         font-style: normal;
+    }
+
+    .tiny-logo {
+        vertical-align: top;
+        display: inline-block;
+        float: right;
+        border: 1px dotted #000;
+    }
+
+    .tiny-logo:hover {
+        background: #fff;
     }
     
 
