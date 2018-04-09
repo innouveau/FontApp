@@ -1,0 +1,11 @@
+<framework ng-repeat="paper in shared.current.workarea.papers | limitTo:nrOfWorkareas" ng-style="{'width': (100 / width) + '%', 'height': (100 / height) + '%'}">
+    <paper ng-style="{'width': paper.width, 'height': paper.height, 'overflow': paper.overflow}">
+        <box class="box active-box" ng-class="{'current': field == shared.current.field}" ng-repeat="field in paper.fields" ng-mousedown="setCurrentField(field, paper)" ng-style="{'left': (field.left / width) + 'px', 'top': (field.top / width) + 'px', 'width': (field.width / width) + 'px', 'height': (field.height / width) + 'px'}">
+            <div title="Move Field" class="element-handle">D</div>
+            <div ng-click="removeField()" title="Remove Field" class="remove">d</div>
+            <field ng-model="field.text" ng-style="{'padding-top': (field.fontSize * 2 - field.correctedSize),'font-family': field.fontFamily, 'font-weight': field.fontWeight, 'font-style': field.fontStyle, 'font-size': (field.correctedSize / width), 'line-height': (field.fontSize * field.lineHeight / width / 30 + 0.8 * field.fontSize) + 'px', 'color': field.color, 'text-align': field.textAlign}">
+            </field>
+        </box>
+    </paper>
+</framework>
+

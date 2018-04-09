@@ -1,0 +1,562 @@
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        background: #F2F0E6;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0;
+        padding: 12px;
+    }
+    
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;  
+    }
+    
+    menubar, sidepanel, footer, field, paper, slider, dropdown {
+        display: block;
+    }
+    
+    #top {
+        margin-bottom: 4px;
+        overflow: auto;
+    }
+    
+        #logo {
+            margin-right: 10px;
+            height: 60px;
+            width: auto;
+            display: inline-block;
+            float: left;
+        }
+        
+        #fb {
+            width: calc(100% - 63px);
+            display: inline-block;
+            float: left;
+        }
+
+            .social-media {
+                display: inline-block;
+            }
+        
+            .row {
+                margin-bottom: 4px;
+
+            }
+    
+    @font-face {
+        font-family: 'pando';
+        src: url('../fonts/pando.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .tiny-logo {
+        vertical-align: top;
+        display: inline-block;
+        float: right;
+        border: 1px dotted #000;
+    }
+
+    .tiny-logo:hover {
+        background: #fff;
+    }
+    
+
+
+
+/********** box **********/
+
+
+    .box {
+        position: absolute!important;
+        border: 1px dotted transparent;
+        display: inline-block;
+        box-sizing: content-box;
+    }
+    
+        box:hover .element-handle, box:hover .remove {
+            opacity: 1;
+        }
+    
+        .element-handle, .remove {
+            position: absolute;
+            top: -36px;
+            z-index: 1000;
+            font-family: "pando";
+            display: inline-block;
+            text-align: center;
+            line-height: 24px;
+            
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .element-handle {
+            padding-top: 8px;
+            background: #e6be00;
+            color: #555;
+            left: 0px;
+        }
+        
+        .remove {
+            padding-top: 8px;
+            font-size: 10px;
+            background: red;
+            color: #fff;
+            left: 36px;
+        }
+
+    box > .ui-resizable-handle {
+        width: 8px;
+        height: 8px;
+        border: 1px solid #e6be00;
+        background: #fff;  
+        transition: all 0.3s ease;
+        display: none!important;
+        z-index: 1000;
+    }
+    
+    box.current > .ui-resizable-handle {
+        display: block!important;
+    }
+   
+        box > .ui-resizable-handle:hover {
+            background: #e6be00;  
+        } 
+
+        
+    box .ui-resizable-n {
+        left: calc(50% - 4px);
+        top: -4px;
+    }
+   
+    box .ui-resizable-se {
+        right: -4px;
+        bottom: -4px;
+    }
+   
+    box .ui-resizable-s {
+       left: calc(50% - 4px);
+       bottom: -4px;
+   }
+        
+    box .ui-resizable-w {
+        top: calc(50% - 4px);
+        left: -4px;
+    }    
+    
+    box .ui-resizable-sw {
+        bottom: -4px;
+        left: -4px;
+    }   
+   
+    box .ui-resizable-e {
+        top: calc(50% - 4px);
+        right: -4px;
+    } 
+   
+    box .ui-resizable-nw {
+        top: -4px;
+        left: -4px;
+    } 
+   
+    box .ui-resizable-ne {
+        top: -4px;
+        right: -4px;
+    } 
+    
+    /* making selector stronger by repeating box to overrule other stuff */
+    box.box.box-type-line .ui-resizable-ne, box.box.box-type-line .ui-resizable-se, box.box.box-type-line .ui-resizable-s, box.box.box-type-line .ui-resizable-sw, box.box.box-type-line .ui-resizable-nw, box.box.box-type-line .ui-resizable-n {
+        display: none!important;
+    }
+
+        
+/********** tools **********/
+
+
+    tools {
+        width: 300px;
+        padding-right: 20px;
+        height: 100%;
+        display: inline-block;
+        float: left;
+    }
+    
+        .toolbar-set {
+            width: 100%;
+            display: inline-block;
+            border-left: 1px dotted rgba(0,0,0,0.4);
+            margin-bottom: 4px;
+            border: 1px dotted rgba(0,0,0,0.4);
+        }
+        
+            .toolbar-set-head {
+                width: 100%;
+                color: #e6be00;
+                padding: 4px 10px;
+                font-size: 16px;
+                border-bottom: 1px dotted rgba(0,0,0,0.4);
+            }
+            
+            .toolbar-set-body {
+                padding: 10px;
+            }
+            
+            #font-name-container {
+                height: 28px;
+            }
+        
+                #font-name {
+                    width: calc(100% - 28px);
+                    margin-right: 4px;
+                    display: inline-block;
+                    float: left;
+                    background: #e6be00;
+                    color: #fff;
+                    padding: 4px 8px;
+                }
+                
+                #love-font {
+                    width: 20px;
+                    height: 28px;
+                    padding-top: 4px;
+                    cursor: pointer;
+                    display: inline-block;
+                    float: left;
+                    background: #e6be00;
+                    color: #555;
+                    text-align: center;
+                }
+    
+        slider {
+            height: 28px;
+            padding: 4px;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+        
+            slider.inactive, slider.inactive:hover {
+                opacity: 0.1;
+            }
+        
+            slider:hover {
+                opacity: 0.8;
+            }
+        
+            slider svg {
+                height: 100%;
+            }
+        
+                .slider-background {
+                    fill: none;
+                }
+                
+                .slider-axis {
+                    stroke-width: 2;
+                    stroke: #000;
+                }
+                
+                .slider-handle {
+                    stroke: #000;
+                    stroke-width: 2;
+                    fill: #F2F0E6;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+                
+                    .slider-handle:hover {
+                        fill: #000;
+                    }
+                    
+                .slider-button-on {
+                    stroke: #000;
+                    stroke-width: 2;
+                    fill: #fff;
+                    cursor: pointer;
+                }
+                
+                .slider-button-off {
+                    stroke: #000;
+                    stroke-width: 2;
+                    fill: #000;
+                    cursor: pointer;
+                }
+                
+     #align {
+         margin-top: 10px;
+     }
+                
+    .align {
+        display: inline-block;
+        width: 22px;
+        height: 16px;
+        margin-right: 4px;
+        cursor: pointer;
+    }
+    
+        .align-left {
+            background-image: url('../img/align-left1.png');
+        }
+        
+        .align-left:hover {
+            background-image: url('../img/align-left3.png');
+        }
+    
+        .align-left.selected {
+            background-image: url('../img/align-left2.png');
+        }
+        
+        .align-center {
+            background-image: url('../img/align-center1.png');
+        }
+        
+        .align-center:hover {
+            background-image: url('../img/align-center3.png');
+        }
+    
+        .align-center.selected {
+            background-image: url('../img/align-center2.png');
+        }
+        
+        .align-right {
+            background-image: url('../img/align-right1.png');
+        }
+        
+        .align-right:hover {
+            background-image: url('../img/align-right3.png');
+        }
+    
+        .align-right.selected {
+            background-image: url('../img/align-right2.png');
+        }
+        
+    #color {
+        cursor: pointer;
+        position: relative;
+    }
+    
+        #color-picker {
+            display: inline-block;
+            position: absolute;
+            left: 26px;
+            top: -106px;
+            width: 200px;
+            height: 128px;
+            background: #F2F0E6;
+            border: 1px dotted rgba(0,0,0,0.4);
+            padding: 8px;
+        }
+        
+    #search-container {
+        position: relative;
+        height: 26px;
+    }
+    
+        #searchbox {
+            margin-bottom: 4px;
+            width: 258px;
+            border: 0;
+            padding: 4px 8px;
+        }
+    
+        #found-fonts {
+            position: absolute;
+            left: 0;
+            bottom: 26px;
+            z-index: 100;
+            background: #ddd;
+            width: 258px;
+            padding: 8px 0;
+        }     
+        
+        #found-more {
+            padding: 8px 2px;
+            color: #555;
+            border-top: 1px dotted rgba(0,0,0,0.4);
+            margin-top: 4px;
+        } 
+        
+    #mode {
+        display: inline-block;
+        float: left;
+        width: 100px;
+        margin-right: 4px;
+        height: 38px;
+    }
+        
+        .mode {
+            display: inline-block;
+            width: 22px;
+            height: 16px;
+            margin-right: 4px;
+            cursor: pointer;
+            background: #fff;
+        }
+        
+            .mode-0 {
+                background-image: url('../img/mode0-1.png');
+            }
+            
+            .mode-0:hover {
+                background-image: url('../img/mode0-2.png');
+            }
+        
+            .mode-0.selected {
+                background-image: url('../img/mode0-3.png');
+            }
+            
+            .mode-1 {
+                background-image: url('../img/mode1-1.png');
+            }
+            
+            .mode-1:hover {
+                background-image: url('../img/mode1-2.png');
+            }
+        
+            .mode-1.selected {
+                background-image: url('../img/mode1-3.png');
+            }
+            
+            .mode-2 {
+                background-image: url('../img/mode2-1.png');
+            }
+            
+            .mode-2:hover {
+                background-image: url('../img/mode2-2.png');
+            }
+        
+            .mode-2.selected {
+                background-image: url('../img/mode2-3.png');
+            }
+            
+     #add-field {
+        display: inline-block;
+        float: left;
+        width: calc(100% - 104px);
+        height: 38px;
+     }
+     
+        #add-field .toolbar-set-body {
+            padding-top: 7px;
+        }
+        
+        
+        
+/********** workarea **********/
+
+
+    framework {
+        float: left;
+        display: inline-block;
+        padding: 10px;
+    }
+    
+        workarea {
+            display: inline-block;
+            width: calc(100% - 300px);
+            height: 100%;
+            float: left;
+            overflow: hidden;
+        }
+        
+            paper {
+                background: #fff;
+                position: relative;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+            }
+            
+                field {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    border: 1px solid transparent;
+                    outline: none;
+                    vertical-align: baseline;
+                }
+                
+                .current field {
+                    border: 1px dotted #e6be00;
+                }
+        
+        
+        
+
+/********** dropdown **********/
+
+    dropdown {
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 4px;
+        max-width: 260px;
+    }
+    
+    .dd-head {
+        width: 100%;
+        padding: 3px 4px;
+        position: relative;
+        height: 24px;
+        transition: all 0.1s;
+    }
+    
+        .dd-head.highlighted {
+            background: #fff;
+        }
+    
+        .dd-head.in:before {
+            font-size: 10px;
+            padding-top: 1px;
+            content: "▼";
+            right: 8px;
+            position: absolute;
+        }
+        
+        .dd-head.out:before {
+            font-size: 10px;
+            padding-top: 1px;
+            content: "▲";
+            right: 8px;
+            position: absolute;
+        }
+    
+        .dd-body {
+            position: absolute;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+        }
+        
+            .dd-body.dd-down {
+                top: 24px;
+            }
+        
+            .dd-body.dd-up {
+                bottom: 24px;
+            }
+        
+            .dd-button {
+                width: 100%;
+                height: 24px;
+                background: #ddd;
+                color: #555;
+                padding: 3px 4px;
+                cursor: pointer;
+            }
+            
+            .dd-head:hover, .dd-button:hover {
+                background: #e6be00;
+                color: #fff;
+            }
