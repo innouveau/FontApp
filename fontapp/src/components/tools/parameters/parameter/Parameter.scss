@@ -1,0 +1,21 @@
+@import "styles/variables";
+
+.Parameter {
+    display: flex;
+    align-items: center;
+    height: 28px;
+
+    .Paramater__title {
+        width: calc(100% - 158px);
+    }
+
+    .ParameterSlider {
+        width: 140px;
+        margin-right: 12px;
+    }
+
+    &.Parameter--inactive {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}

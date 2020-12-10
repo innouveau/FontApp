@@ -73,7 +73,7 @@ class Filter extends Component {
 
     render() {
         return (
-            <div className="Filter">
+            <div className="Filter tool-box">
                 <FontCategory
                     setCurrentCategory={this.setCurrentCategory}
                     categories={this.categories}

@@ -1,9 +1,9 @@
-@import "styles/index";
+@import "styles/variables";
 
 .Identity {
     display: flex;
     height: 60px;
-    margin-bottom: $grid-size;
+    margin-bottom: $grid-size-x2;
 
     .Identity__logo {
         height: 100%;

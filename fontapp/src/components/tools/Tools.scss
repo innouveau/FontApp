@@ -1,9 +1,13 @@
-@import "styles/index";
+@import "styles/variables";
 
 .tools {
     width: 300px;
     height: 100%;
     overflow: auto;
-    padding: $grid-size;
+    padding: $grid-size-x2;
     color: $main-text-color;
+
+    select {
+        margin-bottom: 8px;
+    }
 }
