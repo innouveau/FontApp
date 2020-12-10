@@ -1,0 +1,9 @@
+@import "styles/index";
+
+.tools {
+    width: 300px;
+    height: 100%;
+    overflow: auto;
+    padding: $grid-size;
+    color: $main-text-color;
+}

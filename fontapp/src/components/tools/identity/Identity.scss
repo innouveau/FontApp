@@ -1,0 +1,13 @@
+@import "styles/index";
+
+.Identity {
+    display: flex;
+    height: 60px;
+    margin-bottom: $grid-size;
+
+    .Identity__logo {
+        height: 100%;
+        width: auto;
+        display: block;
+    }
+}
