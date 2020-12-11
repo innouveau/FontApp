@@ -7,8 +7,7 @@ function Tools(props) {
     return (
         <div className="tools">
             <Identity/>
-            <Filter
-                fonts={props.fonts}/>
+            <Filter/>
             <Parameters/>
         </div>
     );
