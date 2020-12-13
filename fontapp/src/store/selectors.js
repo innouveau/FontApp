@@ -7,6 +7,26 @@ export const getFilteredFonts = store => {
     })
 };
 
+export const getMatch = store => {
+    let fonts, match, parameters;
+    match = {};
+    fonts = getFilteredFonts(store);
+    parameters = store.parameters.all.filter(p => p.active);
+    for (let font of fonts) {
+        let score = 0;
+        for (let parameter of parameters) {
+            let diff;
+            diff = Math.abs(parameter.value - font[parameter.key]);
+            score += diff;
+        }
+        if (!match.font || score < match.score) {
+            match.font = font;
+            match.score = score;
+        }
+    }
+    return match.font;
+};
+
 export const getParameters = store => store.parameters.all;
 
 export const getCurrentCategory = store => store.settings.category;
