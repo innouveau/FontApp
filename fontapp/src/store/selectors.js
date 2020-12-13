@@ -7,6 +7,10 @@ export const getFilteredFonts = store => {
     })
 };
 
+export const getParameters = store => store.parameters.all;
+
 export const getCurrentCategory = store => store.settings.category;
 
 export const getCurrentStyle = store => store.settings.style;
+
+export const getCurrentParameterValue = (store, parameter) => store.settings[parameter];

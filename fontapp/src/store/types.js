@@ -1,2 +1,3 @@
 export const ADD_FONT = "ADD_FONT";
+export const ADD_PARAMETER = "ADD_PARAMETER";
 export const UPDATE_PROPERTY = "UPDATE_PROPERTY";

@@ -27,7 +27,6 @@ class FontCategory extends Component {
         this.props.updateProperty({key: 'category', value});
     }
 
-
     render() {
         return (
             <div className="FontCategory">

@@ -1,20 +1,21 @@
-import { ADD_FONT } from "./../../types";
-import Font from './Font';
+import { ADD_PARAMETER } from "./../../types";
+import Parameter from './Parameter';
 
 const initialState = {
     all: [],
-    // byIds: {}
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case ADD_FONT: {
+        case ADD_PARAMETER: {
+            let newItem = new Parameter(action.payload.content);
             return {
                 ...state,
-                all: state.all.concat(new Font(action.payload))
+                all: [...state.all, newItem]
+
             }
         }
         default:
             return state;
-    }
+        }
 }

@@ -3,7 +3,7 @@ import Identity from "./identity/Identity";
 import Filter from "./filter/Filter";
 import Parameters from "./parameters/Parameters";
 
-function Tools(props) {
+function Tools() {
     return (
         <div className="tools">
             <Identity/>
