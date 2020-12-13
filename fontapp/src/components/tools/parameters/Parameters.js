@@ -12,11 +12,11 @@ class Parameters extends Component {
     render() {
         return (
             <div className="Parameters tool-box">
-                {/*{this.props.parameters.map(p =>*/}
-                {/*    <Parameter*/}
-                {/*        key={p.id}*/}
-                {/*        parameter={p}/>*/}
-                {/*)}*/}
+                {this.props.parameters.map(parameter =>
+                    <Parameter
+                        key={parameter.id}
+                        parameter={parameter}/>
+                )}
             </div>
         );
     }

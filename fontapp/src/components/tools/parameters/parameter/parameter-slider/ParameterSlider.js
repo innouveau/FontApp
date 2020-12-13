@@ -1,41 +1,23 @@
 import './ParameterSlider.scss';
 import Slider from '@material-ui/core/Slider';
-import {Component} from "react";
-import {connect} from "react-redux";
-import {updateProperty} from "../../../../../store/actions";
-import {getCurrentParameterValue} from "../../../../../store/selectors";
+import {updateParameter} from "../../../../../store/actions";
+import store from "../../../../../store";
 
-const mapStateToProps = state => {
-    return { value: getCurrentParameterValue(state)};
-};
 
-class ParameterSlider extends Component {
-    constructor(props) {
-        super(props);
-    }
+function ParameterSlider(props) {
 
-    update = (value) => {
-        console.log(value);
-        // this.props.updateProperty({key: this.props.parameter.title, value});
+    const update = (event, value) => {
+        store.dispatch(updateParameter({parameter: props.parameter, value}))
     };
 
-    render() {
-        return (
-            <div className="ParameterSlider">
-                <Slider
-                    value={this.props.value}
-                    onChange={(e) => {
-                        this.update(e.target.value)
-                    }}
-                    aria-labelledby="continuous-slider" />
-            </div>
-        );
-    }
-
-
+    return (
+        <div className="ParameterSlider">
+            <Slider
+                value={props.parameter.value}
+                onChange={update}
+                aria-labelledby="continuous-slider" />
+        </div>
+    );
 }
 
-export default connect(
-    mapStateToProps,
-    { updateProperty }
-)(ParameterSlider)
+export default ParameterSlider

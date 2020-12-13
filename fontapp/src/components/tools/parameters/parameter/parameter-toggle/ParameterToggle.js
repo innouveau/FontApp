@@ -1,8 +1,17 @@
 import './ParameterToggle.scss';
+import store from "../../../../../store";
+import {toggleParameter} from "../../../../../store/actions";
 
-function ParameterToggle() {
+function ParameterToggle(props) {
+
+    const toggle = () => {
+        store.dispatch(toggleParameter({parameter: props.parameter}))
+    };
+
     return (
-        <div className="ParameterToggle"></div>
+        <div
+            onClick={toggle}
+            className="ParameterToggle"></div>
     );
 }
 
