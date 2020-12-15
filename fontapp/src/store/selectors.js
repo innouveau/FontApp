@@ -33,4 +33,10 @@ export const getCurrentCategory = store => store.settings.category;
 
 export const getCurrentStyle = store => store.settings.style;
 
+export const getCurrentString = store => store.settings.string;
+
+export const getCurrentFontSize = store => store.settings.fontSize;
+
+
+
 export const getCurrentParameterValue = (store, parameter) => store.settings[parameter];

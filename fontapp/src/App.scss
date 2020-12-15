@@ -9,4 +9,16 @@
     height: 100%;
     overflow: hidden;
     background: $main-color;
+    display: flex;
+    color: $main-text-color;
+
+    .Tools {
+        width: 300px;
+        overflow: auto;
+    }
+
+    .Desk {
+        width: calc(100% - 300px);
+        overflow: hidden;
+    }
 }

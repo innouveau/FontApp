@@ -5,6 +5,7 @@ import parameters from './data/parameters'
 import {addFont, addParameter} from './store/actions'
 import React, { Component } from "react";
 import store from "./store";
+import Desk from "./components/desk/Desk";
 
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Tools/>
+                <Desk/>
             </div>
         );
     }

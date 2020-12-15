@@ -5,7 +5,7 @@ import Parameters from "./parameters/Parameters";
 
 function Tools() {
     return (
-        <div className="tools">
+        <div className="Tools">
             <Identity/>
             <Filter/>
             <Parameters/>
