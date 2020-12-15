@@ -17,13 +17,7 @@ class Filter extends Component {
         return this.props.fonts.length;
     };
 
-    getMatchingFont() {
-        if (this.props.match) {
-            return this.props.match.title;
-        } else {
-            return '-';
-        }
-    }
+
 
     render() {
         return (
@@ -32,10 +26,6 @@ class Filter extends Component {
                 <FontStyle/>
                 <NumberOfFonts
                     n={this.numberOfFonts()}/>
-
-                <div>
-                    {this.getMatchingFont()}
-                </div>
             </div>
         );
     }

@@ -11,17 +11,29 @@ import Desk from "./components/desk/Desk";
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {loaded: false}
     }
 
     componentDidMount() {
+
         this.init();
     }
 
     init(){
+        this.addWebfonts();
         this.addFonts();
         this.addParameters();
         console.log('fonts: ' + fonts.length, store.getState().fonts.all.length);
         console.log('parameters: ' + parameters.length, store.getState().parameters.all.length);
+    }
+
+    addWebfonts() {
+        const script = document.createElement("script");
+        script.src = "//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js";
+        script.async = true;
+        document.body.appendChild(script);
+        this.setState({loaded: true});
+
     }
 
     addFonts() {
@@ -37,12 +49,18 @@ class App extends Component {
     }
 
     render() {
-        return (
-            <div className="App">
-                <Tools/>
-                <Desk/>
-            </div>
-        );
+        if (this.state.loaded) {
+            return (
+                <div className="App">
+                    <Tools/>
+                    <Desk/>
+                </div>
+            );
+        } else {
+            return (
+                <div className="App">Loading...</div>
+            )
+        }
     }
 }
 

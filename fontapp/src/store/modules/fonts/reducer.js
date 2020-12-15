@@ -1,9 +1,8 @@
-import { ADD_FONT } from "./../../types";
+import { ADD_FONT, SET_FONT_LOADED } from "./../../types";
 import Font from './Font';
 
 const initialState = {
-    all: [],
-    // byIds: {}
+    all: []
 };
 
 export default function(state = initialState, action) {
@@ -12,6 +11,24 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 all: state.all.concat(new Font(action.payload))
+            }
+        }
+        case SET_FONT_LOADED: {
+            let newSet = [];
+            for (let item of state.all) {
+                let newItem;
+                if (item.id === action.payload.font.id) {
+                    newItem = {...item, loaded: true};
+                } else {
+                    newItem = {...item};
+                }
+                newSet.push(newItem);
+            }
+
+            return {
+                ...state,
+                all: newSet
+
             }
         }
         default:

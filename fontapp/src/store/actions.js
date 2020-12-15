@@ -1,4 +1,5 @@
 import { ADD_FONT } from "./types";
+import { SET_FONT_LOADED } from "./types";
 import { ADD_PARAMETER } from "./types";
 import { UPDATE_PROPERTY } from "./types";
 import { UPDATE_PARAMETER } from "./types";
@@ -13,6 +14,11 @@ export const addFont = content => ({
         id: ++fontId,
         content
     }
+});
+
+export const setFontLoaded = content => ({
+    type: SET_FONT_LOADED,
+    payload: content
 });
 
 export const addParameter = content => ({
