@@ -20,7 +20,6 @@ class FontFamily extends Component {
 
     loadFont(font) {
         if (font && !font.loaded) {
-            console.log(font);
             store.dispatch(setFontLoaded({font}));
             window.WebFont.load({
                 google : {

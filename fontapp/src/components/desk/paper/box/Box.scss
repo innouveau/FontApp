@@ -1,5 +1,9 @@
 @import "styles/variables";
 
 .Box {
-
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: 1px dotted $theme-color;
 }

@@ -24,11 +24,15 @@ class Text extends Component {
         }
     }
 
+    getCorrectedFontSize() {
+        return Math.round(this.props.fontSize * 400 / this.props.fontFamily.relativeFontSize);
+    }
+
     render() {
         return (
             <div
                 style={{
-                    fontSize: this.props.fontSize + 'px',
+                    fontSize: this.getCorrectedFontSize() + 'px',
                     fontFamily: this.getMatchingFont()
                 }}
                 className="Text">

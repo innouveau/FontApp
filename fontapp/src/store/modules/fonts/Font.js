@@ -3,6 +3,7 @@ class Font {
         this.id = font.id;
         this.title = font.content[0];
         this.fileName = font.content[1];
+        this.relativeFontSize = font.content[2];
         this.category = font.content[3];
         this.url = font.content[11];
         this.boldness = font.content[4];
