@@ -1,9 +1,24 @@
 @import "styles/variables";
 
 .Box {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    border: 1px dotted $theme-color;
+    position: relative;
+
+    .text-container {
+        position: absolute;
+        overflow: hidden;
+    }
+
+
+    .single-resizer {
+        border: 1px dotted $theme-color;
+        background: transparent;
+
+        .resizable-handler {
+            cursor: default!important;
+        }
+
+        .square {
+            border: 1px solid $theme-color;
+        }
+    }
 }

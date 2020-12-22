@@ -1,7 +1,8 @@
 @import "styles/variables";
 
 .Text {
-    vertical-align: baseline;
+
+    height: 100%;
 
     textarea {
         width: 100%;
@@ -9,5 +10,7 @@
         border: 0;
         resize: none;
         outline: none;
+        vertical-align: baseline;
+        background: transparent;
     }
 }

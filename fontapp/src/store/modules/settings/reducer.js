@@ -9,7 +9,12 @@ const initialState = {
     roundness: 50,
     ascender: 50,
     string: 'The quick brown fox jumps over the lazy dog',
-    fontSize: 48
+    fontSize: 24,
+    // temp
+    boxWidth: 500,
+    boxHeight: 300,
+    boxTop: 0,
+    boxLeft: 0
 };
 
 export default function(state = initialState, action) {

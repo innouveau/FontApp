@@ -45,7 +45,7 @@ class Text extends Component {
                     }}
                     value={this.props.string}
                     onChange={(event, value) => {
-               
+
                         this.update(event.target.value)
                     }}/>
             </div>
