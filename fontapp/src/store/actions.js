@@ -4,9 +4,25 @@ import { ADD_PARAMETER } from "./types";
 import { UPDATE_PROPERTY } from "./types";
 import { UPDATE_PARAMETER } from "./types";
 import { TOGGLE_PARAMETER } from "./types";
+import { ADD_BOX } from "./types";
+import { UPDATE_BOX } from "./types";
 
-let fontId;
+let fontId, boxId;
 fontId = 0;
+boxId = 0;
+
+export const addBox = content => ({
+    type: ADD_BOX,
+    payload: {
+        ...content,
+        id: ++boxId
+    }
+});
+
+export const updateBox = content => ({
+    type: UPDATE_BOX,
+    payload: content
+});
 
 export const addFont = content => ({
     type: ADD_FONT,
@@ -23,9 +39,7 @@ export const setFontLoaded = content => ({
 
 export const addParameter = content => ({
     type: ADD_PARAMETER,
-    payload: {
-        content
-    }
+    payload: content
 });
 
 export const updateParameter = content => ({

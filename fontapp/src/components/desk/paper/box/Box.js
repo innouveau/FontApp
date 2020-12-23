@@ -5,7 +5,8 @@ import {Component} from "react";
 import { getCurrentFontSize, getCurrentString, getMatch } from "../../../../store/selectors";
 import {connect} from "react-redux";
 import store from "../../../../store";
-import {updateProperty} from "../../../../store/actions";
+import {updateBox} from "../../../../store/actions";
+import Handle from "./handle/Handle";
 
 const mapStateToProps = state => {
     return {
@@ -17,51 +18,39 @@ const mapStateToProps = state => {
 };
 
 class Box extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
-    handleResize = (style, isShiftKey, type) => {
+    handleResize = (style) => {
         let { top, left, width, height } = style;
         top = Math.round(top);
         left = Math.round(left);
         width = Math.round(width);
         height = Math.round(height);
-        store.dispatch(updateProperty({key: 'boxLeft', value: left}));
-        store.dispatch(updateProperty({key: 'boxTop', value: top}));
-        store.dispatch(updateProperty({key: 'boxWidth', value: width}));
-        store.dispatch(updateProperty({key: 'boxHeight', value: height}));
-    };
-
-    handleDrag = (deltaX, deltaY) => {
-        store.dispatch(updateProperty({key: 'boxLeft', value: (this.props.left + deltaX)}));
-        store.dispatch(updateProperty({key: 'boxTop', value: (this.props.top + deltaY)}));
+        store.dispatch(updateBox({id: this.props.box.id, property: 'left', value: left}));
+        store.dispatch(updateBox({id: this.props.box.id, property: 'top', value: top}));
+        store.dispatch(updateBox({id: this.props.box.id, property: 'width', value: width}));
+        store.dispatch(updateBox({id: this.props.box.id, property: 'height', value: height}));
     };
 
     render(){
         return (
-            <div className="Box">
-                <div
-                    className={'text-container'}
-                    style={{
-                        left: this.props.left + 'px',
-                        top: this.props.top + 'px',
-                        width: this.props.width + 'px',
-                        height: this.props.height + 'px'
-                    }}>
-                    <Text/>
-                </div>
-
+            <div
+                className="Box">
                 <ResizableRect
-                    left={this.props.left}
-                    top={this.props.top}
-                    width={this.props.width}
-                    height={this.props.height}
+                    left={this.props.box.left}
+                    top={this.props.box.top}
+                    width={this.props.box.width}
+                    height={this.props.box.height}
                     zoomable='n, w, s, e, nw, ne, se, sw'
-                    onResize={this.handleResize}
-                    onDrag={this.handleDrag}>
+                    onResize={this.handleResize}/>
 
-                </ResizableRect>
+                <Text
+                    box={this.props.box}/>
+
+                <Handle
+                    box={this.props.box}/>
             </div>
         );
     }

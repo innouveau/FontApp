@@ -2,16 +2,12 @@
 
 .Box {
     position: relative;
+    padding: 8px;
 
-    .text-container {
-        position: absolute;
-        overflow: hidden;
-    }
-
-
-    .single-resizer {
+    > .single-resizer {
         border: 1px dotted $theme-color;
         background: transparent;
+        z-index: 1;
 
         .resizable-handler {
             cursor: default!important;
@@ -20,5 +16,15 @@
         .square {
             border: 1px solid $theme-color;
         }
+    }
+
+    .Text {
+        position: absolute;
+        z-index: 2;
+    }
+
+    .Handle {
+        position: absolute;
+        z-index: 3;
     }
 }

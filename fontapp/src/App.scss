@@ -1,6 +1,10 @@
 @import "styles/index";
 @import "styles/variables";
 
+* {
+    box-sizing: border-box;
+}
+
 .App {
     position: absolute;
     left: 0;

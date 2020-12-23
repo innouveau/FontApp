@@ -1,5 +1,9 @@
 export const getAllFonts = store => store.fonts.all;
 
+export const getBoxes = store => {
+    return store.boxes.all;
+};
+
 export const getFilteredFonts = store => {
     return store.fonts.all.filter(font => {
         return font.category === store.settings.category &&
