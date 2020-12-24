@@ -2,11 +2,11 @@ import './Box.scss';
 import Text from "./text/Text";
 import ResizableRect from 'react-resizable-rotatable-draggable'
 import {Component} from "react";
-import { getCurrentFontSize, getCurrentString, getMatch } from "../../../../store/selectors";
 import {connect} from "react-redux";
 import store from "../../../../store";
-import {updateBox} from "../../../../store/actions";
+import {updateBox, setBoxCurrent} from "../../../../store/actions";
 import Handle from "./handle/Handle";
+import {getCurrentBoxId} from "../../../../store/selectors";
 
 const mapStateToProps = state => {
     return {
@@ -14,6 +14,7 @@ const mapStateToProps = state => {
         height: state.settings.boxHeight,
         top: state.settings.boxTop,
         left: state.settings.boxLeft,
+        currentBoxId: state.boxes.current_id
     };
 };
 
@@ -34,23 +35,45 @@ class Box extends Component {
         store.dispatch(updateBox({id: this.props.box.id, property: 'height', value: height}));
     };
 
+    isCurrent() {
+        return this.props.box.id === this.props.currentBoxId;
+    }
+
+    setCurrent() {
+        store.dispatch(setBoxCurrent(this.props.box.id));
+    }
+
     render(){
-        return (
-            <div
-                className="Box">
-                <ResizableRect
+        const getBox = () => {
+            if (this.isCurrent()) {
+                return <ResizableRect
                     left={this.props.box.left}
                     top={this.props.box.top}
                     width={this.props.box.width}
                     height={this.props.box.height}
                     zoomable='n, w, s, e, nw, ne, se, sw'
                     onResize={this.handleResize}/>
+            }
+        };
+
+        const getHandle = () => {
+            if (this.isCurrent()) {
+                return <Handle
+                    box={this.props.box}/>
+            }
+        };
+
+        return (
+            <div
+                className="Box"
+                onClick={this.setCurrent.bind(this)}>
+
+                {getBox()}
 
                 <Text
                     box={this.props.box}/>
 
-                <Handle
-                    box={this.props.box}/>
+                {getHandle()}
             </div>
         );
     }

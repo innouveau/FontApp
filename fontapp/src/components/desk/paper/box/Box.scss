@@ -3,6 +3,7 @@
 .Box {
     position: relative;
     padding: 8px;
+    z-index: 2;
 
     > .single-resizer {
         border: 1px dotted $theme-color;

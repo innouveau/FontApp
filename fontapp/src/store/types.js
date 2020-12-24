@@ -1,8 +1,12 @@
 export const ADD_FONT = "ADD_FONT";
 export const SET_FONT_LOADED = "SET_FONT_LOADED";
-export const ADD_PARAMETER = "ADD_PARAMETER";
+
 export const UPDATE_PROPERTY = "UPDATE_PROPERTY";
+
+export const ADD_PARAMETER = "ADD_PARAMETER";
 export const UPDATE_PARAMETER = "UPDATE_PARAMETER";
 export const TOGGLE_PARAMETER = "TOGGLE_PARAMETER";
+
 export const ADD_BOX = "ADD_BOX";
 export const UPDATE_BOX = "UPDATE_BOX";
+export const SET_BOX_CURRENT = "SET_BOX_CURRENT";

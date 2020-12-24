@@ -1,8 +1,9 @@
-import { ADD_BOX, UPDATE_BOX } from "./../../types";
+import { ADD_BOX, UPDATE_BOX, SET_BOX_CURRENT } from "./../../types";
 import Box from './Box';
 
 const initialState = {
-    all: []
+    all: [],
+    current_id: null
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +12,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 all: state.all.concat(new Box(action.payload))
+            }
+        }
+        case SET_BOX_CURRENT: {
+            return {
+                ...state,
+                current_id: action.payload
             }
         }
         case UPDATE_BOX: {

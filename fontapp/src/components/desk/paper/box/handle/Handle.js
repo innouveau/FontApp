@@ -35,6 +35,19 @@ class Handle extends Component {
                     width={this.size}
                     height={this.size}
                     onDrag={this.handleDrag}/>
+                    <div
+                        style={{
+                            left: (this.props.box.left - this.size) + 'px',
+                            top: (this.props.box.top - this.size) + 'px',
+                            width: (this.size) + 'px',
+                            height: (this.size) + 'px'
+                        }}
+                        className="Handle__icon">
+                        <div className="Handle__bar"></div>
+                        <div className="Handle__bar"></div>
+                        <div className="Handle__bar"></div>
+                    </div>
+
             </div>
 
         );

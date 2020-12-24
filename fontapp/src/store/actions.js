@@ -6,6 +6,7 @@ import { UPDATE_PARAMETER } from "./types";
 import { TOGGLE_PARAMETER } from "./types";
 import { ADD_BOX } from "./types";
 import { UPDATE_BOX } from "./types";
+import { SET_BOX_CURRENT } from "./types";
 
 let fontId, boxId;
 fontId = 0;
@@ -21,6 +22,11 @@ export const addBox = content => ({
 
 export const updateBox = content => ({
     type: UPDATE_BOX,
+    payload: content
+});
+
+export const setBoxCurrent = content => ({
+    type: SET_BOX_CURRENT,
     payload: content
 });
 
