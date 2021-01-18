@@ -1,6 +1,6 @@
 import './FontCategory.scss';
-import {updateProperty} from "../../../../store/actions";
-import {getCurrentCategory} from '../../../../store/selectors';
+import {updateProperty} from "store/actions";
+import {getCurrentCategory} from 'store/selectors';
 import { useSelector, useDispatch } from "react-redux";
 // import Select from '@material-ui/core/Select';
 

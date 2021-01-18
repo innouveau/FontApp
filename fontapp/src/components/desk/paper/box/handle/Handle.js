@@ -1,5 +1,5 @@
 import './Handle.scss';
-import {updateBox} from './../../../../../store/actions'
+import {updateBox} from 'store/actions'
 import ResizableRect from "react-resizable-rotatable-draggable";
 import { useDispatch } from "react-redux";
 

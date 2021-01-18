@@ -1,15 +1,7 @@
 import './Text.scss';
-import {getCurrentString, getCurrentFontSize, getMatch} from "../../../../../store/selectors";
-import {updateBox} from './../../../../../store/actions'
+import {getCurrentFontSize, getMatch} from "store/selectors";
+import {updateBox} from 'store/actions'
 import { useDispatch, useSelector } from "react-redux";
-
-const mapStateToProps = state => {
-    return {
-        string: getCurrentString(state),
-        fontSize: getCurrentFontSize(state),
-        fontFamily: getMatch(state)
-    };
-};
 
 const Text = (props) => {
     const dispatch = useDispatch();

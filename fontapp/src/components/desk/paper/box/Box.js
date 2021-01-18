@@ -1,7 +1,7 @@
 import './Box.scss';
 import Text from "./text/Text";
 import ResizableRect from 'react-resizable-rotatable-draggable'
-import {updateBox, setBoxCurrent} from "../../../../store/actions";
+import {updateBox, setBoxCurrent} from "store/actions";
 import Handle from "./handle/Handle";
 import { useDispatch, useSelector } from "react-redux";
 

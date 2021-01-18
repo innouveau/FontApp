@@ -1,7 +1,7 @@
 import './FontSize.scss';
 import Slider from "@material-ui/core/Slider";
-import { getCurrentFontSize} from "../../../../store/selectors";
-import {updateProperty} from './../../../../store/actions'
+import { getCurrentFontSize} from "store/selectors";
+import {updateProperty} from 'store/actions'
 import { useSelector, useDispatch } from "react-redux";
 
 

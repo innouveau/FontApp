@@ -1,5 +1,5 @@
 import './ParameterToggle.scss';
-import {toggleParameter} from "../../../../../store/actions";
+import {toggleParameter} from "store/actions";
 import { useDispatch } from "react-redux";
 
 const ParameterToggle = (props) => {

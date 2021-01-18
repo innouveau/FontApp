@@ -1,6 +1,6 @@
 import './ParameterSlider.scss';
 import Slider from '@material-ui/core/Slider';
-import {updateParameter} from "../../../../../store/actions";
+import {updateParameter} from "store/actions";
 import { useDispatch } from "react-redux";
 
 

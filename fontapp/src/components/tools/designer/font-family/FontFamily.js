@@ -1,6 +1,6 @@
 import './FontFamily.scss';
-import {getMatch} from "../../../../store/selectors";
-import {setFontLoaded} from "../../../../store/actions";
+import {getMatch} from "store/selectors";
+import {setFontLoaded} from "store/actions";
 import { useSelector } from "react-redux";
 import React, { useEffect } from 'react';
 import { useDispatch } from "react-redux";

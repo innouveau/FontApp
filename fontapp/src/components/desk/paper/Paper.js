@@ -1,7 +1,7 @@
 import './Paper.scss';
 import Box from "./box/Box";
-import {getBoxes} from "../../../store/selectors";
-import {setBoxCurrent} from "../../../store/actions";
+import {getBoxes} from "store/selectors";
+import {setBoxCurrent} from "store/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const Paper = () => {

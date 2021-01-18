@@ -1,6 +1,6 @@
 import './FontStyle.scss';
-import {updateProperty} from "../../../../store/actions";
-import {getCurrentStyle} from '../../../../store/selectors';
+import {updateProperty} from "store/actions";
+import {getCurrentStyle} from "store/selectors";
 import { useSelector, useDispatch } from "react-redux";
 
 const FontStyle = () => {
