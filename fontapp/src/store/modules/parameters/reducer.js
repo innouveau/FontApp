@@ -37,7 +37,7 @@ export default function(state = initialState, action) {
             let newSet = [];
             for (let item of state.all) {
                 let newItem;
-                if (item.id === action.payload.parameter.id) {
+                if (item.id === action.payload.id) {
                     newItem = {...item, active: !item.active};
                 } else {
                     newItem = {...item};

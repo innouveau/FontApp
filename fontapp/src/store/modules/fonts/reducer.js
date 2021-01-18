@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
             let newSet = [];
             for (let item of state.all) {
                 let newItem;
-                if (item.id === action.payload.font.id) {
+                if (item.id === action.payload.id) {
                     newItem = {...item, loaded: true};
                 } else {
                     newItem = {...item};

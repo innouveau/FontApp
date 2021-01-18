@@ -1,18 +1,15 @@
 import './ParameterToggle.scss';
-import store from "../../../../../store";
 import {toggleParameter} from "../../../../../store/actions";
+import { useDispatch } from "react-redux";
 
-function ParameterToggle(props) {
-
-    const toggle = () => {
-        store.dispatch(toggleParameter({parameter: props.parameter}))
-    };
+const ParameterToggle = (props) => {
+    const dispatch = useDispatch();
 
     return (
         <div
-            onClick={toggle}
+            onClick={() => dispatch(toggleParameter(props.parameter))}
             className="ParameterToggle"></div>
     );
-}
+};
 
 export default ParameterToggle;

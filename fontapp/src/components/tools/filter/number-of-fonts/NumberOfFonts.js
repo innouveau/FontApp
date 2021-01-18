@@ -1,11 +1,14 @@
 import './NumberOfFonts.scss';
+import React from "react";
+import { useSelector } from "react-redux";
+import {getFilteredFonts} from "../../../../store/selectors";
 
-function NumberOfFonts(props) {
+const NumberOfFonts = () => {
+    const n = useSelector(state => getFilteredFonts(state).length);
+
     return (
-        <div className="NumberOfFonts">
-            {props.n} {props.n === 1 ? 'font' : 'fonts'} found
-        </div>
+        <div className="NumberOfFonts">{n}</div>
     );
-}
+};
 
 export default NumberOfFonts;

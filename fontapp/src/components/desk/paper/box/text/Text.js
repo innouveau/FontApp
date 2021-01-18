@@ -1,9 +1,7 @@
 import './Text.scss';
-import {connect} from "react-redux";
-import {Component} from "react";
 import {getCurrentString, getCurrentFontSize, getMatch} from "../../../../../store/selectors";
 import {updateBox} from './../../../../../store/actions'
-import store from "../../../../../store";
+import { useDispatch, useSelector } from "react-redux";
 
 const mapStateToProps = state => {
     return {
@@ -13,55 +11,50 @@ const mapStateToProps = state => {
     };
 };
 
-class Text extends Component {
-    constructor(props) {
-        super(props);
-        this.margin = 8;
-    }
+const Text = (props) => {
+    const dispatch = useDispatch();
 
-    getMatchingFont() {
-        if (this.props.fontFamily) {
-            return this.props.fontFamily.title;
+    const margin = 8;
+    const fontSize = useSelector(state => getCurrentFontSize(state));
+    const fontFamily = useSelector(state => getMatch(state));
+
+    const getMatchingFont = () => {
+        if (fontFamily) {
+            return fontFamily.title;
         } else {
             return '';
         }
-    }
+    };
 
-    getCorrectedFontSize() {
-        return Math.round(this.props.fontSize * 400 / this.props.fontFamily.relativeFontSize);
-    }
+    const getCorrectedFontSize = () => {
+        return Math.round(fontSize * 400 / fontFamily.relativeFontSize);
+    };
 
-    update(value) {
-        store.dispatch(updateBox({id: this.props.box.id, property: 'string', value}));
-    }
+    const update = (value) => {
+        dispatch(updateBox({id: props.box.id, property: 'string', value}));
+    };
 
-    render() {
-        return (
-            <div
-                style={{
-                    left: (this.props.box.left + this.margin) + 'px',
-                    top: (this.props.box.top + this.margin) + 'px',
-                    width: (this.props.box.width - ( 2 * this.margin)) + 'px',
-                    height: (this.props.box.height - ( 2 * this.margin)) + 'px',
-                    fontFamily: this.getMatchingFont()
-                }}
-                className="Text">
+    return (
+        <div
+            style={{
+                left: (props.box.left + margin) + 'px',
+                top: (props.box.top + margin) + 'px',
+                width: (props.box.width - ( 2 * margin)) + 'px',
+                height: (props.box.height - ( 2 * margin)) + 'px',
+                fontFamily: getMatchingFont()
+            }}
+            className="Text">
                 <textarea
                     style={{
-                        fontSize: this.getCorrectedFontSize() + 'px',
-                        fontFamily: this.getMatchingFont()
+                        fontSize: getCorrectedFontSize() + 'px',
+                        fontFamily: getMatchingFont()
                     }}
-                    value={this.props.box.string}
+                    value={props.box.string}
                     onChange={(event, value) => {
-                        this.update(event.target.value)
+                        update(event.target.value)
                     }}/>
-            </div>
-        );
-    }
+        </div>
+    )
+};
 
-
-}
-
-export default connect(
-    mapStateToProps
-)(Text)
+export default Text;

@@ -1,26 +1,20 @@
 import './FontFamily.scss';
-import {Component} from "react";
-import {connect} from "react-redux";
 import {getMatch} from "../../../../store/selectors";
-import store from "../../../../store";
 import {setFontLoaded} from "../../../../store/actions";
+import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch } from "react-redux";
 
-class FontFamily extends Component {
-    constructor(props){
-        super(props);
-    }
 
-    getMatchingFont() {
-        if (this.props.match) {
-            return this.props.match.title;
-        } else {
-            return '-';
-        }
-    }
+const FontFamily = () => {
+    const dispatch = useDispatch();
 
-    loadFont(font) {
-        if (font && !font.loaded) {
-            store.dispatch(setFontLoaded({font}));
+    const font = useSelector(state => getMatch(state));
+
+    useEffect(() => {
+        // todo find a way to wait for window.WebFont
+        if (font && !font.loaded && window.WebFont) {
+            dispatch(setFontLoaded(font));
             window.WebFont.load({
                 google : {
                     families : [font.title + ":" + font.weight]
@@ -31,27 +25,14 @@ class FontFamily extends Component {
                 },
                 inactive : function() {}
             });
-
         }
+    });
 
-    }
+    return (
+        <div className="FontFamily">
+            {font ? font.title : '-'}
+        </div>
+    )
+};
 
-    componentDidUpdate() {
-        this.loadFont(this.props.match);
-    }
-
-    render() {
-        return (
-            <div className="FontFamily">
-                {this.getMatchingFont()}
-            </div>
-        );
-    }
-
-}
-
-export default connect(
-    state => ({
-        match: getMatch(state)
-    })
-)(FontFamily);
+export default FontFamily;

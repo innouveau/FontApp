@@ -4,7 +4,7 @@ import Filter from "./filter/Filter";
 import Parameters from "./parameters/Parameters";
 import Designer from "./designer/Designer";
 
-function Tools() {
+const Tools = () => {
     return (
         <div className="Tools">
             <Identity/>
@@ -13,6 +13,6 @@ function Tools() {
             <Designer/>
         </div>
     );
-}
+};
 
 export default Tools;

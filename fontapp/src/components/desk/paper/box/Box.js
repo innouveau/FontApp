@@ -1,85 +1,69 @@
 import './Box.scss';
 import Text from "./text/Text";
 import ResizableRect from 'react-resizable-rotatable-draggable'
-import {Component} from "react";
-import {connect} from "react-redux";
-import store from "../../../../store";
 import {updateBox, setBoxCurrent} from "../../../../store/actions";
 import Handle from "./handle/Handle";
-import {getCurrentBoxId} from "../../../../store/selectors";
+import { useDispatch, useSelector } from "react-redux";
 
-const mapStateToProps = state => {
-    return {
-        width: state.settings.boxWidth,
-        height: state.settings.boxHeight,
-        top: state.settings.boxTop,
-        left: state.settings.boxLeft,
-        currentBoxId: state.boxes.current_id
-    };
-};
 
-class Box extends Component {
-    constructor(props) {
-        super(props);
-    }
+const Box = (props) => {
+    const dispatch = useDispatch();
 
-    handleResize = (style) => {
+    const currentBoxId = useSelector(state => state.boxes.current_id);
+
+    const handleResize = (style) => {
         let { top, left, width, height } = style;
         top = Math.round(top);
         left = Math.round(left);
         width = Math.round(width);
         height = Math.round(height);
-        store.dispatch(updateBox({id: this.props.box.id, property: 'left', value: left}));
-        store.dispatch(updateBox({id: this.props.box.id, property: 'top', value: top}));
-        store.dispatch(updateBox({id: this.props.box.id, property: 'width', value: width}));
-        store.dispatch(updateBox({id: this.props.box.id, property: 'height', value: height}));
+        dispatch(updateBox({id: props.box.id, property: 'left', value: left}));
+        dispatch(updateBox({id: props.box.id, property: 'top', value: top}));
+        dispatch(updateBox({id: props.box.id, property: 'width', value: width}));
+        dispatch(updateBox({id: props.box.id, property: 'height', value: height}));
     };
 
-    isCurrent() {
-        return this.props.box.id === this.props.currentBoxId;
-    }
+    const isCurrent = () => {
+        return props.box.id === currentBoxId;
+    };
 
-    setCurrent() {
-        store.dispatch(setBoxCurrent(this.props.box.id));
-    }
+    const setCurrent = () => {
+        dispatch(setBoxCurrent(props.box.id));
+    };
 
-    render(){
-        const getBox = () => {
-            if (this.isCurrent()) {
-                return <ResizableRect
-                    left={this.props.box.left}
-                    top={this.props.box.top}
-                    width={this.props.box.width}
-                    height={this.props.box.height}
-                    zoomable='n, w, s, e, nw, ne, se, sw'
-                    onResize={this.handleResize}/>
-            }
-        };
+    const getBox = () => {
+        if (isCurrent()) {
+            return <ResizableRect
+                left={props.box.left}
+                top={props.box.top}
+                width={props.box.width}
+                height={props.box.height}
+                zoomable='n, w, s, e, nw, ne, se, sw'
+                onResize={handleResize}/>
+        }
+    };
 
-        const getHandle = () => {
-            if (this.isCurrent()) {
-                return <Handle
-                    box={this.props.box}/>
-            }
-        };
+    const getHandle = () => {
+        if (isCurrent()) {
+            return <Handle
+                box={props.box}/>
+        }
+    };
 
-        return (
-            <div
-                className="Box"
-                onClick={this.setCurrent.bind(this)}>
+    return (
+        <div
+            className="Box"
+            onClick={setCurrent}>
 
-                {getBox()}
+            {getBox()}
 
-                <Text
-                    box={this.props.box}/>
+            <Text
+                box={props.box}/>
 
-                {getHandle()}
-            </div>
-        );
-    }
-}
+            {getHandle()}
+        </div>
+    )
+};
 
 
-export default connect(
-    mapStateToProps
-)(Box)
+export default Box;

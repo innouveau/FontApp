@@ -1,47 +1,37 @@
 import './FontStyle.scss';
-import {connect} from "react-redux";
 import {updateProperty} from "../../../../store/actions";
-import React, {Component} from "react";
-import {getCurrentStyle} from "../../../../store/selectors";
+import {getCurrentStyle} from '../../../../store/selectors';
+import { useSelector, useDispatch } from "react-redux";
 
+const FontStyle = () => {
+    const dispatch = useDispatch();
 
-const mapStateToProps = state => {
-    return { style: getCurrentStyle(state)};
+    const styles = [
+        'Normal',
+        'Italic'
+    ];
+
+    const currentStyle = useSelector(state => getCurrentStyle(state));
+
+    const update = (value) => {
+        dispatch(updateProperty({key: 'style', value}));
+    };
+
+    return (
+        <div className="FontStyle">
+            <select
+                value={currentStyle}
+                onChange={(e) => {
+                    update(e.target.value)
+                }}>
+                {styles.map(style =>
+                    <option
+                        key={style}
+                        value={style}>{style}</option>
+                )}
+            </select>
+        </div>
+    )
 };
 
-class FontStyle extends Component {
-    constructor(props) {
-        super(props);
-        this.styles = [
-            'Normal',
-            'Italic'
-        ];
-    }
-
-    update(value) {
-        this.props.updateProperty({key: 'style', value});
-    }
-
-    render() {
-        return (
-            <div className="FontStyle">
-                <select
-                    value={this.props.style}
-                    onChange={(e) => {
-                        this.update(e.target.value)
-                    }}>
-                    {this.styles.map(style =>
-                        <option
-                            key={style}
-                            value={style}>{style}</option>
-                    )}
-                </select>
-            </div>
-        );
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    { updateProperty }
-)(FontStyle)
+export default FontStyle;

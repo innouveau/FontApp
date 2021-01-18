@@ -1,13 +1,14 @@
 import './ParameterSlider.scss';
 import Slider from '@material-ui/core/Slider';
 import {updateParameter} from "../../../../../store/actions";
-import store from "../../../../../store";
+import { useDispatch } from "react-redux";
 
 
-function ParameterSlider(props) {
+const ParameterSlider = (props) => {
+    const dispatch = useDispatch();
 
     const update = (event, value) => {
-        store.dispatch(updateParameter({parameter: props.parameter, value}))
+        dispatch(updateParameter({parameter: props.parameter, value}))
     };
 
     return (
@@ -18,6 +19,6 @@ function ParameterSlider(props) {
                 aria-labelledby="continuous-slider" />
         </div>
     );
-}
+};
 
 export default ParameterSlider

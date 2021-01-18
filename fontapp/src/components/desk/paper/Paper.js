@@ -1,36 +1,30 @@
 import './Paper.scss';
 import Box from "./box/Box";
-import {Component} from "react";
-import {connect} from "react-redux";
 import {getBoxes} from "../../../store/selectors";
-import store from "../../../store";
 import {setBoxCurrent} from "../../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 
-class Paper extends Component {
-    constructor(props) {
-        super(props);
-    }
+const Paper = () => {
+    const dispatch = useDispatch();
 
-    clickOutside() {
-        store.dispatch(setBoxCurrent(null));
-    }
+    const clickOutside = () => {
+        dispatch(setBoxCurrent(null));
+    };
 
-    render(){
-        return (
-            <div className="Paper">
-                <div
-                    onClick={this.clickOutside.bind(this)}
-                    className="Paper__outside"/>
-                {this.props.boxes.map(box =>
-                    <Box
-                        key={box.id}
-                        box={box}/>
-                )}
-            </div>
-        );
-    }
-}
+    const boxes = useSelector(state => getBoxes(state));
 
-export default connect(
-    state => ({ boxes: getBoxes(state) })
-)(Paper);
+    return (
+        <div className="Paper">
+            <div
+                onClick={clickOutside}
+                className="Paper__outside"/>
+            {boxes.map(box =>
+                <Box
+                    key={box.id}
+                    box={box}/>
+            )}
+        </div>
+    )
+};
+
+export default Paper;

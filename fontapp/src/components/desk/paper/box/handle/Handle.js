@@ -1,61 +1,40 @@
 import './Handle.scss';
-import {connect} from "react-redux";
-import {Component} from "react";
-import {getCurrentString, getCurrentFontSize, getMatch} from "../../../../../store/selectors";
 import {updateBox} from './../../../../../store/actions'
-import store from "../../../../../store";
 import ResizableRect from "react-resizable-rotatable-draggable";
+import { useDispatch } from "react-redux";
 
-const mapStateToProps = state => {
-    return {
+const Handle = (props) => {
+    const dispatch = useDispatch();
 
+    const size = 24;
+
+    const handleDrag = (deltaX, deltaY) => {
+        dispatch(updateBox({id: props.box.id, property: 'left', value: (props.box.left + deltaX)}));
+        dispatch(updateBox({id: props.box.id, property: 'top', value: (props.box.top + deltaY)}));
     };
+
+    return (
+        <div className="Handle">
+            <ResizableRect
+                left={props.box.left - size}
+                top={props.box.top - size}
+                width={size}
+                height={size}
+                onDrag={handleDrag}/>
+            <div
+                style={{
+                    left: (props.box.left - size) + 'px',
+                    top: (props.box.top - size) + 'px',
+                    width: (size) + 'px',
+                    height: (size) + 'px'
+                }}
+                className="Handle__icon">
+                <div className="Handle__bar"></div>
+                <div className="Handle__bar"></div>
+                <div className="Handle__bar"></div>
+            </div>
+        </div>
+    )
 };
 
-class Handle extends Component {
-    constructor(props) {
-        super(props);
-        this.size = 24;
-    }
-
-
-
-
-    handleDrag = (deltaX, deltaY) => {
-        store.dispatch(updateBox({id: this.props.box.id, property: 'left', value: (this.props.box.left + deltaX)}));
-        store.dispatch(updateBox({id: this.props.box.id, property: 'top', value: (this.props.box.top + deltaY)}));
-    };
-
-    render() {
-        return (
-            <div className="Handle">
-                <ResizableRect
-                    left={this.props.box.left - this.size}
-                    top={this.props.box.top - this.size}
-                    width={this.size}
-                    height={this.size}
-                    onDrag={this.handleDrag}/>
-                    <div
-                        style={{
-                            left: (this.props.box.left - this.size) + 'px',
-                            top: (this.props.box.top - this.size) + 'px',
-                            width: (this.size) + 'px',
-                            height: (this.size) + 'px'
-                        }}
-                        className="Handle__icon">
-                        <div className="Handle__bar"></div>
-                        <div className="Handle__bar"></div>
-                        <div className="Handle__bar"></div>
-                    </div>
-
-            </div>
-
-        );
-    }
-
-
-}
-
-export default connect(
-    mapStateToProps
-)(Handle)
+export default Handle
