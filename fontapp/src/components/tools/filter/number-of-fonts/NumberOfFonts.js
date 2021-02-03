@@ -7,7 +7,7 @@ const NumberOfFonts = () => {
     const n = useSelector(state => getFilteredFonts(state).length);
 
     return (
-        <div className="NumberOfFonts">{n}</div>
+        <div className="NumberOfFonts">{n} fonts found</div>
     );
 };
 
