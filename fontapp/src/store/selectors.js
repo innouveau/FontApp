@@ -36,6 +36,10 @@ export const getMatch = store => {
     return match.font;
 };
 
+export const getFontById = (store, font_id) => {
+    return store.fonts.all.find(font => font.id === font_id);
+};
+
 export const getParameters = store => store.parameters.all;
 
 export const getCurrentCategory = store => store.settings.category;

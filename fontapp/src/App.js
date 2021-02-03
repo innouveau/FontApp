@@ -37,8 +37,8 @@ class App extends Component {
 
     addBoxes() {
         let boxes = [
-            {left: 100, top: 70, string: 'Hello'},
-            {left: 100, top: 200, string: 'World'}
+            {left: 100, top: 70, string: 'Hello', font_id: 294},
+            {left: 100, top: 200, string: 'World', font_id: 644}
         ];
         for (let box of boxes) {
             store.dispatch(addBox(box))

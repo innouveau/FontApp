@@ -7,6 +7,7 @@ import { TOGGLE_PARAMETER } from "./types";
 import { ADD_BOX } from "./types";
 import { UPDATE_BOX } from "./types";
 import { SET_BOX_CURRENT } from "./types";
+import { SET_FONT_SEARCH } from "./types";
 
 let fontId, boxId;
 fontId = 0;
@@ -40,6 +41,11 @@ export const addFont = content => ({
 
 export const setFontLoaded = content => ({
     type: SET_FONT_LOADED,
+    payload: content
+});
+
+export const setFontSearch = content => ({
+    type: SET_FONT_SEARCH,
     payload: content
 });
 

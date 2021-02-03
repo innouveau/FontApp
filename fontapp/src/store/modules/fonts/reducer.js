@@ -1,8 +1,9 @@
-import { ADD_FONT, SET_FONT_LOADED } from "./../../types";
+import {ADD_FONT, SET_FONT_LOADED, SET_FONT_SEARCH} from "./../../types";
 import Font from './Font';
 
 const initialState = {
-    all: []
+    all: [],
+    search: ''
 };
 
 export default function(state = initialState, action) {
@@ -29,6 +30,12 @@ export default function(state = initialState, action) {
                 ...state,
                 all: newSet
 
+            }
+        }
+        case SET_FONT_SEARCH: {
+            return {
+                ...state,
+                search: action.payload
             }
         }
         default:

@@ -1,0 +1,15 @@
+@import "styles/variables";
+
+.SearchResult {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &:hover {
+        background: #ddd;
+    }
+}

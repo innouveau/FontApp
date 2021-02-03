@@ -1,5 +1,6 @@
 export const ADD_FONT = "ADD_FONT";
 export const SET_FONT_LOADED = "SET_FONT_LOADED";
+export const SET_FONT_SEARCH = "SET_FONT_SEARCH";
 
 export const UPDATE_PROPERTY = "UPDATE_PROPERTY";
 

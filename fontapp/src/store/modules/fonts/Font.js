@@ -11,7 +11,7 @@ class Font {
         this.width = font.content[6];
         this.roundness = font.content[7];
         this.ascender = font.content[8];
-        this.weight = font.content[0];
+        this.weight = font.content[9];
         this.style = font.content[10];
         this.source = font.content[12];
         this.loaded = false;

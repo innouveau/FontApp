@@ -6,7 +6,8 @@ class Box {
         width = 300,
         height = 100,
         string = 'Lorem ipsum dolor sit amet',
-        textAlign = 'left'
+        textAlign = 'left',
+        font_id = 300
     }) {
         this.id = id;
         this.left = left;
@@ -15,6 +16,7 @@ class Box {
         this.height = height;
         this.string = string;
         this.textAlign = textAlign;
+        this.font_id = font_id;
     }
 }
 

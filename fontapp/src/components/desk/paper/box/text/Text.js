@@ -1,5 +1,5 @@
 import './Text.scss';
-import {getCurrentFontSize, getMatch} from "store/selectors";
+import {getCurrentFontSize, getFontById} from "store/selectors";
 import {updateBox} from 'store/actions'
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,7 +8,7 @@ const Text = (props) => {
 
     const margin = 8;
     const fontSize = useSelector(state => getCurrentFontSize(state));
-    const fontFamily = useSelector(state => getMatch(state));
+    const fontFamily = useSelector(state => getFontById(state, props.box.font_id));
 
     const getMatchingFont = () => {
         if (fontFamily) {
