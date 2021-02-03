@@ -4,6 +4,7 @@
 fontapp/node_modules
 fontapp/.pnp
 fontapp.pnp.js
+fontapp/.eslintcache
 
 # testing
 fontapp/coverage
