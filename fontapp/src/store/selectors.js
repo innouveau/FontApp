@@ -4,6 +4,10 @@ export const getBoxes = store => {
     return store.boxes.all;
 };
 
+export const getCurrentBox = store => {
+    return store.boxes.all.find(box => box.id === store.boxes.current_id);
+};
+
 export const getFilteredFonts = store => {
     return store.fonts.all.filter(font => {
         return font.category === store.settings.category &&

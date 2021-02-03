@@ -1,4 +1,5 @@
 import './Designer.scss';
+import Align from "./align/Align";
 import FontSize from "./font-size/FontSize";
 import FontFamily from "./font-family/FontFamily";
 
@@ -7,6 +8,7 @@ const Designer = () => {
         <div className="Designer tool-box">
             <FontFamily/>
             <FontSize/>
+            <Align/>
         </div>
     );
 };

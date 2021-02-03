@@ -34,12 +34,14 @@ const Text = (props) => {
                 width: (props.box.width - ( 2 * margin)) + 'px',
                 height: (props.box.height - ( 2 * margin)) + 'px',
                 fontFamily: getMatchingFont()
+
             }}
             className="Text">
                 <textarea
                     style={{
                         fontSize: getCorrectedFontSize() + 'px',
-                        fontFamily: getMatchingFont()
+                        fontFamily: getMatchingFont(),
+                        textAlign: props.box.textAlign
                     }}
                     value={props.box.string}
                     onChange={(event, value) => {

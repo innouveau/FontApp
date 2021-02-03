@@ -1,0 +1,26 @@
+@import "styles/variables";
+
+.AlignButton {
+    width: 24px;
+    margin-right: 6px;
+    padding: 2px;
+    background: #888;
+    cursor: pointer;
+
+    &.AlignButton--active {
+        background: $theme-color;
+        pointer-events: none;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    &:hover {
+        background: #000;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
