@@ -16,7 +16,7 @@ export const getFilteredFonts = store => {
     })
 };
 
-export const getMatch = store => {
+export const getBestMatch = store => {
     let fonts, match, parameters;
     match = {};
     fonts = getFilteredFonts(store);

@@ -10,7 +10,7 @@ const Text = (props) => {
     const fontSize = useSelector(state => getCurrentFontSize(state));
     const fontFamily = useSelector(state => getFontById(state, props.box.font_id));
 
-    const getMatchingFont = () => {
+    const fontFamilyTitle = () => {
         if (fontFamily) {
             return fontFamily.title;
         } else {
@@ -33,14 +33,14 @@ const Text = (props) => {
                 top: (props.box.top + margin) + 'px',
                 width: (props.box.width - ( 2 * margin)) + 'px',
                 height: (props.box.height - ( 2 * margin)) + 'px',
-                fontFamily: getMatchingFont()
+                fontFamily: fontFamilyTitle()
 
             }}
             className="Text">
                 <textarea
                     style={{
                         fontSize: getCorrectedFontSize() + 'px',
-                        fontFamily: getMatchingFont(),
+                        fontFamily: fontFamilyTitle(),
                         textAlign: props.box.textAlign
                     }}
                     value={props.box.string}
