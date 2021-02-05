@@ -36,6 +36,15 @@ export const getMatch = store => {
     return match.font;
 };
 
+export const getCurrentFont = (store) => {
+    let box = getCurrentBox(store);
+    if (box) {
+        return getFontById(store, box.font_id);
+    } else {
+        return null;
+    }
+};
+
 export const getFontById = (store, font_id) => {
     return store.fonts.all.find(font => font.id === font_id);
 };
@@ -49,7 +58,5 @@ export const getCurrentStyle = store => store.settings.style;
 export const getCurrentString = store => store.settings.string;
 
 export const getCurrentFontSize = store => store.settings.fontSize;
-
-
 
 export const getCurrentParameterValue = (store, parameter) => store.settings[parameter];

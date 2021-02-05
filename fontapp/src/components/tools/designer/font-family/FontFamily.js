@@ -1,5 +1,5 @@
 import './FontFamily.scss';
-import {getMatch} from "store/selectors";
+import {getCurrentFont} from "store/selectors";
 import {setFontLoaded} from "store/actions";
 import { useSelector } from "react-redux";
 import React, { useEffect } from 'react';
@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 const FontFamily = () => {
     const dispatch = useDispatch();
 
-    const font = useSelector(state => getMatch(state));
+    const font = useSelector(state => getCurrentFont(state));
 
     useEffect(() => {
         // todo find a way to wait for window.WebFont

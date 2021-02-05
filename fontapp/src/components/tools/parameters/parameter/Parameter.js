@@ -3,6 +3,7 @@ import ParameterToggle from "./parameter-toggle/ParameterToggle";
 import ParameterSlider from "./parameter-slider/ParameterSlider";
 
 const Parameter = (props) => {
+
     return (
         <div className={`Parameter ${!props.parameter.active ? 'Parameter--inactive' : '' }`}>
             <div className="Paramater__title">
