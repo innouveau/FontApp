@@ -4,7 +4,6 @@ import {updateParameter, updateBox} from "store/actions";
 import {getBestMatch} from "store/selectors";
 import {useDispatch, useSelector} from "react-redux";
 
-
 const ParameterSlider = (props) => {
     const dispatch = useDispatch();
 
