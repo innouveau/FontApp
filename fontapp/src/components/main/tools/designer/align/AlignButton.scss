@@ -2,7 +2,6 @@
 
 .AlignButton {
     width: 24px;
-    margin-right: 6px;
     padding: 2px;
     background: #888;
     cursor: pointer;
@@ -14,6 +13,7 @@
 
     img {
         width: 100%;
+        display: block;
     }
 
     &:hover {
@@ -23,4 +23,8 @@
     &:last-child {
         margin-right: 0;
     }
+}
+
+.react-ripples {
+    margin-right: 6px;
 }
