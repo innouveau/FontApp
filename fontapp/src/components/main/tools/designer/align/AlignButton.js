@@ -22,7 +22,9 @@ const AlignButton = (props) => {
         <div
             onClick={() => update()}
             className={`AlignButton ${isActive() ? "AlignButton--active" : ""}`}>
-            <img src={`icons/align-${props.textAlign}.svg`}/>
+            <img
+                src={`icons/align-${props.textAlign}.svg`}
+                alt={`align ${props.textAlign}`}/>
         </div>
     );
 };

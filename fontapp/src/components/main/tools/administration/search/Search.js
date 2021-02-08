@@ -1,5 +1,4 @@
 import './Search.scss';
-import { useState } from 'react';
 import SearchResults from "./SearchResults";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllFonts} from "store/selectors";

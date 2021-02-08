@@ -5,7 +5,7 @@ const initialState = {
     all: [],
 };
 
-export default function(state = initialState, action) {
+export default function parameterReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_PARAMETER: {
             let newItem = new Parameter(action.payload);

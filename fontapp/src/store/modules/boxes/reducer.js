@@ -6,7 +6,7 @@ const initialState = {
     current_id: null
 };
 
-export default function(state = initialState, action) {
+export default function boxesReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_BOX: {
             return {

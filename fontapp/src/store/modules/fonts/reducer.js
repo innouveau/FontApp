@@ -6,7 +6,7 @@ const initialState = {
     search: ''
 };
 
-export default function(state = initialState, action) {
+export default function fontReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_FONT: {
             return {

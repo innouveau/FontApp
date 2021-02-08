@@ -17,7 +17,7 @@ const initialState = {
     boxLeft: 0
 };
 
-export default function(state = initialState, action) {
+export default function settingsReducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_PROPERTY: {
             return {
