@@ -60,14 +60,14 @@ class Main extends Component {
     render() {
         if (this.state.loaded) {
             return (
-                <div className="Main">
+                <div className="page">
                     <Tools/>
                     <Desk/>
                 </div>
             );
         } else {
             return (
-                <div className="Main">Loading...</div>
+                <div className="page">Loading...</div>
             )
         }
     }
