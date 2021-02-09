@@ -25,6 +25,7 @@ const Parameters = () => {
         }
     };
 
+    // https://stackoverflow.com/questions/58624200/react-hook-useeffect-has-a-missing-dependency-dispatch
     useEffect(updateAfterBoxChange, [currentBoxId]);
 
     return (
