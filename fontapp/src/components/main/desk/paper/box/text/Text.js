@@ -1,5 +1,5 @@
 import './Text.scss';
-import {getCurrentFontSize, getFontById} from "store/selectors";
+import {getFontById} from "store/selectors";
 import {updateBox} from 'store/actions'
 import { useDispatch, useSelector } from "react-redux";
 
@@ -7,7 +7,6 @@ const Text = (props) => {
     const dispatch = useDispatch();
 
     const margin = 8;
-    const fontSize = useSelector(state => getCurrentFontSize(state));
     const fontFamily = useSelector(state => getFontById(state, props.box.font_id));
 
     const fontFamilyTitle = () => {
@@ -19,7 +18,7 @@ const Text = (props) => {
     };
 
     const getCorrectedFontSize = () => {
-        return Math.round(fontSize * 400 / fontFamily.relativeFontSize);
+        return Math.round(props.box.fontSize * 400 / fontFamily.relativeFontSize);
     };
 
     const update = (value) => {
@@ -41,7 +40,8 @@ const Text = (props) => {
                     style={{
                         fontSize: getCorrectedFontSize() + 'px',
                         fontFamily: fontFamilyTitle(),
-                        textAlign: props.box.textAlign
+                        textAlign: props.box.textAlign,
+                        color: props.box.color
                     }}
                     value={props.box.string}
                     onChange={(event, value) => {

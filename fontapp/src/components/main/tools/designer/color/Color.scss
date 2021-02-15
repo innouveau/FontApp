@@ -1,0 +1,52 @@
+@import "styles/variables";
+
+.Color {
+    margin-bottom: 8px;
+    position: relative;
+
+    .Color__swatch {
+        width: 24px;
+        height: 24px;
+    }
+
+    .Color__popup {
+        position: absolute;
+        left: -2px;
+        top: -2px;
+        z-index: 1;
+        padding: 24px 8px 8px 8px;
+        background: #fff;
+        box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+
+        .chrome-picker {
+            box-shadow: none!important;
+        }
+
+        .Color__close {
+            position: absolute;
+            right: 4px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+
+            &:before, &:after {
+                position: absolute;
+                left: 6px;
+                top: 1px;
+                content: ' ';
+                height: 12px;
+                width: 2px;
+                background-color: $theme-color-dark-1;
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
