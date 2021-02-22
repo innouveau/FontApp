@@ -1,15 +1,17 @@
 <script>
-	import Tools from './tools/Tools.svelte'
+    import Tools from './tools/Tools.svelte'
+    import Desk from './desk/Desk.svelte'
     export let name;
 </script>
 
-<main>
-    Main
-</main>
+<div class="App">
+    <Tools/>
+    <Desk/>
+</div>
 
-<Tools/>
 
 <style>
-
-
+    .App {
+        display: flex;
+    }
 </style>

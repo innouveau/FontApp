@@ -1,9 +1,10 @@
 <script>
+    import Identity from "./Identity.svelte";
 
 </script>
 
 <div class="Tools">
-    Tools
+    <Identity/>
 </div>
 
 <style>
