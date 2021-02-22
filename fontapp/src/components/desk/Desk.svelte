@@ -10,6 +10,7 @@
 
 <style>
     .Desk {
-
+        width: calc(100% - 300px);
+        overflow: hidden;
     }
 </style>

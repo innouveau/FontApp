@@ -4,9 +4,10 @@
 
 
 <div class="Identity">
-    Identity
+    <img
+        class="Identity__logo" src="assets/img/logo_fontapp.jpg"
+        alt="Logo FontApp"/>
 </div>
-
 
 <style>
     .Identity {
