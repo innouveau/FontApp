@@ -1,14 +1,19 @@
 <script>
     import ParameterSlider from "./ParameterSlider.svelte";
+    import ParameterToggle from "./ParameterToggle.svelte";
+
     export let parameter;
 </script>
 
 
-<div class="Parameter">
+<div
+    class="Parameter"
+    class:Parameter--inactive={!parameter.active}>
     <div class="Parameter__title">
         {parameter.title} ({parameter.value})
     </div>
     <ParameterSlider parameter={parameter}/>
+    <ParameterToggle parameter={parameter}/>
 </div>
 
 

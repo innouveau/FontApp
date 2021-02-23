@@ -22,5 +22,17 @@
     .ParameterSlider {
         width: 140px;
         margin-right: 12px;
+
+        :global(.rangeSlider) {
+            margin: 0;
+            height: 2px;
+            border-radius: 0;
+
+            .rangeHandle {
+
+                .rangeNub {
+                }
+            }
+        }
     }
 </style>
