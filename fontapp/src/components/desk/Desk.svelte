@@ -1,10 +1,11 @@
 <script>
+    import Paper from "./Paper.svelte";
 
 </script>
 
 
 <div class="Desk">
-    Desk
+    <Paper/>
 </div>
 
 
@@ -12,5 +13,6 @@
     .Desk {
         width: calc(100% - 300px);
         overflow: hidden;
+        padding: 20px;
     }
 </style>

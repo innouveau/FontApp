@@ -4,6 +4,7 @@ import { writable, derived } from 'svelte/store';
 
 export const parameters = writable([]);
 export const fonts = writable([]);
+export const boxes = writable([]);
 
 // tools
 export const currentCategory = writable('Sans Serif');

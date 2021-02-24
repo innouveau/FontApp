@@ -1,11 +1,13 @@
 <script>
     import Tools from './tools/Tools.svelte';
     import Desk from './desk/Desk.svelte';
-    import {parameters, fonts} from 'store/index.js'
+    import {parameters, fonts, boxes} from 'store/index.js'
     import data_parameters from 'data/parameters.js';
     import data_fonts from 'data/fonts.js';
+    import data_boxes from 'data/boxes.js';
     import Parameter from 'classes/Parameter.js';
     import Font from 'classes/Font.js';
+    import Box from 'classes/Box.js';
     import { addToStore } from 'store/store-tools.js';
 
     function initParameters(set) {
@@ -16,12 +18,20 @@
 
     function initFonts(set) {
         for (let item of set) {
-            $fonts = addToStore($fonts, new Font(item));
+            let id = set.indexOf(item) + 1;
+            $fonts = addToStore($fonts, new Font(item, id));
+        }
+    }
+
+    function initBoxes(set) {
+        for (let item of set) {
+            $boxes = addToStore($boxes, new Box(item));
         }
     }
 
     initFonts(data_fonts);
     initParameters(data_parameters);
+    initBoxes(data_boxes)
 </script>
 
 <div class="App page">

@@ -1,5 +1,6 @@
 class Font {
-    constructor(font) {
+    constructor(font, id) {
+        this.id = id;
         this.title = font[0];
         this.fileName = font[1];
         this.relativeFontSize = font[2];
