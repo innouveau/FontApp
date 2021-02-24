@@ -5,6 +5,8 @@ import { writable, derived } from 'svelte/store';
 export const parameters = writable([]);
 export const fonts = writable([]);
 export const boxes = writable([]);
+export const currentBox = writable(null);
+export const search = writable('');
 
 // tools
 export const currentCategory = writable('Sans Serif');
@@ -41,5 +43,29 @@ export const getBestMatch = derived(
             }
         }
         return match.font;
+    }
+);
+
+export const getFontsBySearch = derived(
+    [fonts, search],
+    ([fonts, search]) => {
+        if (search.length === 0) {
+            return [];
+        } else {
+            return fonts.filter(font => {
+                return font.title.toLowerCase().indexOf(search.toLowerCase()) > -1;
+            });
+        }
+    }
+);
+
+export const getCurrentFont = derived(
+    [currentBox, fonts],
+    ([currentBox, fonts]) => {
+        if (!currentBox) {
+            return null;
+        } else {
+            return fonts.find(font => font.id === currentBox.font_id)
+        }
     }
 );

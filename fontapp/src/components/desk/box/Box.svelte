@@ -1,9 +1,12 @@
 <script>
     import Text from "./Text.svelte";
+    import Handle from "./Handle.svelte";
+    import { currentBox } from "store/index.js";
+
     export let box;
 
     const select = () => {
-        console.log(box);
+        currentBox.set(box);
     }
 </script>
 
@@ -12,6 +15,7 @@
     on:click={select}
     class="Box">
     <Text box={box}/>
+<!--    <Handle box={box}/>-->
 </div>
 
 

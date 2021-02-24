@@ -1,9 +1,9 @@
 <script>
-    import {boxes} from 'store/index.js'
+    import { boxes, currentBox } from 'store/index.js'
     import Box from "./box/Box.svelte";
 
     const clickOutside = () => {
-        console.log('click outside');
+        currentBox.set(null);
     };
 </script>
 
@@ -11,7 +11,7 @@
 <div class="Paper">
     <div
         on:click={clickOutside}
-        className="Paper__outside"/>
+        class="Paper__outside"/>
     {#each $boxes as box}
         <Box box={box}/>
     {/each}

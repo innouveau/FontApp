@@ -25,6 +25,7 @@
 
     function initBoxes(set) {
         for (let item of set) {
+            item.id = set.indexOf(item) + 1;
             $boxes = addToStore($boxes, new Box(item));
         }
     }

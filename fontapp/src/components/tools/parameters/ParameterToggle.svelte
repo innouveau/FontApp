@@ -1,11 +1,11 @@
 <script>
     import {parameters} from 'store/index.js'
-    import { addPropertyOfItem } from 'store/store-tools.js';
+    import { updatePropertyOfItem } from 'store/store-tools.js';
 
     export let parameter;
 
     const update = () => {
-        $parameters = addPropertyOfItem($parameters, parameter, 'active', !parameter.active);
+        $parameters = updatePropertyOfItem($parameters, parameter, 'active', !parameter.active);
     }
 </script>
 

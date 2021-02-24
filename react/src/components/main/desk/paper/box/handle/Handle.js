@@ -14,7 +14,8 @@ const Handle = (props) => {
     };
 
     return (
-        <div className="Handle">
+        <div
+            className="Handle">
             <ResizableRect
                 left={props.box.left - size}
                 top={props.box.top - size}
