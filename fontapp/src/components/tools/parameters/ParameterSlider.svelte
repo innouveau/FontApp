@@ -27,10 +27,23 @@
             margin: 0;
             height: 2px;
             border-radius: 0;
+            background: #6B6964;
 
-            .rangeHandle {
+            :global(.rangeHandle) {
+                width: 18px;
+                height: 18px;
+                top: -2px;
+                outline: none;
 
-                .rangeNub {
+                :global(.rangeNub) {
+                    background: #F2F0E6;
+                    border: 2px solid #6B6964;
+                    opacity: 1;
+                }
+
+                &:before {
+                    top: 5px;
+                    left: 5px;
                 }
             }
         }

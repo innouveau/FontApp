@@ -10,7 +10,7 @@
     class="Parameter"
     class:Parameter--inactive={!parameter.active}>
     <div class="Parameter__title">
-        {parameter.title} ({parameter.value})
+        {parameter.title}
     </div>
     <ParameterSlider parameter={parameter}/>
     <ParameterToggle parameter={parameter}/>
