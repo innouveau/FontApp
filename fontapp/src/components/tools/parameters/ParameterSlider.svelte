@@ -30,8 +30,8 @@
             background: #6B6964;
 
             :global(.rangeHandle) {
-                width: 18px;
-                height: 18px;
+                width: 16px;
+                height: 16px;
                 top: -2px;
                 outline: none;
 

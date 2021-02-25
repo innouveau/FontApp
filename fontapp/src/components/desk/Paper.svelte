@@ -1,9 +1,9 @@
 <script>
-    import { boxes, currentBox } from 'store/index.js'
+    import { boxes, currentBox_id } from 'store/index.js'
     import Box from "./box/Box.svelte";
 
     const clickOutside = () => {
-        currentBox.set(null);
+        currentBox_id.set(null);
     };
 </script>
 

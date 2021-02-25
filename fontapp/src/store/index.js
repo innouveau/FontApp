@@ -5,7 +5,7 @@ import { writable, derived } from 'svelte/store';
 export const parameters = writable([]);
 export const fonts = writable([]);
 export const boxes = writable([]);
-export const currentBox = writable(null);
+export const currentBox_id = writable(null);
 export const search = writable('');
 
 // tools
@@ -60,11 +60,12 @@ export const getFontsBySearch = derived(
 );
 
 export const getCurrentFont = derived(
-    [currentBox, fonts],
-    ([currentBox, fonts]) => {
-        if (!currentBox) {
+    [currentBox_id, boxes, fonts],
+    ([currentBox_id, boxes, fonts]) => {
+        if (!currentBox_id) {
             return null;
         } else {
+            let currentBox = boxes.find(box => box.id === currentBox_id);
             return fonts.find(font => font.id === currentBox.font_id)
         }
     }

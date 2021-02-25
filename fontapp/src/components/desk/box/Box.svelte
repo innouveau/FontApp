@@ -1,12 +1,12 @@
 <script>
     import Text from "./Text.svelte";
     import Handle from "./Handle.svelte";
-    import { currentBox } from "store/index.js";
+    import { currentBox_id } from "store/index.js";
 
     export let box;
 
     const select = () => {
-        currentBox.set(box);
+        currentBox_id.set(box.id);
     }
 </script>
 

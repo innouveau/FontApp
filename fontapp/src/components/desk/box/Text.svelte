@@ -1,29 +1,37 @@
 <script>
     import {fonts} from 'store/index.js'
 
-    export let box;
+    export let box, fontFamilyTitle, correctedFontSize;
 
-    const fontFamily = $fonts.find(font => font.id === box.font_id);
+    $: {
+        const getCorrectedFontSize = () => {
+            return Math.round(box.fontSize * 400 / getFontFamily().relativeFontSize) + 'px';
+        };
 
-    const getCorrectedFontSize = () => {
-        return Math.round(box.fontSize * 400 / fontFamily.relativeFontSize) + 'px';
-    };
+        const getFontFamily = () => {
+            return $fonts.find(font => font.id === box.font_id);
+        };
 
-    const fontFamilyTitle = () => {
-        if (fontFamily) {
-            return fontFamily.title;
-        } else {
-            return '';
-        }
-    };
+        const getFontFamilyTitle = () => {
+            let fontFamily = $fonts.find(font => font.id === box.font_id);
+            if (fontFamily) {
+                return fontFamily.title;
+            } else {
+                return '';
+            }
+        };
+
+        fontFamilyTitle = getFontFamilyTitle();
+        correctedFontSize = getCorrectedFontSize();
+    }
 </script>
 
-
+{box.font_id}
 <div class="Text">
     <textarea
         style="
-            font-size: {getCorrectedFontSize()};
-            font-family: {fontFamilyTitle()};
+            font-size: {correctedFontSize};
+            font-family: {fontFamilyTitle};
             text-align: {box.textAlign};
             color: {box.color}"
         value={box.string}/>
