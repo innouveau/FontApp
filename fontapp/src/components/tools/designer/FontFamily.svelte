@@ -20,7 +20,7 @@
     }
 
 </script>
-{$currentBox_id}
+
 
 <div class="FontFamily">
     {$getCurrentFont ? $getCurrentFont.title : '-'}
@@ -36,6 +36,5 @@
         align-items: center;
         color: #fff;
         margin-bottom: 12px;
-        font-weight: 700;
     }
 </style>

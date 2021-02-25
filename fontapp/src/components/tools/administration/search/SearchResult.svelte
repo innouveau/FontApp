@@ -1,11 +1,12 @@
 <script>
-    import {currentBox, boxes, search} from 'store/index.js';
+    import {currentBox_id, boxes, search} from 'store/index.js';
     import { updatePropertyOfItem } from 'store/store-tools.js';
 
     export let font;
 
     const select = () => {
-        $boxes = updatePropertyOfItem($boxes, $currentBox, 'font_id', font.id);
+        let box = $boxes.find(box => box.id === $currentBox_id);
+        $boxes = updatePropertyOfItem($boxes, box, 'font_id', font.id);
         search.set('');
     }
 </script>

@@ -1,15 +1,15 @@
 <script>
-    import {parameters, currentBox, getCurrentFont} from 'store/index.js'
+    import {parameters, currentBox_id, getCurrentFont} from 'store/index.js'
     import Parameter from "./Parameter.svelte";
     import { updatePropertyOfItem } from 'store/store-tools.js';
 
     // probably not the best way to create a watch on $currentBox
     let lastBoxId = null;
     $: {
-        if ($currentBox) {
-            if ($currentBox.id !== lastBoxId) {
+        if ($currentBox_id) {
+            if ($currentBox_id !== lastBoxId) {
                 updateParameters();
-                lastBoxId = $currentBox.id;
+                lastBoxId = currentBox_id;
             }
 
         } else {

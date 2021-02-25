@@ -26,7 +26,7 @@
     }
 </script>
 
-{box.font_id}
+
 <div class="Text">
     <textarea
         style="
