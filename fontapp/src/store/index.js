@@ -70,3 +70,11 @@ export const getCurrentFont = derived(
         }
     }
 );
+
+export const currentBox = derived(
+    [currentBox_id, boxes],
+    ([currentBox_id, boxes]) => {
+        let box = boxes.find(box => box.id === currentBox_id);
+        return box ? box : null; // prevent returning undefined
+    }
+);
