@@ -14,5 +14,6 @@
         width: calc(100% - 300px);
         overflow: hidden;
         padding: 20px;
+        position: relative;
     }
 </style>

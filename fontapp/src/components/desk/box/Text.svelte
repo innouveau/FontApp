@@ -40,6 +40,8 @@
 
 <style type="text/scss">
     .Text {
+        height: 100%;
+
         textarea {
             width: 100%;
             height: 100%;
