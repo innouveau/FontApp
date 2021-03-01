@@ -44,6 +44,10 @@
 <style type="text/scss">
     @import "./../styles/index.scss";
 
+    :global(*) {
+        box-sizing: border-box;
+    }
+
     .page {
         position: absolute;
         left: 0;

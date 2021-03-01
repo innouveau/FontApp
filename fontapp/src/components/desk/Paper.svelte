@@ -1,7 +1,6 @@
 <script>
     import { boxes, currentBox_id } from 'store/index.js'
     import Box from "./box/Box.svelte";
-    import Drag from './Drag.svelte';
 
     const clickOutside = () => {
         currentBox_id.set(null);
@@ -13,11 +12,8 @@
     <div
         on:click={clickOutside}
         class="Paper__outside"/>
-<!--    {#each $boxes as box}-->
-<!--        <Box box={box}/>-->
-<!--    {/each}-->
     {#each $boxes as box}
-        <Drag box={box}/>
+        <Box box={box}/>
     {/each}
 </div>
 
