@@ -6,11 +6,18 @@
     .tool-box {
         pointer-events: none;
         opacity: 0.5;
+
+        &.tool-box--always-active {
+            pointer-events: all;
+            opacity: 1;
+        }
     }
 
     select {
         margin-bottom: 8px;
     }
+
+
 
     &.Tools--active {
 
