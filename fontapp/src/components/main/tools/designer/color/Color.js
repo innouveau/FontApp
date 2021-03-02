@@ -6,7 +6,7 @@ import {updateBox} from "store/actions"
 import {useState} from "react";
 
 const Color = () => {
-    const [isOpen, setOpen] = useState(true);
+    const [isOpen, setOpen] = useState(false);
 
     const dispatch = useDispatch();
 

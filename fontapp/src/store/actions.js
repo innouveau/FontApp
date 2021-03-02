@@ -8,10 +8,16 @@ import { ADD_BOX } from "./types";
 import { UPDATE_BOX } from "./types";
 import { SET_BOX_CURRENT } from "./types";
 import { SET_FONT_SEARCH } from "./types";
+import { ADD_FAVORITE } from "./types";
 
 let fontId, boxId;
 fontId = 0;
 boxId = 0;
+
+export const addFavorite = content => ({
+    type: ADD_FAVORITE,
+    payload: content
+});
 
 export const addBox = content => ({
     type: ADD_BOX,
@@ -63,7 +69,6 @@ export const toggleParameter = content => ({
     type: TOGGLE_PARAMETER,
     payload: content
 });
-
 
 
 export const updateProperty = content => ({

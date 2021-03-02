@@ -11,3 +11,5 @@ export const TOGGLE_PARAMETER = "TOGGLE_PARAMETER";
 export const ADD_BOX = "ADD_BOX";
 export const UPDATE_BOX = "UPDATE_BOX";
 export const SET_BOX_CURRENT = "SET_BOX_CURRENT";
+
+export const ADD_FAVORITE = "ADD_FAVORITE";

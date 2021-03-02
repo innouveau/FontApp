@@ -27,7 +27,7 @@ const Search = () => {
 
 
     return (
-        <div className="Search">
+        <div className="Search tool-box">
             <input
                 placeholder="Search font..."
                 onChange={e => setSearch(e.target.value)}
