@@ -17,16 +17,18 @@ const FontSize = () => {
     const fontSize = currentBox ? currentBox.fontSize : 50;
 
     return (
-        <div className="FontSize">
-            <div className={'designer__label'}>
-                Font Size
+        <div className="FontSize designer__row">
+            <div className="designer__label">
+                Font size
             </div>
-            <Slider
-                value={fontSize}
-                onChange={(event, value) => {
-                    update(value)
-                }}
-                aria-labelledby="continuous-slider" />
+            <div className="designer__content">
+                <Slider
+                    value={fontSize}
+                    onChange={(event, value) => {
+                        update(value)
+                    }}
+                    aria-labelledby="continuous-slider" />
+            </div>
         </div>
     )
 };

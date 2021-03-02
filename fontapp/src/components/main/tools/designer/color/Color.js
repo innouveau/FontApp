@@ -28,14 +28,17 @@ const Color = () => {
     };
 
     return (
-        <div className="Color">
-            <div
-                onClick={open}
-                style={{'backgroundColor': color}}
-                className="Color__swatch"></div>
-            <div>
-
+        <div className="Color designer__row">
+            <div className="designer__label">
+                Color
             </div>
+            <div className="designer__content">
+                <div
+                    onClick={open}
+                    style={{'backgroundColor': color}}
+                    className="Color__swatch"/>
+            </div>
+
             {isOpen ?
                 <div className="Color__popup">
                     <div

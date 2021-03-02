@@ -1,6 +1,9 @@
 @import "styles/variables";
 
 .Favorites {
-    display: flex;
-    flex-wrap: wrap;
+
+    .Favorites__list {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

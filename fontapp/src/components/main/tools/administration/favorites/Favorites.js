@@ -8,11 +8,17 @@ const Favorites = () => {
 
     return (
         <div className="Favorites tool-box">
-            {favorites.map(favorite =>
-                <Favorite
-                    key={favorite.id}
-                    favorite={favorite}/>
-            )}
+            <div className="tool-box__title">
+                Favorites
+            </div>
+            <div className="Favorites__list">
+                {favorites.map(favorite =>
+                    <Favorite
+                        key={favorite.id}
+                        favorite={favorite}/>
+                )}
+            </div>
+
         </div>
     );
 };

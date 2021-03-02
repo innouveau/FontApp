@@ -3,6 +3,10 @@
     padding: $grid-size-x2;
     margin-bottom: $grid-size-x2;
 
+    .tool-box__title {
+        margin-bottom: 8px;
+    }
+
     .tool-box__row {
         display: flex;
     }

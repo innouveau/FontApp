@@ -3,9 +3,11 @@ import Identity from "./identity/Identity";
 import Filter from "./filter/Filter";
 import Parameters from "./parameters/Parameters";
 import Designer from "./designer/Designer";
-import Administration from "./administration/Administration";
 import {useSelector} from "react-redux";
 import {getCurrentBox} from 'store/selectors';
+import BoxTools from "./box-tools/BoxTools";
+import Search from "./administration/search/Search";
+import Favorites from "./administration/favorites/Favorites";
 
 const Tools = () => {
     const currentBox = useSelector(state => getCurrentBox(state));
@@ -17,7 +19,9 @@ const Tools = () => {
             <Filter/>
             <Parameters/>
             <Designer/>
-            <Administration/>
+            <Search/>
+            <Favorites/>
+            <BoxTools/>
         </div>
     );
 };
