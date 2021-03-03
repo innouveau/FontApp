@@ -4,8 +4,7 @@ import { ADD_PARAMETER } from "./types";
 import { UPDATE_PROPERTY } from "./types";
 import { UPDATE_PARAMETER } from "./types";
 import { TOGGLE_PARAMETER } from "./types";
-import { ADD_BOX } from "./types";
-import { UPDATE_BOX } from "./types";
+import { ADD_BOX, UPDATE_BOX, DELETE_BOX } from "./types";
 import { SET_BOX_CURRENT } from "./types";
 import { SET_FONT_SEARCH } from "./types";
 import { ADD_FAVORITE } from "./types";
@@ -25,6 +24,11 @@ export const addBox = content => ({
         ...content,
         id: ++boxId
     }
+});
+
+export const deleteBox = content => ({
+    type: DELETE_BOX,
+    payload: content
 });
 
 export const updateBox = content => ({

@@ -58,3 +58,5 @@ export const getCurrentStyle = store => store.settings.style;
 export const getCurrentString = store => store.settings.string;
 
 export const getCurrentParameterValue = (store, parameter) => store.settings[parameter];
+
+export const getMaxZIndex = (store) => store.boxes.all.length > 0 ? (Math.max.apply(Math, store.boxes.all.map(function(b) { return b.zIndex; })) + 1) : 1;

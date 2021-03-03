@@ -7,7 +7,7 @@
 
     > .single-resizer {
         border: 1px dotted $theme-color;
-        background: transparent;
+        background: #fff;
         z-index: 1;
 
         .resizable-handler {
@@ -22,10 +22,5 @@
     .Text {
         position: absolute;
         z-index: 2;
-    }
-
-    .Handle {
-        position: absolute;
-        z-index: 3;
     }
 }

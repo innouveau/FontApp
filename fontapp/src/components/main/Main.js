@@ -2,6 +2,7 @@ import './Main.scss';
 import Tools from './tools/Tools';
 import fonts from 'data/fonts'
 import parameters from 'data/parameters'
+import boxes from 'data/boxes'
 import {addFont, addParameter, addBox } from 'store/actions'
 import React, { Component } from "react";
 import store from "store";
@@ -36,10 +37,6 @@ class Main extends Component {
     }
 
     addBoxes() {
-        let boxes = [
-            {left: 100, top: 70, width: 300, height: 200, string: 'The quick brown fox...', font_id: 294},
-            {left: 100, top: 200, string: '...jumps over a lazy dog', font_id: 644}
-        ];
         for (let box of boxes) {
             store.dispatch(addBox(box))
         }

@@ -2,14 +2,18 @@ import './Box.scss';
 import Text from "./text/Text";
 import ResizableRect from 'react-resizable-rotatable-draggable'
 import {updateBox, setBoxCurrent} from "store/actions";
+import {getMaxZIndex} from "store/selectors";
 import Handle from "./handle/Handle";
 import { useDispatch, useSelector } from "react-redux";
+import BoxRemove from "./box-remove/BoxRemove";
 
 
 const Box = (props) => {
     const dispatch = useDispatch();
 
     const currentBoxId = useSelector(state => state.boxes.current_id);
+
+    const maxZIndex = useSelector(state => getMaxZIndex(state));
 
     const handleResize = (style) => {
         let { top, left, width, height } = style;
@@ -29,6 +33,7 @@ const Box = (props) => {
 
     const setCurrent = () => {
         dispatch(setBoxCurrent(props.box.id));
+        dispatch(updateBox({id: props.box.id, property: 'zIndex', value: maxZIndex}));
     };
 
     const getBox = () => {
@@ -43,16 +48,11 @@ const Box = (props) => {
         }
     };
 
-    const getHandle = () => {
-        if (isCurrent()) {
-            return <Handle
-                box={props.box}/>
-        }
-    };
 
     return (
         <div
             className="Box"
+            style={{zIndex: props.box.zIndex}}
             onClick={setCurrent}>
 
             {getBox()}
@@ -60,7 +60,8 @@ const Box = (props) => {
             <Text
                 box={props.box}/>
 
-            {getHandle()}
+            {isCurrent() ? <Handle box={props.box}/> : null}
+            {isCurrent() ? <BoxRemove box={props.box}/> : null}
         </div>
     )
 };

@@ -9,7 +9,8 @@ class Box {
         textAlign = 'left',
         font_id = 300,
         color = '#000',
-        fontSize = 24
+        fontSize = 24,
+        zIndex = 1
     }) {
         this.id = id;
         this.left = left;
@@ -21,6 +22,7 @@ class Box {
         this.font_id = font_id;
         this.color = color;
         this.fontSize = fontSize;
+        this.zIndex = zIndex;
     }
 }
 

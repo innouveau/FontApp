@@ -1,0 +1,19 @@
+@import "styles/variables";
+
+.BoxRemove {
+    width: 24px;
+    height: 24px;
+    background: red;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        background: darkred;
+    }
+}
