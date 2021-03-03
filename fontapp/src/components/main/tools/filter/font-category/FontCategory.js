@@ -1,6 +1,6 @@
 import './FontCategory.scss';
-import {updateProperty} from "store/actions";
-import {getCurrentCategory} from 'store/selectors';
+import {updateProperty, updateBox} from "store/actions";
+import {getCurrentCategory, getBestMatch} from 'store/selectors';
 import { useSelector, useDispatch } from "react-redux";
 // import Select from '@material-ui/core/Select';
 
@@ -18,8 +18,12 @@ const FontCategory = () => {
 
     const currentCategory = useSelector(state => getCurrentCategory(state));
 
+    const bestMatch = useSelector(state => getBestMatch(state));
+    const currentBoxId = useSelector(state => state.boxes.current_id);
+
     const update = (value) => {
         dispatch(updateProperty({key: 'category', value}));
+        dispatch(updateBox({id: currentBoxId, property: 'font_id', value: bestMatch.id}));
     };
 
     return (

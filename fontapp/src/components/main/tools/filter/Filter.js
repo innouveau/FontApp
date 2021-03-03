@@ -7,7 +7,7 @@ const Filter = () => {
     return (
         <div className="Filter tool-box">
             <FontCategory/>
-            <FontStyle/>
+            {/*<FontStyle/>*/}
             <NumberOfFonts/>
         </div>
     );

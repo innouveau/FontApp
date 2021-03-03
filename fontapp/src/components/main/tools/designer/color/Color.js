@@ -35,8 +35,11 @@ const Color = () => {
             <div className="designer__content">
                 <div
                     onClick={open}
-                    style={{'backgroundColor': color}}
-                    className="Color__swatch"/>
+                    className="Color__swatch">
+                    <div
+                        style={{'backgroundColor': color}}
+                        className="Color__swatch-inner"></div>
+                </div>
             </div>
 
             {isOpen ?

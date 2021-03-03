@@ -6,7 +6,20 @@
 
     .Color__swatch {
         width: 24px;
-        height: 24px;
+        height: 34px;
+        padding: 4px 0;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-top: 4px;
+
+        .Color__swatch-inner {
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        &:hover {
+            border-bottom: 2px solid $theme-color-dark-1;
+        }
     }
 
     .Color__popup {

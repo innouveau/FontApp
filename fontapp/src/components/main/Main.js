@@ -20,20 +20,12 @@ class Main extends Component {
     }
 
     init(){
-        this.addWebfonts();
         this.addFonts();
         this.addParameters();
         this.addBoxes();
+        this.setState({loaded: true});
         console.log('fonts: ' + fonts.length, store.getState().fonts.all.length);
         console.log('parameters: ' + parameters.length, store.getState().parameters.all.length);
-    }
-
-    addWebfonts() {
-        const script = document.createElement("script");
-        script.src = "//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js";
-        script.async = true;
-        document.body.appendChild(script);
-        this.setState({loaded: true});
     }
 
     addBoxes() {

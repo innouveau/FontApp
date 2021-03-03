@@ -23,7 +23,7 @@ const Favorite = (props) => {
         <div
             onClick={() => select()}
             className={`Favorite ${isCurrent() ? "Favorite--active" : ""}`}>
-            {props.favorite.title}
+            {props.favorite.title} ({props.favorite.weight})
         </div>
     );
 };
