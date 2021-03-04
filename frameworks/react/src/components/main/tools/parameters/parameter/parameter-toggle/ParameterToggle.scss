@@ -1,0 +1,16 @@
+@import "../../shared/styles/variables";
+
+.ParameterToggle {
+    width: 6px;
+    height: 6px;
+    border: 2px solid #000;
+    background: #fff;
+    cursor: pointer;
+}
+
+.Parameter--inactive {
+
+    .ParameterToggle {
+        background: #000;
+    }
+}

@@ -1,0 +1,31 @@
+@import "../../shared/styles/variables";
+
+.Handle {
+    background: $theme-color;
+    cursor: move;
+
+    .single-resizer {
+        border: 0;
+        background: $theme-color;
+
+        .resizable-handler {
+            cursor: default!important;
+        }
+
+        .square {
+            border: 1px solid $theme-color;
+        }
+    }
+
+    .Handle__icon {
+        position: absolute;
+        pointer-events: none;
+        padding: 7px 5px;
+
+        .Handle__bar {
+            height: 2px;
+            background: #fff;
+            margin-bottom: 2px;
+        }
+    }
+}

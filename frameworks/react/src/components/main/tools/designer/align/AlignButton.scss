@@ -1,0 +1,30 @@
+@import "../../shared/styles/variables";
+
+.AlignButton {
+    width: 24px;
+    padding: 2px;
+    background: #888;
+    cursor: pointer;
+
+    &.AlignButton--active {
+        background: $theme-color;
+        pointer-events: none;
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    &:hover {
+        background: #000;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.react-ripples {
+    margin-right: 6px;
+}
