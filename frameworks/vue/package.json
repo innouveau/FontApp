@@ -1,0 +1,31 @@
+{
+  "name": "fontapp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "v-click-outside": "^3.1.2",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.3",
+    "vue-slider-component": "^3.2.11",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.5.4",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "browserslist": {
+    "production": [
+      "ie 11"
+    ],
+    "development": [
+      "ie 11"
+    ]
+  }
+}
