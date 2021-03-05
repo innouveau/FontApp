@@ -3,10 +3,12 @@
     import FavoriteButton from "./FavoriteButton";
     import FontSize from "./FontSize";
     import Color from "./Color";
+    import Align from "./align/Align";
 
     export default {
         name: 'Designer',
         components: {
+            Align,
             Color,
             FontSize,
             FavoriteButton,
@@ -27,6 +29,7 @@
         </div>
         <FontSize/>
         <Color/>
+        <Align/>
     </div>
 </template>
 

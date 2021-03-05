@@ -11,7 +11,7 @@
         },
         methods: {
             clickOutside() {
-
+                this.$store.commit('boxes/setCurrent', null);
             }
         }
     }
