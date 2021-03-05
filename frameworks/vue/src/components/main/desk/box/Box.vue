@@ -49,6 +49,7 @@
     <vue-resizable
         class="Box"
         :class="{'Box--active': isActive}"
+        :style="{'z-index': box.zIndex}"
         @mount="eHandler"
         @resize:move="eHandler"
         @resize:start="eHandler"
