@@ -25,8 +25,8 @@ const actions = {
 };
 
 const mutations = {
-    init(state, set) {
-        return _base.mutations.init(state, set, Model);
+    create(state, item){
+        state.all.push(item);
     }
 };
 

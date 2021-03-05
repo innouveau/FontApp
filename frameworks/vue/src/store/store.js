@@ -10,7 +10,8 @@ import favorites from './modules/favorites';
 
 const state = {
     currentCategory: '',
-    currentStyle: 'Normal'
+    currentStyle: 'Normal',
+    search: ''
 };
 const mutations = {
     updateProperty(state, payload) {

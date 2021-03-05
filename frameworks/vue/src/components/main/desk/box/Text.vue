@@ -18,7 +18,28 @@
                 return Math.round(this.box.fontSize * 400 / this.font.relativeFontSize);
             }
         },
-        methods: {}
+        methods: {
+            loadFont() {
+                if (this.font && !this.font.loaded && window.WebFont) {
+                    this.$store.commit('fonts/updatePropertyOfItem', {item: this.font, property: 'loaded', value: true});
+                    window.WebFont.load({
+                        google : {
+                            families : [this.font.title + ":" + this.font.weight]
+                        },
+                        loading : function() {},
+                        active : function(response) {
+
+                        },
+                        inactive : function() {}
+                    });
+                }
+            }
+        },
+        watch: {
+            font() {
+                this.loadFont();
+            }
+        }
     }
 </script>
 
@@ -43,5 +64,8 @@
 
     .Text {
 
+        textarea {
+            outline: none;
+        }
     }
 </style>

@@ -3,10 +3,14 @@
     import FilterTool from "./filter/Filter";
     import Parameters from "./parameters/Parameters";
     import Designer from "./designer/Designer";
+    import Search from "./search/Search";
+    import Favorites from "./favorites/Favorites";
 
     export default {
         name: 'tools',
         components: {
+            Favorites,
+            Search,
             Designer,
             Parameters,
             FilterTool,
@@ -31,6 +35,8 @@
         <FilterTool/>
         <Parameters/>
         <Designer/>
+        <Search/>
+        <Favorites/>
     </div>
 </template>
 

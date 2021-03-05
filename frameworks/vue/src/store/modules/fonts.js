@@ -51,6 +51,9 @@ const mutations = {
     },
     setCurrent(state, item) {
         return _base.mutations.setCurrent(state, item)
+    },
+    updatePropertyOfItem(state, payload) {
+        return _base.mutations.updatePropertyOfItem(state, payload.item, payload.property, payload.value)
     }
 };
 
