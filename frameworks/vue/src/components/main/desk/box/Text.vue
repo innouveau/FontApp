@@ -63,9 +63,15 @@
     @import '../../shared/styles/variables.scss';
 
     .Text {
+        height: 100%;
 
         textarea {
             outline: none;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            border: 0;
+            background: transparent;
         }
     }
 </style>

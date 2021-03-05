@@ -1,10 +1,12 @@
 <script>
     import Box from "./../../../../../../../shared/classes/Box";
     import BoxText from "./Text";
+    import VueResizable from 'vue-resizable'
 
     export default {
         name: 'Box',
         components: {
+            VueResizable,
             BoxText
         },
         props: {
@@ -13,10 +15,30 @@
                 required: true
             }
         },
-        computed: {},
+        computed: {
+            isActive() {
+                return this.$store.state.boxes.current === this.box;
+            },
+            handlers() {
+                if (this.isActive) {
+                    return ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'];
+                } else {
+                    return [];
+                }
+            }
+        },
         methods: {
             select() {
+                let zIndex = this.$store.getters['boxes/getMaxZIndex'];
                 this.$store.commit('boxes/setCurrent', this.box);
+                this.$store.commit('boxes/updatePropertyOfItem', {item: this.box, property: 'zIndex', value: zIndex});
+
+            },
+            eHandler(data) {
+                this.$store.commit('boxes/updatePropertyOfItem', {item: this.box, property: 'width', value: data.width});
+                this.$store.commit('boxes/updatePropertyOfItem', {item: this.box, property: 'height', value: data.height});
+                this.$store.commit('boxes/updatePropertyOfItem', {item: this.box, property: 'left', value: data.left});
+                this.$store.commit('boxes/updatePropertyOfItem', {item: this.box, property: 'top', value: data.top});
             }
         }
     }
@@ -24,11 +46,36 @@
 
 
 <template>
-    <div
-        @click="select()"
-        class="Box">
+    <vue-resizable
+        class="Box"
+        :class="{'Box--active': isActive}"
+        @mount="eHandler"
+        @resize:move="eHandler"
+        @resize:start="eHandler"
+        @resize:end="eHandler"
+        @drag:move="eHandler"
+        @drag:start="eHandler"
+        @drag:end="eHandler"
+        :dragSelector="'.Handle'"
+        :fit-parent="true"
+        :width="box.width"
+        :height="box.height"
+        :left="box.left"
+        :top="box.top"
+        :active="handlers">
+        <div
+            v-show="isActive"
+            class="Handle">
+            <div class="Handle__bar"/>
+            <div class="Handle__bar"/>
+            <div class="Handle__bar"/>
+        </div>
         <BoxText :box="box"/>
-    </div>
+        <div
+            @click="select()"
+            v-if="!isActive"
+            class="Box__inactive-area"/>
+    </vue-resizable>
 </template>
 
 
@@ -36,26 +83,76 @@
     @import '../../shared/styles/variables.scss';
 
     .Box {
-        position: relative;
         z-index: 2;
+        position: absolute!important;
 
-        > .single-resizer {
-            border: 1px dotted $theme-color;
-            background: #fff;
-            z-index: 1;
+        &.resizable-component {
 
-            .resizable-handler {
-                cursor: default!important;
+            .resizable-r,
+            .resizable-rb,
+            .resizable-b,
+            .resizable-lb,
+            .resizable-l,
+            .resizable-lt,
+            .resizable-t,
+            .resizable-rt {
+                border: 1px solid $theme-color;
+                height: 12px;
+                width: 12px;
+                background: #fff;
+                cursor: default;
             }
 
-            .square {
+            .resizable-t,
+            .resizable-b {
+                left: 50%;
+            }
+
+            .resizable-r,
+            .resizable-l {
+                top: 50%;
+            }
+        }
+
+        &.Box--active {
+
+            .Text {
                 border: 1px solid $theme-color;
+                background: #fff;
+            }
+        }
+
+        .Handle {
+            position: absolute;
+            left: 0;
+            top: -24px;
+            padding: 7px 5px;
+            background: $theme-color;
+            width: 24px;
+            height: 24px;
+            cursor: move;
+
+            .Handle__bar {
+                height: 2px;
+                background: #fff;
+                margin-bottom: 2px;
             }
         }
 
         .Text {
             position: absolute;
             z-index: 2;
+            border: 1px solid transparent;
+        }
+
+        .Box__inactive-area {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 3;
         }
     }
 </style>
