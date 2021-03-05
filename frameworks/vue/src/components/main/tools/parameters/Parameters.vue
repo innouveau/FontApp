@@ -18,7 +18,12 @@
         methods: {
             updateParameters() {
                 for (let parameter of this.parameters) {
-                    let value = this.font[parameter.key];
+                    let value;
+                    if (this.currentBox) {
+                        value = this.font[parameter.key];
+                    } else {
+                        value = 50;
+                    }
                     this.$store.commit('parameters/updatePropertyOfItem', {item: parameter, property: 'value', value});
                 }
             }
