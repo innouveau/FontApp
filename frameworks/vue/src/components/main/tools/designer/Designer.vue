@@ -1,9 +1,11 @@
 <script>
     import FontFamily from "./FontFamily";
     import FavoriteButton from "./FavoriteButton";
+    import FontSize from "./FontSize";
     export default {
         name: 'Designer',
         components: {
+            FontSize,
             FavoriteButton,
             FontFamily
         },
@@ -20,6 +22,7 @@
             <FontFamily/>
             <FavoriteButton/>
         </div>
+        <FontSize/>
     </div>
 </template>
 
@@ -29,5 +32,19 @@
 
     .Designer {
 
+        .designer__row {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #fff;
+            padding: 6px 0;
+
+            .designer__label {
+                width: calc(100% - 158px)
+            }
+
+            .designer__content {
+                width: 158px;
+            }
+        }
     }
 </style>

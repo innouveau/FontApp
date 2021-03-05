@@ -1,9 +1,12 @@
 <script>
     import Box from "./../../../../../../../shared/classes/Box";
+    import BoxText from "./Text";
 
     export default {
         name: 'Box',
-        components: {},
+        components: {
+            BoxText
+        },
         props: {
             box: {
                 type: Box,
@@ -18,7 +21,7 @@
 
 <template>
     <div class="Box">
-        {{box.string}}
+        <BoxText :box="box"/>
     </div>
 </template>
 
