@@ -7,9 +7,27 @@
         computed: {
             parameters() {
                 return this.$store.state.parameters.all;
+            },
+            currentBox(){
+                return this.$store.state.boxes.current;
+            },
+            font() {
+                return this.$store.getters['fonts/getFontForCurrentBox'];
             }
         },
-        methods: {}
+        methods: {
+            updateParameters() {
+                for (let parameter of this.parameters) {
+                    let value = this.font[parameter.key];
+                    this.$store.commit('parameters/updatePropertyOfItem', {item: parameter, property: 'value', value});
+                }
+            }
+        },
+        watch: {
+            currentBox() {
+                this.updateParameters();
+            }
+        }
     }
 </script>
 
