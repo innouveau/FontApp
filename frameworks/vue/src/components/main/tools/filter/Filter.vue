@@ -1,9 +1,13 @@
 <script>
     import FontCategory from "./FontCategory";
+    import NumberOfFonts from "./NumberOfFonts";
 
     export default {
         name: 'Filter-tool',
-        components: {FontCategory},
+        components: {
+            NumberOfFonts,
+            FontCategory
+        },
         props: {},
         computed: {},
         methods: {}
@@ -14,6 +18,7 @@
 <template>
     <div class="Filter tool-box">
         <FontCategory/>
+        <NumberOfFonts/>
     </div>
 </template>
 

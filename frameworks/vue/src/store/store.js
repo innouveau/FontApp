@@ -5,10 +5,12 @@ Vue.use(Vuex);
 import boxes from './modules/boxes';
 import parameters from './modules/parameters';
 import fonts from './modules/fonts';
+import favorites from './modules/favorites';
 
 
 const state = {
-    currentCategory: ''
+    currentCategory: '',
+    currentStyle: 'Normal'
 };
 const mutations = {
     updateProperty(state, payload) {
@@ -21,7 +23,7 @@ const store = new Vuex.Store({
     mutations,
     actions: {},
     modules: {
-        boxes, parameters, fonts
+        boxes, parameters, fonts, favorites
     }
 
 });

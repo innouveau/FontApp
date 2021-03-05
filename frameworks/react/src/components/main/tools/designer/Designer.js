@@ -8,7 +8,7 @@ import FavoriteButton from "./FavoriteButton/FavoriteButton";
 const Designer = () => {
     return (
         <div className="Designer tool-box">
-            <div className=" tool-box__row">
+            <div className="tool-box__row">
                 <FontFamily/>
                 <FavoriteButton/>
             </div>

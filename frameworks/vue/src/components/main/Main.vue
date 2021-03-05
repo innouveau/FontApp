@@ -18,6 +18,7 @@
                 this.$store.commit('boxes/init', boxes);
                 this.$store.commit('parameters/init', parameters);
                 this.$store.commit('fonts/init', fonts);
+                this.$store.commit('boxes/setCurrent', this.$store.state.boxes.all[0]);
             }
         },
         mounted(){

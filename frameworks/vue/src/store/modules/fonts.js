@@ -9,7 +9,22 @@ const state = {
 };
 
 const getters = {
-    ..._base.getters
+    ..._base.getters,
+    getFilteredFonts(state, getters, rootState) {
+        return state.all.filter(font => {
+            return font.category === rootState.currentCategory &&
+                font.style === rootState.currentStyle &&
+                font.source === 'google';
+        })
+    },
+    getFontForCurrentBox(state, getters, rootState) {
+        let box = rootState.boxes.current;
+        if (!box) {
+            return null;
+        } else {
+            return getters.getItemById(box.font_id);
+        }
+    }
 };
 
 const actions = {

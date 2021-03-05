@@ -1,24 +1,36 @@
 <script>
     import Identity from "./Identity";
     import FilterTool from "./filter/Filter";
+    import Parameters from "./parameters/Parameters";
+    import Designer from "./designer/Designer";
 
     export default {
         name: 'tools',
         components: {
+            Designer,
+            Parameters,
             FilterTool,
             Identity
         },
         props: {},
-        computed: {},
+        computed: {
+            hasCurrentBox() {
+                return this.$store.state.boxes.current !== null;
+            }
+        },
         methods: {}
     }
 </script>
 
 
 <template>
-    <div class="Tools">
+    <div
+        :class="{'Tools--active': hasCurrentBox}"
+        class="Tools">
         <Identity/>
         <FilterTool/>
+        <Parameters/>
+        <Designer/>
     </div>
 </template>
 
