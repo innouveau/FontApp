@@ -11,7 +11,7 @@
 
 
 <template>
-    <div class="BoxTools tool-box">
+    <div class="BoxTools tool-box tool-box--always-active">
         <AddBox/>
     </div>
 </template>

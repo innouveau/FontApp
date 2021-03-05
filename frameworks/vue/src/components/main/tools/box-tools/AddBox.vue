@@ -22,8 +22,11 @@
                     });
             },
             createBox(string) {
-                let box = {left: 100, top: 70, width: 300, height: 200, string, font_id: 294, zIndex: this.maxZIndex};
-                this.$store.commit('boxes/create', box);
+                let data, box;
+                data = {id: (this.$store.state.boxes.all.length + 1), left: 100, top: 70, width: 300, height: 200, string, font_id: 294, zIndex: this.maxZIndex};
+                this.$store.commit('boxes/create', data);
+                box = this.$store.state.boxes.all[this.$store.state.boxes.all.length - 1];
+                this.$store.commit('boxes/setCurrent', box);
             }
         }
     }
