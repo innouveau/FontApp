@@ -2,9 +2,12 @@
     import FontFamily from "./FontFamily";
     import FavoriteButton from "./FavoriteButton";
     import FontSize from "./FontSize";
+    import Color from "./Color";
+
     export default {
         name: 'Designer',
         components: {
+            Color,
             FontSize,
             FavoriteButton,
             FontFamily
@@ -23,6 +26,7 @@
             <FavoriteButton/>
         </div>
         <FontSize/>
+        <Color/>
     </div>
 </template>
 

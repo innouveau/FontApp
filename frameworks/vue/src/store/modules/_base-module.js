@@ -63,7 +63,6 @@ const mutations = {
     updatePropertyOfItem(state, item, property, value) {
         state.all = state.all.map((theItem) => {
             if (theItem.id === item.id) {
-                console.log("!");
                 theItem[property] = value;
             }
             return theItem;
