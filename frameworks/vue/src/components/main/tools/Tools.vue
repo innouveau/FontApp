@@ -5,10 +5,12 @@
     import Designer from "./designer/Designer";
     import Search from "./search/Search";
     import Favorites from "./favorites/Favorites";
+    import BoxTools from "./box-tools/BoxTools";
 
     export default {
         name: 'tools',
         components: {
+            BoxTools,
             Favorites,
             Search,
             Designer,
@@ -37,6 +39,7 @@
         <Designer/>
         <Search/>
         <Favorites/>
+        <BoxTools/>
     </div>
 </template>
 

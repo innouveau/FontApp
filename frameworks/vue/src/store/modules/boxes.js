@@ -9,7 +9,10 @@ const state = {
 };
 
 const getters = {
-    ..._base.getters
+    ..._base.getters,
+    getMaxZIndex(state) {
+        return state.all.length > 0 ? (Math.max.apply(Math, state.all.map(function(b) { return b.zIndex; })) + 1) : 1;
+    }
 };
 
 const actions = {
@@ -33,6 +36,9 @@ const mutations = {
     },
     updatePropertyOfItem(state, payload) {
         return _base.mutations.updatePropertyOfItem(state, payload.item, payload.property, payload.value)
+    },
+    create(state, item){
+        return _base.mutations.create(state, item, Model);
     }
 };
 
