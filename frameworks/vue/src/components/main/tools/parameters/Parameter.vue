@@ -22,7 +22,7 @@
 
 <template>
     <div
-        :class="{'Parameter--active': parameter.active}"
+        :class="{'Parameter--inactive': !parameter.active}"
         class="Parameter">
         <div class="Paramater__title">
             {{parameter.title}}

@@ -20,11 +20,24 @@
                     return this.parameter.value;
                 },
                 set(value) {
-                    this.$store.commit('parameters/updatePropertyOfItem', {item: this.parameter, property: 'active', value: value});
+                    this.$store.commit('parameters/updatePropertyOfItem', {item: this.parameter, property: 'value', value: value});
+                    this.updateFont();
                 }
+            },
+            currentBox(){
+                return this.$store.state.boxes.current;
+            },
+            bestMatch() {
+                return this.$store.getters['fonts/getBestMatch'];
             }
         },
-        methods: {}
+        methods: {
+            updateFont() {
+                //console.log(this.bestMatch.id);
+                this.$store.commit('boxes/updatePropertyOfItem', {item: this.currentBox, property: 'font_id', value: this.bestMatch.id});
+
+            }
+        }
     }
 </script>
 
@@ -32,8 +45,8 @@
 <template>
     <div class="ParameterSlider">
         <vue-slider
-                v-model="value"
-                :adsorb="true"/>
+            v-model="value"
+            :adsorb="true"/>
     </div>
 </template>
 

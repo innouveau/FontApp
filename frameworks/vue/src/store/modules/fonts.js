@@ -1,5 +1,6 @@
 import _base from './_base-module';
 import Font from './../../../../../shared/classes/Font';
+import {getFilteredFonts} from "../../../../react/src/store/selectors";
 
 const Model = Font;
 
@@ -24,6 +25,25 @@ const getters = {
         } else {
             return getters.getItemById(box.font_id);
         }
+    },
+    getBestMatch(state, getters, rootState) {
+        let fonts, match, parameters;
+        match = {};
+        fonts = getters['getFilteredFonts'];
+        parameters = rootState.parameters.all.filter(p => p.active);
+        for (let font of fonts) {
+            let score = 0;
+            for (let parameter of parameters) {
+                let diff;
+                diff = Math.abs(parameter.value - font[parameter.key]);
+                score += diff;
+            }
+            if (!match.font || score < match.score) {
+                match.font = font;
+                match.score = score;
+            }
+        }
+        return match.font;
     }
 };
 
