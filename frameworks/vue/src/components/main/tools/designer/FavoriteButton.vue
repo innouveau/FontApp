@@ -6,11 +6,16 @@
         computed: {
             currentFont() {
                 return this.$store.getters['fonts/getFontForCurrentBox'];
+            },
+            isFavorite() {
+                return this.currentFont && this.$store.state.favorites.all.indexOf(this.currentFont) > -1;
             }
         },
         methods: {
             createFavorite() {
-                this.$store.commit('favorites/create', this.currentFont)
+                if (!this.isFavorite) {
+                    this.$store.commit('favorites/create', this.currentFont)
+                }
             }
         }
     }
@@ -20,6 +25,7 @@
 <template>
     <div
         @click="createFavorite()"
+        :class="{'FavoriteButton--inactive': isFavorite}"
         class="FavoriteButton"></div>
 </template>
 
