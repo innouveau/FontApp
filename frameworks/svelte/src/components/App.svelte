@@ -2,12 +2,12 @@
     import Tools from './tools/Tools.svelte';
     import Desk from './desk/Desk.svelte';
     import {parameters, fonts, boxes} from 'store/index.js'
-    import data_parameters from 'data/parameters.js';
-    import data_fonts from 'data/fonts.js';
-    import data_boxes from 'data/boxes.js';
-    import Parameter from 'classes/Parameter.js';
-    import Font from 'classes/Font.js';
-    import Box from 'classes/Box.js';
+    import data_parameters from './../../../../shared/data/parameters.js';
+    import data_fonts from './../../../../shared/data/fonts.js';
+    import data_boxes from './../../../../shared/data/boxes.js';
+    import Parameter from './../../../../shared/classes/Parameter.js';
+    import Font from './../../../../shared/classes/Font.js';
+    import Box from './../../../../shared/classes/Box.js';
     import { addToStore } from 'store/store-tools.js';
 
     function initParameters(set) {
@@ -18,8 +18,11 @@
 
     function initFonts(set) {
         for (let item of set) {
-            let id = set.indexOf(item) + 1;
-            $fonts = addToStore($fonts, new Font(item, id));
+            let data = {
+                id: set.indexOf(item) + 1,
+                content: item
+            };
+            $fonts = addToStore($fonts, new Font(data));
         }
     }
 
@@ -42,7 +45,7 @@
 
 
 <style type="text/scss">
-    @import "./../styles/index.scss";
+    @import "./../../../../shared/styles/index.scss";
 
     :global(*) {
         box-sizing: border-box;
