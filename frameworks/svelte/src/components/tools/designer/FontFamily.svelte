@@ -36,5 +36,7 @@
         align-items: center;
         color: #fff;
         margin-bottom: 12px;
+        font-weight: 700;
+        flex-grow: 1;
     }
 </style>

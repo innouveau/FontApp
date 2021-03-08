@@ -3,8 +3,10 @@
     import Filter from "./filter/Filter.svelte";
     import Parameters from "./parameters/Parameters.svelte";
     import {currentBox_id} from "store/index.js";
-    import Administration from "./administration/Administration.svelte";
     import Designer from "./designer/Designer.svelte";
+    import Search from "./search/Search.svelte";
+    import Favorites from "./favorites/Favorites.svelte";
+    import BoxTools from "./box-tools/BoxTools.svelte";
 
 
 </script>
@@ -16,7 +18,9 @@
     <Filter/>
     <Parameters/>
     <Designer/>
-    <Administration/>
+    <Search/>
+    <Favorites/>
+    <BoxTools/>
 </div>
 
 <style type="text/scss">
@@ -25,8 +29,8 @@
         overflow: auto;
 
         :global(.tool-box) {
-            pointer-events: none;
-            opacity: 0.5;
+            //pointer-events: none;
+            //opacity: 0.5;
         }
 
         select {

@@ -21,6 +21,7 @@
     "svelte-range-slider-pips": "^1.7.0"
   },
   "dependencies": {
+    "postcss": "^8.2.7",
     "sirv-cli": "^1.0.0",
     "svelte-moveable": "^0.14.0"
   }

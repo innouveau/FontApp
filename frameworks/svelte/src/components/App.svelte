@@ -45,7 +45,10 @@
 
 
 <style type="text/scss">
-    @import "./../../../../shared/styles/index.scss";
+
+    :global {
+        @import "./../../../../shared/styles/index.scss";
+    }
 
     :global(*) {
         box-sizing: border-box;

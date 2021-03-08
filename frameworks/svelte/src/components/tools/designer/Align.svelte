@@ -4,17 +4,26 @@
     const textAligns = ['left', 'center', 'right'];
 </script>
 
+<div class="Align designer__row">
+    <div class="designer__label">
+        Text align
+    </div>
+    <div class="designer__content">
+        <div class="Align__set">
+            {#each textAligns as textAlign}
+                <AlignButton textAlign={textAlign}/>
+            {/each}
+        </div>
 
-<div class="Align">
-    {#each textAligns as textAlign}
-        <AlignButton textAlign={textAlign}/>
-    {/each}
+    </div>
 </div>
 
 
 <style type="text/scss">
     .Align {
-        display: flex;
-        margin-bottom: 12px;
+
+        .Align__set {
+            display: flex;
+        }
     }
 </style>

@@ -5,7 +5,7 @@
 </script>
 
 
-<div class="Search">
+<div class="Search tool-box">
     <input
         placeholder="Search font..."
         bind:value={$search}/>
