@@ -9,8 +9,14 @@
         alt="Logo FontApp"/>
 </div>
 
-<style>
+<style type="text/scss">
     .Identity {
+        height: 60px;
+        margin-bottom: 12px;
 
+        img {
+            display: block;
+            height: 100%;
+        }
     }
 </style>

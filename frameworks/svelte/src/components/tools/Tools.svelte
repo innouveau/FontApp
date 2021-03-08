@@ -27,6 +27,7 @@
     .Tools {
         width: 300px;
         overflow: auto;
+        padding: 12px;
 
         :global(.tool-box) {
             //pointer-events: none;
