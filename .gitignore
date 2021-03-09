@@ -25,6 +25,7 @@ yarn-error.log*
 frameworks/react/node_modules
 frameworks/vue/node_modules
 frameworks/svelte/node_modules
+frameworks/angular/node_modules
 
 frameworks/react/public/build
 frameworks/vue/public/build
