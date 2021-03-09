@@ -16,3 +16,8 @@
 - `npm install`
 - `npm run dev`
 - open `http://localhost:5000`
+
+### 4. Angular
+- `cd frameworks/angular`
+- (`npm install -g @angular/cli`)
+- `ng serve`
