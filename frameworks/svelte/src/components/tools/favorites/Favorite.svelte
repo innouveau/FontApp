@@ -1,19 +1,20 @@
 <script>
     export let favorite;
+    import {boxes, getCurrentFont, currentBox} from 'store/index.js';
+    import {updatePropertyOfItem} from 'store/store-tools.js';
 
     const select = () => {
-
+        if ($getCurrentFont.id !== favorite.id) {
+            $boxes = updatePropertyOfItem($boxes, $currentBox, 'font_id', favorite.id);
+        }
     };
 
-    const isFavorite = () => {
-        return true;
-    };
 </script>
 
 
 <div
     on:click={select}
-    class:Favorite--active={isFavorite()}
+    class:Favorite--active={$getCurrentFont.id === favorite.id}
     class="Favorite">
     {favorite.title} ({favorite.weight})
 </div>

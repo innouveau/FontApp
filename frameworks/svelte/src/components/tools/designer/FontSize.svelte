@@ -2,7 +2,7 @@
     import RangeSlider from "svelte-range-slider-pips";
     import {boxes, currentBox, currentFontSize} from 'store/index.js';
     import {updatePropertyOfItem} from 'store/store-tools.js';
-    
+
     const update = (e) => {
         $boxes = updatePropertyOfItem($boxes, $currentBox, 'fontSize', e.detail.value);
     }

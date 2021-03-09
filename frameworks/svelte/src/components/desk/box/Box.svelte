@@ -53,6 +53,7 @@
 <Handle box={box}/>
 
 <div
+    on:click={select}
     style="
         left: {box.left + 'px'};
         top: {box.top + 'px'};
