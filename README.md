@@ -21,3 +21,4 @@
 - `cd frameworks/angular`
 - (`npm install -g @angular/cli`)
 - `ng serve`
+- open `localhost:4200`
