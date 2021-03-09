@@ -22,28 +22,33 @@
     .ParameterSlider {
         width: 140px;
         margin-right: 12px;
+    }
 
-        :global(.rangeSlider) {
-            margin: 0;
-            height: 2px;
-            border-radius: 0;
-            background: #6B6964;
+    :global {
+        body {
 
-            :global(.rangeHandle) {
-                width: 16px;
-                height: 16px;
-                top: -2px;
-                outline: none;
+            .rangeSlider {
+                margin: 0;
+                height: 2px;
+                border-radius: 0;
+                background: #6B6964;
 
-                :global(.rangeNub) {
-                    background: #F2F0E6;
-                    border: 2px solid #6B6964;
-                    opacity: 1;
-                }
+                .rangeHandle {
+                    width: 16px;
+                    height: 16px;
+                    top: 1px;
+                    outline: none;
 
-                &:before {
-                    top: 5px;
-                    left: 5px;
+                    .rangeNub {
+                        background: #F2F0E6;
+                        border: 2px solid #6B6964;
+                        opacity: 1;
+
+                        &:before {
+                            top: 5px;
+                            left: 5px;
+                        }
+                    }
                 }
             }
         }
