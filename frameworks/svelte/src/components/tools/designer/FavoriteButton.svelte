@@ -1,17 +1,18 @@
 <script>
+    import { addToStore } from 'store/store-tools.js';
+    import {favorites, getCurrentFont, isFavorite} from 'store/index.js';
+
     const createFavorite = () => {
-
-    };
-
-    const isFavorite = () => {
-
+        if (!$isFavorite) {
+            $favorites = addToStore($favorites, $getCurrentFont);
+        }
     };
 </script>
 
 
 <div
     on:click={createFavorite}
-    class:FavoriteButton--inactive={isFavorite()}
+    class:FavoriteButton--inactive={$isFavorite}
     class="FavoriteButton"></div>
 
 

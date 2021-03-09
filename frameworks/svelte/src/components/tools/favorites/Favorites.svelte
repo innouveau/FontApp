@@ -1,7 +1,7 @@
 <script>
     import Favorite from "./Favorite.svelte";
+    import {favorites} from 'store/index.js';
 
-    const favorites = [];
 
 </script>
 
@@ -11,9 +11,9 @@
         Favorites
     </div>
     <div class="Favorites__list">
-        {#each favorites as favorite}
+        {#each $favorites as favorite}
         <Favorite
-            favorite="favorite"/>
+            favorite={favorite}/>
         {/each}
     </div>
 </div>

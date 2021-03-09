@@ -5,6 +5,7 @@ import { writable, derived } from 'svelte/store';
 export const parameters = writable([]);
 export const fonts = writable([]);
 export const boxes = writable([]);
+export const favorites = writable([]);
 export const currentBox_id = writable(null);
 export const search = writable('');
 
@@ -76,5 +77,12 @@ export const currentBox = derived(
     ([currentBox_id, boxes]) => {
         let box = boxes.find(box => box.id === currentBox_id);
         return box ? box : null; // prevent returning undefined
+    }
+);
+
+export const isFavorite = derived(
+    [favorites, getCurrentFont],
+    ([favorites, getCurrentFont]) => {
+        return favorites.indexOf(getCurrentFont) > -1;
     }
 );

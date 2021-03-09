@@ -1,7 +1,7 @@
 <script>
     import Tools from './tools/Tools.svelte';
     import Desk from './desk/Desk.svelte';
-    import {parameters, fonts, boxes} from 'store/index.js'
+    import {parameters, fonts, boxes, currentBox_id} from 'store/index.js'
     import data_parameters from './../../../../shared/data/parameters.js';
     import data_fonts from './../../../../shared/data/fonts.js';
     import data_boxes from './../../../../shared/data/boxes.js';
@@ -30,6 +30,9 @@
         for (let item of set) {
             item.id = set.indexOf(item) + 1;
             $boxes = addToStore($boxes, new Box(item));
+        }
+        if ($boxes.length > 0) {
+            currentBox_id.update(v => $boxes[0].id)
         }
     }
 
