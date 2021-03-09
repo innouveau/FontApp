@@ -1,17 +1,33 @@
 <script>
     import Moveable from "svelte-moveable";
     import Text from "./Text.svelte";
-    import {currentBox_id} from "store/index.js";
-    import Handle from "./Handle.svelte";
+    import {boxes, currentBox_id} from "store/index.js";
+    import { updatePropertyOfItem } from 'store/store-tools.js';
+
 
     export let box;
 
     const frame = {
         translate: [0, 0],
     };
-    let target, initialLeft, initialTop;
+
+    let target, handle, initialLeft, initialTop;
     initialLeft = box.left;
     initialTop = box.top;
+
+    const dragStart = (set) => {
+        set(frame.translate)
+    };
+
+    const drag = (beforeTranslate) => {
+        let left, top;
+        frame.translate = beforeTranslate;
+        target.style.transform = `translate(${beforeTranslate[0]}px, ${beforeTranslate[1]}px)`;
+        left = initialLeft + beforeTranslate[0];
+        top = initialTop + beforeTranslate[1];
+        $boxes = updatePropertyOfItem($boxes, box, 'left', left);
+        $boxes = updatePropertyOfItem($boxes, box, 'top', top);
+    };
 
     const resizeStart = (set, setOrigin, dragStart) => {
         select();
@@ -50,20 +66,34 @@
 
 </script>
 
-<Handle box={box}/>
+
 
 <div
     on:click={select}
-    style="
-        left: {box.left + 'px'};
-        top: {box.top + 'px'};
-        width: {box.width + 'px'};
-        height: {box.height + 'px'};"
-    class="target" bind:this={target}>
+    style="left: {initialLeft + 'px'}; top: {initialTop + 'px'}"
+    class="target Box"
+    bind:this={target}>
+    <div
+        class="Handle"
+        bind:this={handle}>
+        <div class="Handle__bar"></div>
+        <div class="Handle__bar"></div>
+        <div class="Handle__bar"></div>
+    </div>
+
     <Text box={box}/>
 </div>
+
 <Moveable
+    dragTarget={handle}
     target={target}
+
+    draggable={true}
+    throttleDrag={0}
+    on:dragStart={({ detail: { set } }) => {dragStart(set);}}
+    on:drag={({ detail: { target, beforeTranslate }}) => { drag(beforeTranslate) }}
+    on:dragEnd={({ detail: { target, isDrag, clientX, clientY }}) => { }}
+
     resizable={true}
     throttleResize={0}
     on:resizeStart={({ detail: {target, set, setOrigin, dragStart }}) => { resizeStart(set, setOrigin, dragStart); }}
@@ -73,23 +103,44 @@
 
 
 <style type="text/scss">
-    .target {
+    .Box {
         position: absolute;
         background: #fff;
         z-index: 2;
+
+        .Handle {
+            cursor: move;
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            top: -24px;
+            width: 24px;
+            height: 24px;
+            background: #e6be00;
+            padding: 7px 5px;
+
+            .Handle__bar {
+                height: 2px;
+                background: #fff;
+                margin-bottom: 2px;
+            }
+        }
     }
 
-    :global(.moveable-origin) {
-        display: none;
-    }
+    :global {
 
-    :global(.moveable-control) {
-        border-radius: 0!important;
-        border: 1px solid #e6be00!important;
-        background: #fff!important;
-    }
+        .moveable-origin {
+            display: none;
+        }
 
-    :global(.moveable-line) {
-        background: #e6be00!important;
+        .moveable-control {
+            border-radius: 0!important;
+            border: 1px solid #e6be00!important;
+            background: #fff!important;
+        }
+
+        .moveable-line {
+            background: #e6be00!important;
+        }
     }
 </style>
