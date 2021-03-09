@@ -94,3 +94,10 @@ export const isFavorite = derived(
         return favorites.indexOf(getCurrentFont) > -1;
     }
 );
+
+export const maxZIndex = derived(
+    [boxes],
+    ([boxes]) => {
+        return boxes.length > 0 ? (Math.max.apply(Math, boxes.map(function(b) { return b.zIndex; })) + 1) : 1;
+    }
+);
