@@ -23,6 +23,7 @@
   "dependencies": {
     "postcss": "^8.2.7",
     "sirv-cli": "^1.0.0",
+    "svelte-color-picker": "^1.0.7",
     "svelte-moveable": "^0.14.0"
   }
 }

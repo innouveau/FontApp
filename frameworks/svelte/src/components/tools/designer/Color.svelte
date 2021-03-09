@@ -1,10 +1,21 @@
 <script>
-    const getColor = () => {
-        return 'pink';
+    import {HsvPicker} from 'svelte-color-picker';
+    import {boxes, currentBox} from 'store/index.js';
+    import {updatePropertyOfItem} from 'store/store-tools.js';
+
+    let isOpen = false;
+
+    const select = (value) => {
+        let color = `rgb(${value.detail.r},${value.detail.g},${value.detail.b})`;
+        $boxes = updatePropertyOfItem($boxes, $currentBox, 'color', color);
     };
 
     const open = () => {
+        isOpen = true;
+    };
 
+    const close = () => {
+        isOpen = false;
     }
 </script>
 
@@ -18,17 +29,20 @@
             on:click={open}
             class="Color__swatch">
             <div
-                style="background-color: {getColor()}"
+                style="background-color: {$currentBox ? $currentBox.color : '#ddd'}"
                 class="Color__swatch-inner"></div>
         </div>
-
-        <div class="Color__popup">
-            <div
-                on:click={close}
-                class="Color__close"/>
-
-        </div>
     </div>
+    {#if isOpen}
+    <div class="Color__popup">
+        <div
+            on:click={close}
+            class="Color__close"/>
+        <HsvPicker
+            on:colorChange={select}
+            startColor={currentBox ? currentBox.color : '#ddd'}/>
+    </div>
+    {/if}
 </div>
 
 
