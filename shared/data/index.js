@@ -1,5 +1,7 @@
-import COLORS from "./colors";
+import STYLES from "./styles";
+import FONTS from "./fonts2";
 
 export default {
-    COLORS
+    STYLES,
+    FONTS
 }

@@ -47,7 +47,7 @@
 
     .Search {
 
-        .Search__container {
+        &__container {
             position: relative;
 
             input {
