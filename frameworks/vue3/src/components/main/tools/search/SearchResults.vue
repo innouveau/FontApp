@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import { FONT } from "@/types";
+import { Font } from "@/shared/types";
 import SearchResult from "@/components/main/tools/search/SearchResult.vue";
 
 export default defineComponent({
@@ -8,7 +8,7 @@ export default defineComponent({
     components: {SearchResult},
     props: {
         fonts: {
-            type: Array as PropType<FONT[]>
+            type: Array as PropType<Font[]>
         }
     },
     setup() {

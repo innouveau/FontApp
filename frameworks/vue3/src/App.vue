@@ -1,8 +1,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import DATA from "@/data";
-import Font from "./../../../shared/classes/Font";
-import {useStore} from "vuex";
+import { useStore } from "vuex";
+import DATA from "@/shared/data";
 
 export default defineComponent({
     name: "App",

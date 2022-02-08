@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import { FONT } from "@/types";
+import { Font } from "@/shared/types";
 import {useStore} from "vuex";
 
 export default defineComponent({
@@ -8,7 +8,7 @@ export default defineComponent({
     components: {},
     props: {
         font: {
-            type: Object as PropType<FONT>
+            type: Object as PropType<Font>
         }
     },
     setup(props) {

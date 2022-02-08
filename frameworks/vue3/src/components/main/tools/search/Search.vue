@@ -2,7 +2,7 @@
 import {defineComponent, computed, ref} from "vue";
 import {useStore} from "vuex";
 import SearchResults from "@/components/main/tools/search/SearchResults.vue";
-import { FONT } from "@/types";
+import { Font } from "@/shared/types";
 
 export default defineComponent({
     name: 'Search',

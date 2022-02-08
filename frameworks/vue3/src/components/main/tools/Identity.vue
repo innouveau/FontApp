@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import images from "@/data/images";
+import images from "@/shared/images";
 
 export default defineComponent({
     name: 'Identity',
