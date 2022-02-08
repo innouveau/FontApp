@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {updateBox} from 'store/actions'
 import {getCurrentBox} from 'store/selectors';
 import Ripples from 'react-ripples'
+import images from "shared/images";
 
 const AlignButton = (props) => {
     const dispatch = useDispatch();
@@ -19,13 +20,15 @@ const AlignButton = (props) => {
         dispatch(updateBox({id: currentBoxId, property: 'textAlign', value: props.textAlign}));
     };
 
+    const image = images.align[props.textAlign];
+
     return (
         <Ripples>
             <div
                 onClick={() => update()}
                 className={`AlignButton ${isActive() ? "AlignButton--active" : ""}`}>
                 <img
-                    src={`icons/align-${props.textAlign}.svg`}
+                    src={image}
                     alt={`align ${props.textAlign}`}/>
             </div>
         </Ripples>
