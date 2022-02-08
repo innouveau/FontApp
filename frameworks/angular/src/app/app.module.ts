@@ -3,9 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { MainComponent } from './main/main.component';
+import { ToolsComponent } from "./main/tools/tools.component";
+import { IdentityComponent } from "./main/tools/identity/identity.component";
+import { ToolBoxComponent } from "./main/tools/tool-box.component";
+
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, MainComponent, ToolsComponent, IdentityComponent,
+    ToolBoxComponent
   ],
   imports: [
     BrowserModule
