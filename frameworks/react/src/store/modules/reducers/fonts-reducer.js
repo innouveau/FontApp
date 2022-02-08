@@ -1,5 +1,5 @@
 import {ADD_FONT, SET_FONT_LOADED, SET_FONT_SEARCH} from "./../../types";
-import Font from './../../../../../../shared/classes/Font';
+import Font from 'shared/classes/Font';
 
 const initialState = {
     all: [],

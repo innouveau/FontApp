@@ -1,8 +1,8 @@
 import './Main.scss';
 import Tools from './tools/Tools';
-import fonts from './../../../../../shared/data/fonts'
-import parameters from './../../../../../shared/data/parameters'
-import boxes from './../../../../../shared/data/boxes'
+import fonts from 'shared/data/fonts'
+import parameters from 'shared/data/parameters'
+import boxes from 'shared/data/boxes'
 import {addFont, addParameter, addBox } from 'store/actions'
 import React, { Component } from "react";
 import store from "store";

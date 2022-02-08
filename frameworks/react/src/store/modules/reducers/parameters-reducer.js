@@ -1,5 +1,5 @@
 import { ADD_PARAMETER, UPDATE_PARAMETER, TOGGLE_PARAMETER } from "./../../types";
-import Parameter from './../../../../../../shared/classes/Parameter';
+import Parameter from 'shared/classes/Parameter';
 
 const initialState = {
     all: [],

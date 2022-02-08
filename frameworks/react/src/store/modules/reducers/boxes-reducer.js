@@ -1,5 +1,5 @@
 import { ADD_BOX, UPDATE_BOX, DELETE_BOX, SET_BOX_CURRENT } from "./../../types";
-import Box from './../../../../../../shared/classes/Box';
+import Box from 'shared/classes/Box';
 
 const initialState = {
     all: [],
